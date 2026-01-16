@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeCypher: Eliminating payment fraud through dynamic credentials and proven identity verification. 700,000+ transactions. Zero fraud.">
+    <title>SafeCypher | It's time for change</title>
+    <link rel="icon" type="image/png" href="safecypher-shield.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sc-blue: #0066FF;
+            --sc-blue-glow: rgba(0, 102, 255, 0.3);
+            --sc-dark: #0A0A0F;
+            --sc-white: #FFFFFF;
+            --sc-warm-grey: #E8E8EC;
+            --sc-grey: #6B6B7A;
+            --sc-grey-dark: #8A8A9A;
+            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-serif: 'DM Serif Display', Georgia, serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--sc-dark);
+            color: var(--sc-white);
+            line-height: 1.6;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--sc-dark) 0%, transparent 100%);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--sc-white);
+            z-index: 102;
+        }
+        .logo span { color: var(--sc-blue); }
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 102;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--sc-white);
+            transition: all 0.3s ease;
+            margin: 3px 0;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--sc-dark);
+            z-index: 101;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+        .menu-overlay a {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 6vw, 48px);
+            font-style: italic;
+            color: var(--sc-white);
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+        }
+        .menu-overlay.active a { opacity: 1; transform: translateY(0); }
+        .menu-overlay.active a:nth-child(1) { transition-delay: 0.1s; }
+        .menu-overlay.active a:nth-child(2) { transition-delay: 0.15s; }
+        .menu-overlay.active a:nth-child(3) { transition-delay: 0.2s; }
+        .menu-overlay.active a:nth-child(4) { transition-delay: 0.25s; }
+        .menu-overlay a:hover { color: var(--sc-blue); }
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 48px 80px;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--sc-dark);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--sc-blue-glow) 0%, transparent 70%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-line-1 {
+            font-family: var(--font-sans);
+            font-size: clamp(32px, 4.5vw, 56px);
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 32px;
+        }
+        .hero-line-1 .serif-accent {
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+        .cvv-container {
+            margin: 32px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .cvv-display {
+            display: flex;
+            gap: 8px;
+            opacity: 0.3;
+        }
+        .cvv-digit {
+            width: 56px;
+            height: 80px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .digit-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .digit-num {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 400;
+            color: var(--sc-white);
+        }
+        .hero-line-2 {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 6vw, 80px);
+            font-style: italic;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: var(--sc-blue);
+        }
+        .proof {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--sc-warm-grey);
+            color: var(--sc-dark);
+            text-align: center;
+            padding: 100px 48px;
+        }
+        .proof-hero {
+            font-family: var(--font-serif);
+            font-size: clamp(64px, 12vw, 140px);
+            font-style: italic;
+            color: var(--sc-blue);
+            letter-spacing: -3px;
+            margin-bottom: 16px;
+            animation: greyPulse 3s ease-in-out infinite;
+        }
+        @keyframes greyPulse {
+            0%, 100% { text-shadow: 0 0 0 rgba(100, 100, 100, 0); }
+            50% { text-shadow: 0 0 50px rgba(100, 100, 100, 0.3), 0 0 100px rgba(100, 100, 100, 0.15); }
+        }
+        .proof-subhead {
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 300;
+            color: var(--sc-dark);
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
+        .proof-detail {
+            font-size: 17px;
+            color: var(--sc-grey);
+            letter-spacing: 0.3px;
+            line-height: 1.9;
+        }
+        .beliefs {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 48px;
+            background-color: var(--sc-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        .beliefs .container { position: relative; z-index: 1; }
+        .shield-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: auto;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+        .beliefs-header {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 5vw, 56px);
+            font-style: italic;
+            color: var(--sc-blue);
+            margin-bottom: 64px;
+        }
+        .beliefs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+        .belief-item {
+            padding: 28px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .belief-number {
+            font-size: 12px;
+            color: var(--sc-blue);
+            margin-bottom: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .belief-text {
+            font-size: clamp(20px, 2vw, 26px);
+            font-weight: 300;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+            margin-bottom: 24px;
+        }
+        .belief-text .serif-accent {
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+        .belief-animation {
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .anim-counter {
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--sc-white);
+            font-variant-numeric: tabular-nums;
+        }
+        .anim-split {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+        .anim-split .dot {
+            width: 16px;
+            height: 16px;
+            background: var(--sc-white);
+            border-radius: 50%;
+        }
+        .anim-split .dot:last-child { animation: splitR 3s ease-in-out infinite; }
+        @keyframes splitR {
+            0%, 20%, 100% { transform: translateX(0); }
+            50%, 70% { transform: translateX(28px); }
+        }
+        .anim-dissolve {
+            width: 32px;
+            height: 32px;
+            background: var(--sc-white);
+            border-radius: 6px;
+            animation: dissolve 4s ease-in-out infinite;
+        }
+        @keyframes dissolve {
+            0%, 25% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0; transform: scale(0.3); }
+            75%, 100% { opacity: 1; transform: scale(1); }
+        }
+        .anim-sharpen {
+            width: 32px;
+            height: 32px;
+            background: var(--sc-white);
+            border-radius: 50%;
+            animation: sharpen 4s ease-in-out infinite;
+        }
+        @keyframes sharpen {
+            0%, 25% { filter: blur(12px); opacity: 0.3; }
+            50%, 75% { filter: blur(0px); opacity: 1; }
+            100% { filter: blur(12px); opacity: 0.3; }
+        }
+        .anim-wall {
+            position: relative;
+            width: 90px;
+            height: 44px;
+        }
+        .anim-wall .ball {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: var(--sc-white);
+            border-radius: 50%;
+            animation: toWall 3s ease-in-out infinite;
+        }
+        .anim-wall .wall {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 40px;
+            background: var(--sc-white);
+            border-radius: 2px;
+        }
+        @keyframes toWall {
+            0%, 10% { left: 0; }
+            40%, 100% { left: 62px; }
+        }
+        .invitation {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--sc-warm-grey);
+            color: var(--sc-dark);
+            padding: 100px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .invitation .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .invitation-content { 
+            max-width: 560px;
+            flex-shrink: 0;
+        }
+        .invitation-shield {
+            flex-shrink: 0;
+            width: 280px;
+            height: auto;
+            opacity: 0.5;
+        }
+        .invitation h2 {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 48px;
+            letter-spacing: -0.4px;
+            color: var(--sc-dark);
+        }
+        .invitation h2 .serif-accent {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--sc-blue);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .form-group { margin-bottom: 24px; }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sc-grey);
+            margin-bottom: 8px;
+        }
+        .form-group label .optional {
+            font-size: 10px;
+            text-transform: none;
+            letter-spacing: 0;
+            opacity: 0.7;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 0;
+            font-size: 18px;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            color: var(--sc-dark);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus { border-bottom-color: var(--sc-blue); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .submit-btn {
+            margin-top: 32px;
+            padding: 18px 44px;
+            font-size: 14px;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: var(--sc-blue);
+            color: var(--sc-white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover { background-color: var(--sc-dark); }
+        footer {
+            padding: 40px 48px;
+            display: flex;
+            justify-content: center;
+            background-color: var(--sc-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-company { font-size: 14px; color: var(--sc-grey-dark); }
+        .footer-links { display: flex; gap: 32px; align-items: center; }
+        .footer-links a {
+            color: var(--sc-grey-dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--sc-white); }
+        .linkedin-icon { width: 20px; height: 20px; fill: var(--sc-grey-dark); transition: fill 0.3s ease; }
+        .footer-links a:hover .linkedin-icon { fill: var(--sc-white); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        @media (max-width: 1024px) {
+            .beliefs-grid { grid-template-columns: repeat(2, 1fr); }
+            .invitation .container { flex-direction: column; gap: 40px; }
+            .invitation-shield { order: -1; width: 200px; opacity: 0.4; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 20px 24px; }
+            .logo { font-size: 22px; }
+            .hero { padding: 100px 24px 60px; min-height: 75vh; }
+            .hero-line-1 { margin-bottom: 24px; }
+            .cvv-container { margin: 24px 0; }
+            .cvv-digit { width: 44px; height: 64px; }
+            .digit-num { height: 64px; font-size: 32px; }
+            .proof { padding: 80px 24px; min-height: 70vh; }
+            .beliefs { padding: 80px 24px; min-height: auto; }
+            .beliefs-grid { grid-template-columns: 1fr; gap: 36px; }
+            .invitation { padding: 80px 24px; min-height: 70vh; }
+            .invitation-shield { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            footer { padding: 32px 24px; }
+            .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Safe<span>Cypher</span></div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-overlay" id="menuOverlay">
+        <a href="#hero" class="menu-link">Home</a>
+        <a href="#proof" class="menu-link">Proof</a>
+        <a href="#beliefs" class="menu-link">Beliefs</a>
+        <a href="#contact" class="menu-link">Contact</a>
+    </div>
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-line-1 reveal">Static credentials = <span class="serif-accent">Predictable fraud.</span></div>
+                <div class="cvv-container reveal reveal-delay-1">
+                    <div class="cvv-display">
+                        <div class="cvv-digit">
+                            <div class="digit-track" id="track1">
+                                <div class="digit-num">0</div><div class="digit-num">1</div><div class="digit-num">2</div><div class="digit-num">3</div><div class="digit-num">4</div><div class="digit-num">5</div><div class="digit-num">6</div><div class="digit-num">7</div><div class="digit-num">8</div><div class="digit-num">9</div>
+                            </div>
+                        </div>
+                        <div class="cvv-digit">
+                            <div class="digit-track" id="track2">
+                                <div class="digit-num">0</div><div class="digit-num">1</div><div class="digit-num">2</div><div class="digit-num">3</div><div class="digit-num">4</div><div class="digit-num">5</div><div class="digit-num">6</div><div class="digit-num">7</div><div class="digit-num">8</div><div class="digit-num">9</div>
+                            </div>
+                        </div>
+                        <div class="cvv-digit">
+                            <div class="digit-track" id="track3">
+                                <div class="digit-num">0</div><div class="digit-num">1</div><div class="digit-num">2</div><div class="digit-num">3</div><div class="digit-num">4</div><div class="digit-num">5</div><div class="digit-num">6</div><div class="digit-num">7</div><div class="digit-num">8</div><div class="digit-num">9</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-line-2 reveal reveal-delay-2">It's time for change.</div>
+            </div>
+        </div>
+    </section>
+    <section class="proof" id="proof">
+        <div class="container" style="text-align: center;">
+            <div class="proof-hero reveal">Zero fraud.</div>
+            <div class="proof-subhead reveal reveal-delay-1"><span id="transactionCount">0</span>+ transactions</div>
+            <div class="proof-detail reveal reveal-delay-2">Not reduced. Eliminated with An Post Money for 16+ months.<br>Winner, Best Financial Crime Prevention Initiative - Irish Fintech Awards 2025</div>
+        </div>
+    </section>
+    <section class="beliefs" id="beliefs">
+        <img src="safecypher-shield.png" alt="" class="shield-watermark">
+        <div class="container">
+            <div class="beliefs-header reveal">What we believe</div>
+            <div class="beliefs-grid">
+                <div class="belief-item reveal reveal-delay-1">
+                    <div class="belief-number">01</div>
+                    <div class="belief-text">Don't reduce. <span class="serif-accent">Eliminate.</span></div>
+                    <div class="belief-animation"><div class="anim-counter" id="counter1">3</div></div>
+                </div>
+                <div class="belief-item reveal reveal-delay-2">
+                    <div class="belief-number">02</div>
+                    <div class="belief-text">Dynamic data. <span class="serif-accent">Applied intelligence.</span></div>
+                    <div class="belief-animation"><div class="anim-split"><div class="dot"></div><div class="dot"></div></div></div>
+                </div>
+                <div class="belief-item reveal reveal-delay-3">
+                    <div class="belief-number">03</div>
+                    <div class="belief-text">Nothing there. <span class="serif-accent">Nothing to steal.</span></div>
+                    <div class="belief-animation"><div class="anim-dissolve"></div></div>
+                </div>
+                <div class="belief-item reveal reveal-delay-4">
+                    <div class="belief-number">04</div>
+                    <div class="belief-text">Not probability, but <span class="serif-accent">certainty.</span></div>
+                    <div class="belief-animation"><div class="anim-sharpen"></div></div>
+                </div>
+                <div class="belief-item reveal reveal-delay-5">
+                    <div class="belief-number">05</div>
+                    <div class="belief-text">Easier for users. <span class="serif-accent">Impossible for fraudsters.</span></div>
+                    <div class="belief-animation"><div class="anim-wall"><div class="ball"></div><div class="wall"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="invitation" id="contact">
+        <div class="container">
+            <div class="invitation-content">
+                <h2 class="reveal">The only acceptable number in fraud is <span class="serif-accent">zero.</span> If you believe that too, then we can help.</h2>
+                <form class="reveal reveal-delay-1" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" id="role" name="role" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="institution">Institution</label>
+                        <input type="text" id="institution" name="institution" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="optional">(optional)</span></label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="challenge">What's your biggest fraud challenge right now? <span class="optional">(optional)</span></label>
+                        <textarea id="challenge" name="challenge" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Let's talk</button>
+                </form>
+            </div>
+            <img src="safecypher-shield-grey.png" alt="" class="invitation-shield reveal">
+        </div>
+    </section>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-company">Safecypher Ltd.</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/company/safecypher" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="mailto:contact@safecypher.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var menuToggle = document.getElementById('menuToggle');
+        var menuOverlay = document.getElementById('menuOverlay');
+        var menuLinks = document.querySelectorAll('.menu-link');
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        function spinDigit(trackId) {
+            var track = document.getElementById(trackId);
+            var digit = Math.floor(Math.random() * 10);
+            var height = 80;
+            track.style.transform = 'translateY(-' + (digit * height) + 'px)';
+        }
+        function spinAll() {
+            spinDigit('track1');
+            setTimeout(function() { spinDigit('track2'); }, 150);
+            setTimeout(function() { spinDigit('track3'); }, 300);
+        }
+        setTimeout(spinAll, 500);
+        setInterval(spinAll, 3000);
+        var counter = document.getElementById('counter1');
+        var counts = [3, 2, 1, 0];
+        var countIndex = 0;
+        setInterval(function() {
+            countIndex = (countIndex + 1) % counts.length;
+            counter.textContent = counts[countIndex];
+        }, 1000);
+        var transactionEl = document.getElementById('transactionCount');
+        var targetNumber = 700000;
+        var hasAnimated = false;
+        function animateCount(el, target, duration) {
+            var start = 0;
+            var startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var easeOut = 1 - Math.pow(1 - progress, 3);
+                var current = Math.floor(easeOut * target);
+                el.textContent = current.toLocaleString();
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target.toLocaleString();
+                }
+            }
+            requestAnimationFrame(step);
+        }
+        var observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.closest('.proof') && !hasAnimated) {
+                        hasAnimated = true;
+                        setTimeout(function() {
+                            animateCount(transactionEl, targetNumber, 2000);
+                        }, 300);
+                    }
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    </script>
+</body>
+</html>
