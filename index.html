@@ -502,50 +502,78 @@
         }
         .belief-dots {
             display: flex;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0;
         }
         .belief-dot {
-            width: 0.75rem;
-            height: 0.75rem;
+            width: 1rem;
+            height: 1rem;
             background-color: var(--white);
             border-radius: 50%;
         }
         .belief-dot:last-child {
-            opacity: 0.5;
+            animation: splitRight 3s ease-in-out infinite;
+        }
+        @keyframes splitRight {
+            0%, 20%, 100% { transform: translateX(0); }
+            50%, 70% { transform: translateX(1.75rem); }
         }
         .belief-square {
-            width: 1.5rem;
-            height: 1.5rem;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 0.25rem;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--white);
+            border-radius: 0.375rem;
+            animation: dissolve 4s ease-in-out infinite;
+        }
+        @keyframes dissolve {
+            0%, 25% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0; transform: scale(0.3); }
+            75%, 100% { opacity: 1; transform: scale(1); }
         }
         .belief-blur {
             width: 2rem;
             height: 2rem;
-            background: linear-gradient(to right, var(--white), transparent);
+            background-color: var(--white);
             border-radius: 50%;
-            filter: blur(4px);
+            animation: sharpen 4s ease-in-out infinite;
+        }
+        @keyframes sharpen {
+            0%, 25% { filter: blur(12px); opacity: 0.3; }
+            50%, 75% { filter: blur(0px); opacity: 1; }
+            100% { filter: blur(12px); opacity: 0.3; }
         }
         .belief-wall {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            position: relative;
+            width: 5.5rem;
+            height: 2.75rem;
         }
         .belief-wall-dot {
-            width: 0.5rem;
-            height: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.875rem;
+            height: 0.875rem;
             background-color: var(--white);
             border-radius: 50%;
+            animation: toWall 3s ease-in-out infinite;
+        }
+        @keyframes toWall {
+            0%, 10% { left: 0; }
+            40%, 100% { left: 3.875rem; }
         }
         .belief-wall-line-h {
-            width: 2rem;
-            height: 1px;
-            background-color: var(--white);
+            display: none;
         }
         .belief-wall-line-v {
-            width: 1px;
-            height: 2rem;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.25rem;
+            height: 2.5rem;
             background-color: var(--white);
+            border-radius: 0.125rem;
         }
 
         /* Contact Section */
@@ -580,11 +608,11 @@
         .contact-logo {
             display: none;
             margin-top: 5rem;
-            opacity: 0.1;
         }
-        .contact-logo svg {
+        .contact-logo img {
             width: 300px;
-            height: 300px;
+            height: auto;
+            opacity: 0.15;
         }
         .contact-form-card {
             background-color: var(--white);
@@ -903,10 +931,7 @@
                 <div class="contact-intro">
                     <h2>The only acceptable number in fraud is <span class="serif-accent">zero.</span> If you believe that too, then we can help.</h2>
                     <div class="contact-logo">
-                        <svg viewBox="0 0 100 100" fill="currentColor">
-                            <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z"/>
-                            <path d="M70 35H30v10h40v10H30v10h40V35z"/>
-                        </svg>
+                        <img src="safecypher-shield.png" alt="SafeCypher" width="300" height="300">
                     </div>
                 </div>
                 <div class="contact-form-card">
