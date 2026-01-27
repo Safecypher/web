@@ -239,13 +239,13 @@
         .credit-card {
             position: relative;
             width: 100%;
-            max-width: 28rem;
+            max-width: 38rem;
             aspect-ratio: 1.586 / 1;
             background: linear-gradient(to bottom right, var(--gray-800), var(--gray-900));
-            border-radius: 1rem;
+            border-radius: 1.25rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            padding: 2.5rem;
             transform: perspective(1000px) rotateY(-12deg);
             transition: transform 0.7s ease;
         }
@@ -254,29 +254,29 @@
         }
         .card-magnetic-strip {
             position: absolute;
-            top: 2rem;
+            top: 2.5rem;
             left: 0;
             right: 0;
-            height: 3rem;
+            height: 4rem;
             background-color: rgba(0, 0, 0, 0.8);
         }
         .card-signature-area {
             position: absolute;
-            top: 7rem;
-            left: 2rem;
-            right: 2rem;
+            top: 9rem;
+            left: 2.5rem;
+            right: 2.5rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
         }
         .signature-panel {
             flex: 1;
-            height: 2.5rem;
+            height: 3.25rem;
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 0.25rem;
+            border-radius: 0.375rem;
             display: flex;
             align-items: center;
-            padding: 0 0.5rem;
+            padding: 0 0.75rem;
             background-image: repeating-linear-gradient(
                 90deg,
                 transparent,
@@ -287,16 +287,16 @@
         }
         .signature-text {
             font-family: 'Brush Script MT', cursive;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             color: var(--gray-600);
             transform: rotate(-2deg);
             user-select: none;
         }
         .card-cvv-box {
-            width: 4rem;
-            height: 2.5rem;
+            width: 5.25rem;
+            height: 3.25rem;
             border: 2px solid rgba(59, 130, 246, 0.5);
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             background-color: rgba(59, 130, 246, 0.1);
             display: flex;
             align-items: center;
@@ -304,11 +304,11 @@
         }
         .card-cvv-display {
             display: flex;
-            gap: 2px;
+            gap: 3px;
         }
         .card-cvv-digit {
-            width: 16px;
-            height: 24px;
+            width: 20px;
+            height: 32px;
             overflow: hidden;
             position: relative;
         }
@@ -320,48 +320,59 @@
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card-digit-num {
-            height: 24px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: ui-monospace, monospace;
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--brand-blue);
             letter-spacing: 0.1em;
+            transition: text-shadow 0.3s ease;
+        }
+        .card-cvv-digit.glowing .card-digit-num {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.8), 0 0 16px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.3);
+        }
+        .card-cvv-box {
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card-cvv-box.glowing {
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4), 0 0 24px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.8);
         }
         .card-footer {
             position: absolute;
-            bottom: 2rem;
-            left: 2rem;
-            right: 2rem;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            right: 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             color: var(--gray-500);
-            font-size: 0.625rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
         .card-chip-area {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.375rem;
         }
         .card-chip {
-            width: 3rem;
-            height: 2rem;
+            width: 4rem;
+            height: 2.75rem;
             background: linear-gradient(to right, rgba(250, 204, 21, 0.5), rgba(202, 138, 4, 0.5));
-            border-radius: 0.25rem;
+            border-radius: 0.375rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .card-chip-inner {
-            width: 2rem;
-            height: 1.25rem;
+            width: 2.75rem;
+            height: 1.75rem;
             background: linear-gradient(to right, rgba(250, 204, 21, 0.3), rgba(202, 138, 4, 0.3));
-            border-radius: 0.125rem;
+            border-radius: 0.25rem;
         }
 
         /* Stats/Mission Section */
@@ -1016,18 +1027,38 @@
             });
         });
 
-        // Card CVV animation
-        function spinCardDigit(trackId) {
+        // Card CVV animation with glow effect
+        var cvvDigits = document.querySelectorAll('.card-cvv-digit');
+        var cvvBox = document.querySelector('.card-cvv-box');
+        
+        function spinCardDigit(trackId, index) {
             var track = document.getElementById(trackId);
+            var digitContainer = cvvDigits[index];
             var digit = Math.floor(Math.random() * 10);
-            var height = 24;
+            var height = 32;
+            
+            // Add glow
+            digitContainer.classList.add('glowing');
             track.style.transform = 'translateY(-' + (digit * height) + 'px)';
+            
+            // Remove glow after animation
+            setTimeout(function() {
+                digitContainer.classList.remove('glowing');
+            }, 600);
         }
         
         function spinCardCVV() {
-            spinCardDigit('cardTrack1');
-            setTimeout(function() { spinCardDigit('cardTrack2'); }, 100);
-            setTimeout(function() { spinCardDigit('cardTrack3'); }, 200);
+            // Add glow to the box
+            cvvBox.classList.add('glowing');
+            
+            spinCardDigit('cardTrack1', 0);
+            setTimeout(function() { spinCardDigit('cardTrack2', 1); }, 100);
+            setTimeout(function() { spinCardDigit('cardTrack3', 2); }, 200);
+            
+            // Remove box glow after all digits done
+            setTimeout(function() {
+                cvvBox.classList.remove('glowing');
+            }, 800);
         }
         
         setTimeout(spinCardCVV, 500);
