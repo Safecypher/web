@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of America - AI Agent Controls</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .screen-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .screen-btn {
+            padding: 12px 24px;
+            border-radius: 24px;
+            border: 2px solid #e5e5e5;
+            background: white;
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .screen-btn:hover {
+            border-color: #e31837;
+            color: #e31837;
+        }
+        
+        .screen-btn.active {
+            background: #e31837;
+            color: white;
+            border-color: #e31837;
+        }
+        
+        .screens-container {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .phone-frame {
+            background: #000;
+            padding: 12px;
+            border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            width: 375px;
+        }
+        
+        .screen {
+            background: #f8f9fa;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 812px;
+            position: relative;
+        }
+        
+        .status-bar {
+            padding: 12px 24px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status-bar .time {
+            color: #000;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 4px;
+            color: #000;
+        }
+        
+        .header {
+            padding: 16px 24px 24px;
+            background: white;
+        }
+        
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .header-action {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 4px;
+        }
+        
+        .bofa-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .bofa-flag {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(180deg, #012169 0%, #012169 40%, #e31837 40%, #e31837 60%, #012169 60%, #012169 100%);
+            border-radius: 6px;
+        }
+        
+        .bofa-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #012169;
+        }
+        
+        .content {
+            padding: 20px 24px;
+            padding-bottom: 100px;
+        }
+        
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .agent-item {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .agent-item:hover {
+            box-shadow: 0 4px 12px rgba(227,24,55,0.1);
+        }
+        
+        .agent-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: #f0f0f0;
+            flex-shrink: 0;
+        }
+        
+        .agent-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .agent-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .agent-meta {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e31837;
+        }
+        
+        .status-indicator.inactive {
+            background: #ccc;
+        }
+        
+        .chevron {
+            color: #e31837;
+            font-size: 20px;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .activity-item:hover {
+            background: #f8f9fa;
+            margin: 0 -20px;
+            padding: 16px 20px;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .activity-details {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .activity-merchant {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .activity-agent {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 2px;
+        }
+        
+        .activity-time {
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        .activity-amount {
+            text-align: right;
+        }
+        
+        .amount-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .activity-badge {
+            font-size: 11px;
+            color: #e31837;
+            font-weight: 600;
+        }
+        
+        .activity-badge.pending {
+            color: #ff9500;
+        }
+        
+        .activity-badge.declined {
+            color: #ff3b30;
+        }
+        
+        .button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 28px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+        
+        .button-primary {
+            background: #e31837;
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: #c71530;
+        }
+        
+        .button-secondary {
+            background: #f0f0f0;
+            color: #1a1a1a;
+        }
+        
+        .button-secondary:hover {
+            background: #e5e5e5;
+        }
+        
+        .button-danger {
+            background: #ff3b30;
+            color: white;
+        }
+        
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 24px 20px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #999;
+            font-size: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        
+        .nav-item.active {
+            color: #e31837;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+        }
+        
+        .progress-container {
+            margin-top: 16px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #e31837;
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        
+        .progress-spent {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .progress-limit {
+            color: #999;
+        }
+        
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .tag {
+            background: #f0f0f0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .tag.active {
+            background: #e31837;
+            color: white;
+        }
+        
+        .payment-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .payment-card.selected {
+            border-color: #e31837;
+            background: #fff5f6;
+        }
+        
+        .card-logo {
+            width: 48px;
+            height: 32px;
+            background: linear-gradient(135deg, #1434CB 0%, #2E77D0 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        
+        .card-info {
+            flex: 1;
+        }
+        
+        .card-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .card-benefit {
+            font-size: 12px;
+            color: #e31837;
+            font-weight: 500;
+        }
+        
+        .card-badge {
+            background: #e31837;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        .approval-header {
+            padding: 40px 24px 24px;
+            text-align: center;
+            background: white;
+        }
+        
+        .approval-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ff9500 0%, #ff6b6b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .approval-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .approval-subtitle {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.5;
+        }
+        
+        .alert-card {
+            border: 2px solid #ff9500;
+            background: #fff8f0;
+        }
+        
+        .transaction-detail {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+        
+        .detail-label {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .detail-value.amount {
+            font-size: 24px;
+        }
+        
+        .reason-box {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+        
+        .reason-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .reason-list {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        
+        .slider-container {
+            margin-top: 16px;
+        }
+        
+        .slider-value {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .slider-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .slider-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e31837;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            -webkit-appearance: none;
+            background: #f0f0f0;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e31837;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(227,24,55,0.3);
+        }
+        
+        .slider-range {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .merchant-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .merchant-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .merchant-item:hover {
+            background: #f0f0f0;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .checkbox.checked {
+            background: #e31837;
+            border-color: #e31837;
+        }
+        
+        .merchant-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .security-footer {
+            text-align: center;
+            padding: 16px 24px;
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Receipt Detail Screen Styles */
+        .receipt-header {
+            background: white;
+            padding: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .receipt-merchant {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .receipt-merchant-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        
+        .receipt-merchant-info h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .receipt-merchant-info p {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .receipt-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .receipt-total-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        
+        .receipt-total-amount {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .receipt-status {
+            text-align: right;
+        }
+        
+        .receipt-status-badge {
+            background: #e31837;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .receipt-date {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .receipt-items {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .receipt-items-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+        
+        .receipt-item:last-child {
+            border-bottom: none;
+        }
+        
+        .receipt-item-info {
+            flex: 1;
+            padding-right: 16px;
+        }
+        
+        .receipt-item-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .receipt-item-details {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .receipt-item-price {
+            text-align: right;
+            white-space: nowrap;
+        }
+        
+        .receipt-item-amount {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .receipt-item-unit {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .receipt-totals {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .receipt-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+        
+        .receipt-total-row.final {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+        
+        .receipt-total-row .label {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .receipt-total-row.final .label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .receipt-total-row .value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .receipt-total-row.final .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e31837;
+        }
+        
+        .receipt-meta {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .receipt-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+        
+        .receipt-meta-row:last-child {
+            border-bottom: none;
+        }
+        
+        .receipt-meta-label {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .receipt-meta-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-align: right;
+        }
+        
+        .receipt-card-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .receipt-card-logo {
+            width: 32px;
+            height: 22px;
+            background: linear-gradient(135deg, #1434CB 0%, #2E77D0 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bank of America AI Agent Controls</h1>
+        
+        <div class="screen-selector">
+            <button class="screen-btn active" onclick="showScreen('dashboard')">Dashboard</button>
+            <button class="screen-btn" onclick="showScreen('agent-detail')">Agent Detail</button>
+            <button class="screen-btn" onclick="showScreen('activity')">Activity</button>
+            <button class="screen-btn" onclick="showScreen('receipt')">Receipt Detail</button>
+            <button class="screen-btn" onclick="showScreen('setup')">Setup Agent</button>
+            <button class="screen-btn" onclick="showScreen('approval')">Approval</button>
+        </div>
+        
+        <div class="screens-container">
+            <!-- Dashboard Screen -->
+            <div class="phone-frame" id="screen-dashboard">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="header">
+                        <div class="bofa-logo">
+                            <div class="bofa-flag"></div>
+                            <div class="bofa-name">Bank of America</div>
+                        </div>
+                        <div class="header-top">
+                            <div class="back-btn">←</div>
+                            <div class="header-title">AI Agents</div>
+                            <div class="header-action"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value">$247</div>
+                                <div class="stat-label">This week</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Active agents</div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Your Agents</div>
+                        
+                        <div class="agent-item">
+                            <div class="agent-icon" style="background: #e3f2fd;">🛒</div>
+                            <div class="agent-info">
+                                <div class="agent-name">Google Shopping</div>
+                                <div class="agent-status">
+                                    <span class="status-indicator"></span>
+                                    <span>$73 of $100 weekly</span>
+                                </div>
+                            </div>
+                            <div class="chevron">›</div>
+                        </div>
+                        
+                        <div class="agent-item">
+                            <div class="agent-icon" style="background: #f3e5f5;">✈️</div>
+                            <div class="agent-info">
+                                <div class="agent-name">Travel Assistant</div>
+                                <div class="agent-status">
+                                    <span class="status-indicator"></span>
+                                    <span>$174 of $500 monthly</span>
+                                </div>
+                            </div>
+                            <div class="chevron">›</div>
+                        </div>
+                        
+                        <div class="agent-item">
+                            <div class="agent-icon" style="background: #fff3e0;">🏠</div>
+                            <div class="agent-info">
+                                <div class="agent-name">Home Essentials</div>
+                                <div class="agent-status">
+                                    <span class="status-indicator inactive"></span>
+                                    <span>No budget set</span>
+                                </div>
+                            </div>
+                            <div class="chevron">›</div>
+                        </div>
+                        
+                        <button class="button button-primary">Add new agent</button>
+                        
+                        <div class="section-title">Recent Activity</div>
+                        
+                        <div class="card" style="padding: 0 20px;">
+                            <div class="activity-item" onclick="showScreen('receipt')">
+                                <div class="activity-icon">🛒</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Whole Foods</div>
+                                    <div class="activity-agent">Google Shopping</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$42.73</div>
+                                    <div class="activity-badge">✓ Approved</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">✈️</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">United Airlines</div>
+                                    <div class="activity-agent">Travel Assistant</div>
+                                    <div class="activity-time">Yesterday</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$385.00</div>
+                                    <div class="activity-badge pending">⏱ Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation">
+                        <a href="#" class="nav-item active">
+                            <div class="nav-icon">●</div>
+                            <div>Home</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Activity</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Cards</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Settings</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agent Detail Screen -->
+            <div class="phone-frame" id="screen-agent-detail" style="display: none;">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="header">
+                        <div class="bofa-logo">
+                            <div class="bofa-flag"></div>
+                            <div class="bofa-name">Bank of America</div>
+                        </div>
+                        <div class="header-top">
+                            <div class="back-btn">←</div>
+                            <div class="header-title">Google Shopping</div>
+                            <div class="header-action"></div>
+                        </div>
+                        <div class="header-subtitle">Authorized 3 weeks ago</div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="card">
+                            <div style="font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px;">Weekly budget</div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 73%;"></div>
+                                </div>
+                                <div class="progress-label">
+                                    <span class="progress-spent">$73.00 spent</span>
+                                    <span class="progress-limit">$100.00 limit</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div style="font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px;">Allowed categories</div>
+                            <div class="tag-group">
+                                <span class="tag active">🥗 Groceries</span>
+                                <span class="tag active">🧴 Household</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div style="font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px;">Allowed merchants</div>
+                            <div class="tag-group">
+                                <span class="tag active">Whole Foods</span>
+                                <span class="tag active">Target</span>
+                                <span class="tag active">Trader Joe's</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Optimized Payment</div>
+                        
+                        <div class="payment-card selected">
+                            <div class="card-logo">VISA</div>
+                            <div class="card-info">
+                                <div class="card-name">BofA Cash Rewards</div>
+                                <div class="card-benefit">+3% cashback on groceries</div>
+                            </div>
+                            <div class="card-badge">Best</div>
+                        </div>
+                        
+                        <div class="section-title">Transaction History</div>
+                        
+                        <div class="card" style="padding: 0 20px;">
+                            <div class="activity-item" onclick="showScreen('receipt')">
+                                <div class="activity-icon">🥗</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Whole Foods</div>
+                                    <div class="activity-agent">Weekly groceries</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$42.73</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🛒</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Target</div>
+                                    <div class="activity-agent">Household items</div>
+                                    <div class="activity-time">3 days ago</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$30.27</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="button button-secondary">Edit spending rules</button>
+                        <button class="button button-danger">Revoke access</button>
+                    </div>
+                    
+                    <div class="navigation">
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Home</div>
+                        </a>
+                        <a href="#" class="nav-item active">
+                            <div class="nav-icon">●</div>
+                            <div>Activity</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Cards</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Settings</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Screen -->
+            <div class="phone-frame" id="screen-activity" style="display: none;">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="header">
+                        <div class="bofa-logo">
+                            <div class="bofa-flag"></div>
+                            <div class="bofa-name">Bank of America</div>
+                        </div>
+                        <div class="header-top">
+                            <div class="back-btn">←</div>
+                            <div class="header-title">Activity</div>
+                            <div class="header-action"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="section-title">Today</div>
+                        
+                        <div class="card" style="padding: 0 20px;">
+                            <div class="activity-item" onclick="showScreen('receipt')">
+                                <div class="activity-icon">🛒</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Whole Foods</div>
+                                    <div class="activity-agent">Google Shopping</div>
+                                    <div class="activity-time">2 hours ago • BofA Cash Rewards</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$42.73</div>
+                                    <div class="activity-badge">✓ Auto</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item" style="background: #fff8f0;">
+                                <div class="activity-icon" style="background: #ff9500;">✈️</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">United Airlines</div>
+                                    <div class="activity-agent">Travel Assistant</div>
+                                    <div class="activity-time">4 hours ago • Needs review</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$385.00</div>
+                                    <div class="activity-badge pending">Review</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Yesterday</div>
+                        
+                        <div class="card" style="padding: 0 20px;">
+                            <div class="activity-item">
+                                <div class="activity-icon">🏠</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Amazon</div>
+                                    <div class="activity-agent">Home Essentials</div>
+                                    <div class="activity-time">Yesterday • BofA Premium Rewards</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$67.42</div>
+                                    <div class="activity-badge">✓ Auto</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🛒</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Target</div>
+                                    <div class="activity-agent">Google Shopping</div>
+                                    <div class="activity-time">Yesterday • BofA Cash Rewards</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$30.27</div>
+                                    <div class="activity-badge">✓ Auto</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">This Week</div>
+                        
+                        <div class="card" style="padding: 0 20px;">
+                            <div class="activity-item">
+                                <div class="activity-icon">🎫</div>
+                                <div class="activity-details">
+                                    <div class="activity-merchant">Ticketmaster</div>
+                                    <div class="activity-agent">Events Agent</div>
+                                    <div class="activity-time">3 days ago • Outside budget</div>
+                                </div>
+                                <div class="activity-amount">
+                                    <div class="amount-value">$240.00</div>
+                                    <div class="activity-badge declined">✗ Declined</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation">
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Home</div>
+                        </a>
+                        <a href="#" class="nav-item active">
+                            <div class="nav-icon">●</div>
+                            <div>Activity</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Cards</div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-icon">○</div>
+                            <div>Settings</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Receipt Detail Screen -->
+            <div class="phone-frame" id="screen-receipt" style="display: none;">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="receipt-header">
+                        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                            <div class="back-btn" onclick="showScreen('activity')" style="cursor: pointer;">←</div>
+                            <div style="flex: 1; text-align: center; font-size: 16px; font-weight: 600; color: #1a1a1a;">Purchase Details</div>
+                            <div style="width: 32px;"></div>
+                        </div>
+                        
+                        <div class="receipt-merchant">
+                            <div class="receipt-merchant-icon">🛒</div>
+                            <div class="receipt-merchant-info">
+                                <h2>Whole Foods Market</h2>
+                                <p>2 hours ago • Auto-approved</p>
+                            </div>
+                        </div>
+                        
+                        <div class="receipt-summary">
+                            <div>
+                                <div class="receipt-total-label">Total Amount</div>
+                                <div class="receipt-total-amount">$42.73</div>
+                            </div>
+                            <div class="receipt-status">
+                                <div class="receipt-status-badge">Approved</div>
+                                <div class="receipt-date">Feb 6, 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="receipt-items">
+                            <div class="receipt-items-header">Items Purchased (6)</div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Organic Strawberries</div>
+                                    <div class="receipt-item-details">16 oz container</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$5.99</div>
+                                    <div class="receipt-item-unit">1 × $5.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Almond Milk</div>
+                                    <div class="receipt-item-details">Half gallon, unsweetened</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$4.49</div>
+                                    <div class="receipt-item-unit">1 × $4.49</div>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Free Range Eggs</div>
+                                    <div class="receipt-item-details">Dozen, large</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$6.99</div>
+                                    <div class="receipt-item-unit">1 × $6.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Organic Baby Spinach</div>
+                                    <div class="receipt-item-details">5 oz bag</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$3.99</div>
+                                    <div class="receipt-item-unit">1 × $3.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Sourdough Bread</div>
+                                    <div class="receipt-item-details">Whole loaf</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$5.49</div>
+                                    <div class="receipt-item-unit">1 × $5.49</div>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-item">
+                                <div class="receipt-item-info">
+                                    <div class="receipt-item-name">Greek Yogurt</div>
+                                    <div class="receipt-item-details">32 oz, plain</div>
+                                </div>
+                                <div class="receipt-item-price">
+                                    <div class="receipt-item-amount">$7.99</div>
+                                    <div class="receipt-item-unit">1 × $7.99</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="receipt-totals">
+                            <div class="receipt-total-row">
+                                <span class="label">Subtotal</span>
+                                <span class="value">$34.94</span>
+                            </div>
+                            <div class="receipt-total-row">
+                                <span class="label">Tax</span>
+                                <span class="value">$2.79</span>
+                            </div>
+                            <div class="receipt-total-row">
+                                <span class="label">Delivery Fee</span>
+                                <span class="value">$5.00</span>
+                            </div>
+                            <div class="receipt-total-row final">
+                                <span class="label">Total</span>
+                                <span class="value">$42.73</span>
+                            </div>
+                        </div>
+                        
+                        <div class="receipt-meta">
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Agent</span>
+                                <span class="receipt-meta-value">Google Shopping Agent</span>
+                            </div>
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Payment Method</span>
+                                <div class="receipt-card-info">
+                                    <div class="receipt-card-logo">VISA</div>
+                                    <span class="receipt-meta-value">BofA Cash Rewards ••6411</span>
+                                </div>
+                            </div>
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Rewards Earned</span>
+                                <span class="receipt-meta-value" style="color: #e31837;">+128 pts (3%)</span>
+                            </div>
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Authorization</span>
+                                <span class="receipt-meta-value">Auto-approved</span>
+                            </div>
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Transaction ID</span>
+                                <span class="receipt-meta-value">TXN-2026-0206-4273</span>
+                            </div>
+                            <div class="receipt-meta-row">
+                                <span class="receipt-meta-label">Delivery Address</span>
+                                <span class="receipt-meta-value">123 Main St, Apt 4B</span>
+                            </div>
+                        </div>
+                        
+                        <button class="button button-secondary">Report an issue</button>
+                        <button class="button button-secondary">Download receipt</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Setup Screen -->
+            <div class="phone-frame" id="screen-setup" style="display: none;">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="header">
+                        <div class="bofa-logo">
+                            <div class="bofa-flag"></div>
+                            <div class="bofa-name">Bank of America</div>
+                        </div>
+                        <div class="header-top">
+                            <div class="back-btn">←</div>
+                            <div class="header-title">Set limits</div>
+                            <div class="header-action"></div>
+                        </div>
+                        <div class="header-subtitle">Step 3 of 4</div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="card" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: none;">
+                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                                <div style="width: 56px; height: 56px; background: rgba(255,255,255,0.5); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🛒</div>
+                                <div>
+                                    <div style="font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px;">Google Shopping</div>
+                                    <div style="font-size: 13px; color: #666;">AI shopping assistant</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Categories</div>
+                        
+                        <div class="tag-group">
+                            <span class="tag active">🥗 Groceries</span>
+                            <span class="tag active">🧴 Household</span>
+                            <span class="tag">👕 Clothing</span>
+                            <span class="tag">📱 Electronics</span>
+                        </div>
+                        
+                        <div class="section-title">Spending Limits</div>
+                        
+                        <div class="card">
+                            <div class="slider-container">
+                                <div class="slider-value">
+                                    <span class="slider-label">Weekly budget</span>
+                                    <span class="slider-amount">$100</span>
+                                </div>
+                                <input type="range" class="slider" min="0" max="500" value="100">
+                                <div class="slider-range">
+                                    <span>$0</span>
+                                    <span>$500</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="slider-container">
+                                <div class="slider-value">
+                                    <span class="slider-label">Per transaction</span>
+                                    <span class="slider-amount">$50</span>
+                                </div>
+                                <input type="range" class="slider" min="0" max="200" value="50">
+                                <div class="slider-range">
+                                    <span>$0</span>
+                                    <span>$200</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Allowed Merchants</div>
+                        
+                        <div class="merchant-list">
+                            <div class="merchant-item">
+                                <div class="checkbox checked">✓</div>
+                                <div class="merchant-name">Whole Foods</div>
+                            </div>
+                            <div class="merchant-item">
+                                <div class="checkbox checked">✓</div>
+                                <div class="merchant-name">Target</div>
+                            </div>
+                            <div class="merchant-item">
+                                <div class="checkbox checked">✓</div>
+                                <div class="merchant-name">Trader Joe's</div>
+                            </div>
+                        </div>
+                        
+                        <button class="button button-primary">Next</button>
+                        <button class="button button-secondary">Back</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Approval Screen -->
+            <div class="phone-frame" id="screen-approval" style="display: none;">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span class="time">9:41</span>
+                        <div class="icons">📶 📡 🔋</div>
+                    </div>
+                    
+                    <div class="approval-header">
+                        <div class="approval-icon">⚠️</div>
+                        <div class="approval-title">Approval needed</div>
+                        <div class="approval-subtitle">Travel Assistant wants to make a purchase</div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="card alert-card">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                                <div class="agent-icon" style="background: #f3e5f5; width: 56px; height: 56px; font-size: 28px;">✈️</div>
+                                <div>
+                                    <div style="font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px;">United Airlines</div>
+                                    <div style="font-size: 14px; color: #666;">Flight SFO → NYC</div>
+                                </div>
+                            </div>
+                            
+                            <div class="transaction-detail">
+                                <div class="detail-row">
+                                    <span class="detail-label">Amount</span>
+                                    <span class="detail-value amount">$385.00</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Date</span>
+                                    <span class="detail-value">Feb 15, 2026</span>
+                                </div>
+                                <div class="detail-row" style="border-bottom: none;">
+                                    <span class="detail-label">Reason</span>
+                                    <span class="detail-value" style="color: #ff9500;">Above limit</span>
+                                </div>
+                            </div>
+                            
+                            <div class="reason-box">
+                                <div class="reason-title">Why approval needed:</div>
+                                <ul class="reason-list">
+                                    <li>Exceeds $200 transaction limit</li>
+                                    <li>High-value travel booking</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">Best Card for This</div>
+                        
+                        <div class="payment-card selected">
+                            <div class="card-logo">VISA</div>
+                            <div class="card-info">
+                                <div class="card-name">BofA Travel Rewards</div>
+                                <div class="card-benefit">+1,155 pts (3x on travel)</div>
+                            </div>
+                            <div class="card-badge">Best</div>
+                        </div>
+                        
+                        <div class="payment-card">
+                            <div class="card-logo" style="background: linear-gradient(135deg, #FF6B00 0%, #FFA500 100%);">AMEX</div>
+                            <div class="card-info">
+                                <div class="card-name">BofA Cash Rewards</div>
+                                <div class="card-benefit" style="color: #999;">385 pts • No travel benefits</div>
+                            </div>
+                        </div>
+                        
+                        <button class="button button-primary">Approve with Travel Rewards</button>
+                        <button class="button button-secondary">Choose different card</button>
+                        <button class="button button-danger">Decline</button>
+                        
+                        <div class="security-footer">
+                            <span>🔒</span>
+                            <span>Secured with Face ID</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showScreen(screenName) {
+            document.querySelectorAll('.phone-frame').forEach(screen => {
+                screen.style.display = 'none';
+            });
+            
+            document.getElementById('screen-' + screenName).style.display = 'block';
+            
+            document.querySelectorAll('.screen-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the correct button
+            const buttons = document.querySelectorAll('.screen-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(screenName.split('-')[0])) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# MCP configuration
+.mcp.json
+
+# Documentation
+docs/
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
