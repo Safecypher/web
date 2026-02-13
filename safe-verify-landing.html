@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Verify — SafeCypher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0066FF;
+            --brand-dark: #050505;
+            --brand-light: #F3F4F6;
+            --white-10: rgba(255,255,255,0.1);
+            --white-05: rgba(255,255,255,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--brand-dark);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--brand-blue); color: #fff; }
+
+        /* ───── NAV ───── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(5,5,5,0.88); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--white-10);
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            padding: 0 2rem; height: 80px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: #fff; letter-spacing: -0.02em; }
+        .logo span { color: var(--brand-blue); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.875rem; font-weight: 500; color: #aaa; text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            padding: 0.625rem 1.5rem; background: var(--brand-blue); color: #fff !important;
+            border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: #0055dd; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+        /* ───── HERO ───── */
+        .hero {
+            position: relative; padding: 10rem 2rem 6rem; overflow: hidden;
+            min-height: 100vh; display: flex; align-items: center;
+        }
+        .hero-glow {
+            position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px; background: radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1280px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            position: relative; z-index: 2;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 700;
+            line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.5rem;
+        }
+        .hero-text h1 .serif {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+        }
+        .hero-accent {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+        }
+        .hero-accent .line { width: 48px; height: 1px; background: var(--brand-blue); }
+        .hero-accent p {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--brand-blue);
+        }
+        .hero-desc {
+            font-size: 1.125rem; color: #888; line-height: 1.7; max-width: 520px; margin-bottom: 2.5rem;
+        }
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: var(--brand-blue); color: #fff;
+            border-radius: 4px; font-weight: 700; font-size: 0.875rem;
+            text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;
+            transition: all 0.25s; border: none; cursor: pointer;
+        }
+        .btn-primary:hover { background: #0055dd; box-shadow: 0 8px 32px rgba(0,102,255,0.25); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; background: transparent; color: #ccc;
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+            font-weight: 600; font-size: 0.875rem; text-decoration: none;
+            transition: all 0.25s; cursor: pointer;
+        }
+        .btn-secondary:hover { border-color: var(--brand-blue); color: #fff; }
+
+        /* ───── PHONE MOCKUP ───── */
+        .hero-visual { display: flex; justify-content: center; position: relative; }
+        .phone-mockup {
+            width: 300px; background: #111; border-radius: 36px; padding: 8px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .phone-screen {
+            background: #0a0a0a; border-radius: 28px; overflow: hidden; position: relative;
+        }
+        .phone-status {
+            padding: 14px 24px 8px; display: flex; justify-content: space-between;
+            font-size: 13px; font-weight: 600; color: #fff;
+        }
+        .phone-notch {
+            width: 120px; height: 28px; background: #111; border-radius: 0 0 16px 16px;
+            margin: 0 auto; position: relative; top: -8px;
+        }
+        .notification-card {
+            margin: 12px 16px; padding: 16px; background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(0,102,255,0.3); border-radius: 16px;
+            animation: slideIn 0.8s ease-out 0.5s both;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .notif-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+        }
+        .notif-icon {
+            width: 40px; height: 40px; background: var(--brand-blue); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 18px;
+            flex-shrink: 0;
+        }
+        .notif-title { font-size: 14px; font-weight: 600; color: #fff; }
+        .notif-sub { font-size: 12px; color: #888; margin-top: 2px; }
+        .verify-box {
+            background: rgba(0,102,255,0.1); border-radius: 12px; padding: 20px;
+            text-align: center; margin-top: 12px;
+        }
+        .verify-shield { font-size: 48px; margin-bottom: 8px; display: block; }
+        .verify-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .verify-role { font-size: 13px; color: #888; margin-bottom: 16px; }
+        .verify-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0,200,100,0.15); color: #00c864; padding: 6px 14px;
+            border-radius: 100px; font-size: 12px; font-weight: 600;
+        }
+        .verify-badge i { font-size: 0.875em; }
+        .phone-action {
+            margin: 16px; padding: 14px; background: var(--brand-blue); border-radius: 14px;
+            text-align: center; font-weight: 600; font-size: 15px; color: #fff;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .phone-faceid {
+            text-align: center; padding: 12px; font-size: 12px; color: #666;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+
+        /* ───── STATS ───── */
+        .stats {
+            padding: 6rem 2rem; background: var(--brand-light); color: var(--brand-dark);
+            text-align: center;
+        }
+        .stats-inner { max-width: 1280px; margin: 0 auto; }
+        .stats-headline {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: clamp(3rem, 6vw, 5rem); color: var(--brand-blue); margin-bottom: 1rem;
+        }
+        .stats-sub {
+            font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+        }
+        .stats-detail {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em;
+            font-weight: 600; color: #888; margin-bottom: 0.5rem;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            margin-top: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;
+        }
+        .stat-item {}
+        .stat-number {
+            font-size: 3rem; font-weight: 800; color: var(--brand-dark);
+            letter-spacing: -0.03em; line-height: 1;
+        }
+        .stat-unit { font-size: 1.5rem; color: var(--brand-blue); }
+        .stat-desc { font-size: 0.875rem; color: #666; margin-top: 0.5rem; }
+
+        /* ───── HOW IT WORKS ───── */
+        .how-it-works {
+            padding: 8rem 2rem; background: var(--brand-dark); position: relative; overflow: hidden;
+        }
+        .how-bg-letter {
+            position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+            font-size: 40rem; font-weight: 800; color: rgba(255,255,255,0.015);
+            pointer-events: none; font-family: 'Playfair Display', serif; line-height: 1;
+        }
+        .how-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+        .section-label {
+            font-size: 0.75rem; font-family: monospace; color: var(--brand-blue);
+            text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem;
+        }
+        .section-heading {
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 0.5rem;
+        }
+        .section-heading .serif {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+        }
+        .section-divider { width: 64px; height: 3px; background: rgba(255,255,255,0.15); margin: 1.5rem 0 4rem; }
+
+        .flow-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .flow-card {
+            padding: 2.5rem 2rem; background: var(--white-05);
+            border: 1px solid var(--white-10); border-radius: 20px;
+            transition: all 0.35s; position: relative;
+        }
+        .flow-card:hover { border-color: rgba(0,102,255,0.4); transform: translateY(-4px); }
+        .flow-step {
+            font-family: monospace; font-size: 0.75rem; color: var(--brand-blue);
+            margin-bottom: 1.25rem; letter-spacing: 0.05em;
+        }
+        .flow-icon {
+            width: 56px; height: 56px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin-bottom: 1.25rem;
+        }
+        .flow-title {
+            font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.3;
+        }
+        .flow-desc { font-size: 0.9rem; color: #888; line-height: 1.65; }
+        .flow-connector {
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.15); font-size: 1.5rem; padding: 0 0.5rem;
+        }
+
+        /* ───── KEY EXCHANGES ───── */
+        .exchanges {
+            padding: 8rem 2rem; background: #080810; position: relative;
+        }
+        .exchanges-inner { max-width: 1280px; margin: 0 auto; }
+        .exchange-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        .exchange-card {
+            padding: 2.5rem; background: linear-gradient(135deg, rgba(0,102,255,0.06) 0%, transparent 60%);
+            border: 1px solid rgba(0,102,255,0.15); border-radius: 20px;
+            transition: all 0.35s;
+        }
+        .exchange-card:hover { border-color: rgba(0,102,255,0.4); }
+        .exchange-num {
+            font-size: 4rem; font-weight: 800; color: rgba(0,102,255,0.15);
+            line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.05em;
+        }
+        .exchange-title {
+            font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem;
+        }
+        .exchange-title .serif {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+        }
+        .exchange-desc { font-size: 0.9rem; color: #888; line-height: 1.65; }
+        .exchange-layers {
+            margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .layer-item {
+            display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: #aaa;
+        }
+        .layer-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--brand-blue); flex-shrink: 0;
+        }
+
+        /* ───── BENEFITS ───── */
+        .benefits {
+            padding: 8rem 2rem; background: var(--brand-dark);
+        }
+        .benefits-inner { max-width: 1280px; margin: 0 auto; }
+        .benefits-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            margin-top: 4rem;
+        }
+        .benefit-list { display: flex; flex-direction: column; gap: 2rem; }
+        .benefit-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+        .benefit-icon-wrap {
+            width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+            background: rgba(0,102,255,0.1); border: 1px solid rgba(0,102,255,0.2);
+            display: flex; align-items: center; justify-content: center; font-size: 22px;
+        }
+        .benefit-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.35rem; }
+        .benefit-desc { font-size: 0.9rem; color: #888; line-height: 1.6; }
+        .benefits-visual {
+            background: var(--white-05); border: 1px solid var(--white-10);
+            border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;
+        }
+        .benefits-visual-glow {
+            position: absolute; top: -30%; right: -30%; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,102,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .metric-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 0; border-bottom: 1px solid var(--white-10);
+            position: relative; z-index: 2;
+        }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-label { font-size: 0.95rem; color: #888; }
+        .metric-value { font-size: 1.5rem; font-weight: 700; }
+        .metric-value.highlight { color: var(--brand-blue); }
+        .metric-value.green { color: #00c864; }
+        .metric-value.orange { color: #ff9500; }
+
+        /* ───── INTEGRATION ───── */
+        .integration {
+            padding: 6rem 2rem; background: var(--brand-light); color: var(--brand-dark);
+        }
+        .integration-inner {
+            max-width: 900px; margin: 0 auto; text-align: center;
+        }
+        .integration-heading {
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+        }
+        .integration-heading .serif {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-weight: 400; color: var(--brand-blue);
+        }
+        .integration-desc {
+            font-size: 1.1rem; color: #666; line-height: 1.7; max-width: 640px;
+            margin: 0 auto 3rem;
+        }
+        .integration-tags {
+            display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+        }
+        .integration-tag {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.5rem; background: #fff; border-radius: 100px;
+            font-size: 0.875rem; font-weight: 600; color: var(--brand-dark);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #e5e7eb;
+        }
+
+        /* ───── CTA ───── */
+        .cta {
+            padding: 8rem 2rem; background: var(--brand-dark); text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .cta-glow {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(0,102,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.3;
+            margin-bottom: 2.5rem;
+        }
+        .cta h2 .serif {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-weight: 700; color: var(--brand-blue);
+        }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ───── FOOTER ───── */
+        footer {
+            background: #000; color: #666; padding: 3rem 2rem;
+            border-top: 1px solid var(--white-10);
+        }
+        .footer-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-inner a {
+            color: #666; text-decoration: none; font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        .footer-inner a:hover { color: #fff; }
+        .footer-links { display: flex; gap: 1.5rem; align-items: center; }
+
+        /* ───── RESPONSIVE ───── */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-accent { justify-content: center; }
+            .hero-ctas { justify-content: center; }
+            .hero-visual { margin-top: 3rem; }
+            .flow-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .flow-connector { display: none; }
+            .exchange-grid { grid-template-columns: 1fr; max-width: 520px; margin: 4rem auto 0; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .benefits-visual { margin-top: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding-top: 7rem; }
+            .phone-mockup { width: 260px; }
+        }
+
+        /* ───── ANIMATIONS ───── */
+        .fade-up {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="logo">Safe<span>Cypher</span></a>
+        <div class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#integration">Integration</a>
+            <a href="#contact" class="nav-cta">Book a Demo</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="this.nextElementSibling?.classList.toggle('open')" aria-label="Menu"><i class="bi bi-list"></i></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>
+                Vishing calls erode <span class="serif">customer trust.</span>
+            </h1>
+            <div class="hero-accent">
+                <div class="line"></div>
+                <p>Restore it instantly.</p>
+            </div>
+            <p class="hero-desc">
+                Safe Verify transforms your banking app into a secure verification channel. When your bank calls a customer, they know it's really you — confirmed in-app with biometric authentication. No more security questions. No more doubt.
+            </p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Book a Demo →</a>
+                <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="phone-status">
+                        <span>9:41</span>
+                        <span><i class="bi bi-lightning-charge-fill"></i> 5G</span>
+                    </div>
+                    <div class="phone-notch"></div>
+
+                    <div class="notification-card">
+                        <div class="notif-header">
+                            <div class="notif-icon"><i class="bi bi-bank2"></i></div>
+                            <div>
+                                <div class="notif-title">Safe Bank is calling</div>
+                                <div class="notif-sub">Verify this call in your app</div>
+                            </div>
+                        </div>
+
+                        <div class="verify-box">
+                            <span class="verify-shield"><i class="bi bi-shield-check"></i></span>
+                            <div class="verify-name">Ben Jordan</div>
+                            <div class="verify-role">Safe Bank · Account Services</div>
+                            <div class="verify-badge">
+                                <span><i class="bi bi-check-circle-fill"></i></span> Verified Caller
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phone-action">
+                        <span><i class="bi bi-lock-fill"></i></span> Confirm with Face ID
+                    </div>
+                    <div class="phone-faceid">
+                        <i class="bi bi-shield-lock-fill"></i> Secured by SafeCypher
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stats-headline">Bidirectional trust.</div>
+        <div class="stats-sub">Inbound & outbound. Verified both ways.</div>
+        <div class="stats-detail">Eliminating vishing fraud at the source</div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">3–5<span class="stat-unit"> min</span></div>
+                <div class="stat-desc">Saved per call by eliminating security questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Zero<span class="stat-unit"> data</span></div>
+                <div class="stat-desc">No PII stored. Semi-stateless architecture. GDPR compliant by design.</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3<span class="stat-unit"> layers</span></div>
+                <div class="stat-desc">Of security in a single frictionless interaction</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+    <div class="how-bg-letter">V</div>
+    <div class="how-inner">
+        <div class="section-label">// How It Works</div>
+        <div class="section-heading">
+            Outbound call <span class="serif">verification flow</span>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="flow-grid">
+            <div class="flow-card fade-up">
+                <div class="flow-step">Step 01</div>
+                <div class="flow-icon" style="background: rgba(0,102,255,0.1);"><i class="bi bi-telephone-fill"></i></div>
+                <div class="flow-title">Bank initiates outbound call</div>
+                <div class="flow-desc">
+                    The agent calls the customer. Safe Verify simultaneously sends a push notification / deep link to the customer's banking app.
+                </div>
+            </div>
+
+            <div class="flow-card fade-up" style="transition-delay: 0.1s;">
+                <div class="flow-step">Step 02</div>
+                <div class="flow-icon" style="background: rgba(0,200,100,0.1);"><i class="bi bi-bell-fill"></i></div>
+                <div class="flow-title">Customer opens app & verifies identity</div>
+                <div class="flow-desc">
+                    Customer opens the banking app via the notification and authenticates using three layers: phone unlock, app login, and biometric (Face ID / fingerprint).
+                </div>
+            </div>
+
+            <div class="flow-card fade-up" style="transition-delay: 0.2s;">
+                <div class="flow-step">Step 03</div>
+                <div class="flow-icon" style="background: rgba(255,149,0,0.1);"><i class="bi bi-shield-fill-check"></i></div>
+                <div class="flow-title">Bank agent verified in-app</div>
+                <div class="flow-desc">
+                    The app displays the agent's name and department — a display that can only be triggered by a call originating from the bank. Customer sees proof it's legitimate.
+                </div>
+            </div>
+
+            <div class="flow-card fade-up" style="transition-delay: 0.3s;">
+                <div class="flow-step">Step 04</div>
+                <div class="flow-icon" style="background: rgba(0,102,255,0.1);"><i class="bi bi-question-circle-fill"></i></div>
+                <div class="flow-title">Active question validation</div>
+                <div class="flow-desc">
+                    The agent sends verification questions to the app. The customer selects the correct answer on-screen — cementing bidirectional trust without speaking sensitive details aloud.
+                </div>
+            </div>
+
+            <div class="flow-card fade-up" style="transition-delay: 0.4s;">
+                <div class="flow-step">Step 05</div>
+                <div class="flow-icon" style="background: rgba(0,200,100,0.1);"><i class="bi bi-check-circle-fill"></i></div>
+                <div class="flow-title">Authenticated conversation begins</div>
+                <div class="flow-desc">
+                    Both parties are verified. The agent can serve the customer immediately — no repetitive questions, no wasted time, no opportunity for social engineering.
+                </div>
+            </div>
+
+            <div class="flow-card fade-up" style="transition-delay: 0.5s; border-color: rgba(0,102,255,0.2); background: rgba(0,102,255,0.03);">
+                <div class="flow-step">Fallback</div>
+                <div class="flow-icon" style="background: rgba(255,59,48,0.1);"><i class="bi bi-arrow-repeat"></i></div>
+                <div class="flow-title">Graceful fallback</div>
+                <div class="flow-desc">
+                    If the customer is unavailable or verification fails, a message is left to contact the bank directly. Security is never compromised.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KEY EXCHANGES -->
+<section class="exchanges">
+    <div class="exchanges-inner">
+        <div class="section-label">// The Nuclear Key Approach</div>
+        <div class="section-heading">
+            Three key exchanges. <span class="serif">One seamless moment.</span>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="exchange-grid">
+            <div class="exchange-card fade-up">
+                <div class="exchange-num">01</div>
+                <div class="exchange-title">Customer <span class="serif">identification</span></div>
+                <div class="exchange-desc">Three layers of security achieved in a single, frictionless action through the banking app.</div>
+                <div class="exchange-layers">
+                    <div class="layer-item"><span class="layer-dot"></span> Logs into phone (biometric)</div>
+                    <div class="layer-item"><span class="layer-dot"></span> Logs into banking app</div>
+                    <div class="layer-item"><span class="layer-dot"></span> Opens Safe Verify via deep link</div>
+                </div>
+            </div>
+
+            <div class="exchange-card fade-up" style="transition-delay: 0.1s;">
+                <div class="exchange-num">02</div>
+                <div class="exchange-title">Agent <span class="serif">identification</span></div>
+                <div class="exchange-desc">Transparent to the customer but critical for trust. The in-app display can only be triggered by a legitimate call from the bank — providing protection against spoof calls.</div>
+            </div>
+
+            <div class="exchange-card fade-up" style="transition-delay: 0.2s;">
+                <div class="exchange-num">03</div>
+                <div class="exchange-title">Cementing <span class="serif">the trust</span></div>
+                <div class="exchange-desc">A final visible in-app interaction — the question/answer validation — reinforces to the customer that they are engaging with their bank. Bidirectional trust, confirmed.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+    <div class="benefits-inner">
+        <div class="section-label">// Why Safe Verify</div>
+        <div class="section-heading">
+            Easier for customers. <span class="serif">Impossible for fraudsters.</span>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="benefits-grid">
+            <div class="benefit-list">
+                <div class="benefit-item fade-up">
+                    <div class="benefit-icon-wrap"><i class="bi bi-lightning-charge-fill"></i></div>
+                    <div>
+                        <div class="benefit-title">3–5 minutes saved per call</div>
+                        <div class="benefit-desc">Eliminate repetitive security questions. Agents start serving customers immediately after bidirectional verification.</div>
+                    </div>
+                </div>
+                <div class="benefit-item fade-up">
+                    <div class="benefit-icon-wrap"><i class="bi bi-shield-fill-check"></i></div>
+                    <div>
+                        <div class="benefit-title">Vishing protection built in</div>
+                        <div class="benefit-desc">Customers see verified caller identity in-app. Spoof calls that don't originate from the bank cannot trigger the verification display.</div>
+                    </div>
+                </div>
+                <div class="benefit-item fade-up">
+                    <div class="benefit-icon-wrap"><i class="bi bi-lock-fill"></i></div>
+                    <div>
+                        <div class="benefit-title">Zero data at rest</div>
+                        <div class="benefit-desc">Semi-stateless architecture with on-the-fly calculations. No PII stored. No database to breach. GDPR compliant by design.</div>
+                    </div>
+                </div>
+                <div class="benefit-item fade-up">
+                    <div class="benefit-icon-wrap"><i class="bi bi-arrow-repeat"></i></div>
+                    <div>
+                        <div class="benefit-title">Bidirectional verification</div>
+                        <div class="benefit-desc">Works for both inbound and outbound calls. Customer verifies the bank, bank verifies the customer — simultaneously.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-visual fade-up">
+                <div class="benefits-visual-glow"></div>
+                <div class="metric-row">
+                    <span class="metric-label">Call handling time reduction</span>
+                    <span class="metric-value highlight">3–5 min</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">PII stored</span>
+                    <span class="metric-value green">None</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Security layers</span>
+                    <span class="metric-value">3</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Integration time</span>
+                    <span class="metric-value orange">Weeks</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Traditional IDV integration</span>
+                    <span class="metric-value" style="color:#666; text-decoration: line-through;">6–12 months</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTEGRATION -->
+<section class="integration" id="integration">
+    <div class="integration-inner">
+        <div class="section-label" style="color: var(--brand-blue);">// Integration</div>
+        <div class="integration-heading">
+            Drop-in. <span class="serif">Not rip-and-replace.</span>
+        </div>
+        <p class="integration-desc">
+            Safe Verify integrates with your existing IVR and contact center infrastructure. Compatible with Amazon Connect and major telephony platforms. No full auth stream required.
+        </p>
+        <div class="integration-tags">
+            <span class="integration-tag"><i class="bi bi-phone"></i> White-label SDK</span>
+            <span class="integration-tag"><i class="bi bi-cloud"></i> Amazon Connect</span>
+            <span class="integration-tag"><i class="bi bi-telephone"></i> IVR Drop-in</span>
+            <span class="integration-tag"><i class="bi bi-key"></i> Tokenized Phone</span>
+            <span class="integration-tag"><i class="bi bi-globe2"></i> GDPR by Design</span>
+            <span class="integration-tag"><i class="bi bi-shield-check"></i> CCPA Ready</span>
+            <span class="integration-tag"><i class="bi bi-puzzle"></i> REST API</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+    <div class="cta-glow"></div>
+    <div class="cta-inner">
+        <div class="section-label" style="margin-bottom: 1.5rem;">// Get started</div>
+        <h2>
+            Your customers shouldn't have to guess if a call is <span class="serif">really from you.</span>
+        </h2>
+        <div class="cta-buttons">
+            <a href="mailto:hello@safecypher.com" class="btn-primary">Book a Demo →</a>
+            <a href="#how-it-works" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div style="font-size: 0.875rem;">© 2026 SafeCypher Ltd. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Scroll-triggered fade-in
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
