@@ -12,3 +12,8 @@ docs/
 .vscode/
 *.swp
 *.swo
+
+# Dependencies & build
+node_modules/
+dist/
+.astro/

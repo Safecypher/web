@@ -1,0 +1,176 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+  isCta?: boolean;
+}
+
+interface Props {
+  links?: NavLink[];
+}
+
+const { links = [
+  { href: '#mission', label: 'Mission' },
+  { href: '#beliefs', label: 'Beliefs' },
+  { href: '#contact', label: 'Contact Us', isCta: true },
+] } = Astro.props;
+---
+<nav>
+  <div class="nav-container">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="SafeCypher Home">Safe<span>Cypher</span></a>
+      <div class="nav-links">
+        {links.filter(l => !l.isCta).map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+        {links.filter(l => l.isCta).map((link) => (
+          <a href={link.href} class="nav-cta">{link.label}</a>
+        ))}
+      </div>
+      <button class="mobile-menu-btn" type="button" aria-label="Menu" data-mobile-toggle>
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" data-mobile-menu>
+      {links.map((link) => (
+        <a href={link.href} class:list={[link.isCta && 'mobile-cta']}>{link.label}</a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--white-10);
+  }
+
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  .nav-inner {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .logo span {
+    color: var(--brand-blue);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+
+  .nav-cta {
+    padding: 0.625rem 1.5rem;
+    background: var(--brand-blue);
+    color: #fff !important;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .nav-cta:hover {
+    background: #0055dd;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: var(--brand-dark);
+    border-bottom: 1px solid var(--white-10);
+    padding: 1rem 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .mobile-menu a:hover {
+    color: #fff;
+  }
+
+  .mobile-menu .mobile-cta {
+    color: var(--brand-blue);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-mobile-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const menu = document.querySelector('[data-mobile-menu]');
+        menu?.classList.toggle('open');
+      });
+    });
+    document.querySelectorAll('[data-mobile-menu] a').forEach((link) => {
+      link.addEventListener('click', () => {
+        document.querySelector('[data-mobile-menu]')?.classList.remove('open');
+      });
+    });
+  });
+</script>

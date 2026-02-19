@@ -1,0 +1,84 @@
+---
+import StatItem from './StatItem.astro';
+
+interface Stat {
+  number: string;
+  unit: string;
+  description: string;
+}
+
+interface Props {
+  headline: string;
+  sub?: string;
+  detail?: string;
+  stats: Stat[];
+}
+const { headline, sub, detail, stats } = Astro.props;
+---
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stats-headline">{headline}</div>
+    {sub && <div class="stats-sub">{sub}</div>}
+    {detail && <div class="stats-detail">{detail}</div>}
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <StatItem number={stat.number} unit={stat.unit} description={stat.description} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding: 6rem 2rem;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    text-align: center;
+  }
+
+  .stats-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .stats-headline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--brand-blue);
+    margin-bottom: 1rem;
+  }
+
+  .stats-sub {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .stats-detail {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

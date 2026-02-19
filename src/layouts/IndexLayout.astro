@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+---
+<BaseLayout 
+  title="SafeCypher | It's time for change"
+  description="SafeCypher: Eliminating payment fraud through dynamic credentials and proven identity verification. 700,000+ transactions. Zero fraud."
+  navLinks={[
+    { href: '/safe-verify', label: 'Safe Verify' },
+    { href: '#mission', label: 'Mission' },
+    { href: '#beliefs', label: 'Beliefs' },
+    { href: '#contact', label: 'Book a demo', isCta: true },
+  ]}
+>
+  <Fragment slot="head">
+    <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js" />
+    <noscript>
+      <img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade" />
+    </noscript>
+  </Fragment>
+  <slot />
+</BaseLayout>

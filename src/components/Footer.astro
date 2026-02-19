@@ -1,0 +1,72 @@
+---
+interface FooterLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  copyright?: string;
+  links?: FooterLink[];
+}
+
+const { 
+  copyright = '© 2026 SafeCypher Ltd. All rights reserved.',
+  links = [
+    { href: 'https://www.linkedin.com/company/safecypher', label: 'LinkedIn' },
+    { href: '/#contact', label: 'Contact' },
+    { href: '/privacy', label: 'Privacy Policy' },
+  ]
+} = Astro.props;
+---
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copyright">{copyright}</div>
+    <div class="footer-links">
+      {links.map((link) => (
+        <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #000;
+    color: #666;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--white-10);
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .footer-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+  }
+</style>

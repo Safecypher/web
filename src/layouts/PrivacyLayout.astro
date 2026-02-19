@@ -1,0 +1,70 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { title, description } = Astro.props;
+
+// Nav links point to homepage sections since privacy page has no Mission/Beliefs/Contact
+const navLinks = [
+  { href: '/#mission', label: 'Mission' },
+  { href: '/#beliefs', label: 'Beliefs' },
+  { href: '/#contact', label: 'Contact Us', isCta: true },
+];
+---
+<BaseLayout title={title} description={description} navLinks={navLinks}>
+  <div class="privacy-policy">
+    <div class="privacy-inner">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .privacy-policy {
+    padding: 8rem 2rem 6rem;
+    min-height: 60vh;
+  }
+
+  .privacy-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .privacy-inner :global(h1) {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .privacy-inner :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .privacy-inner :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: #aaa;
+  }
+
+  .privacy-inner :global(ul) {
+    margin: 0.5rem 0 1.5rem 1.5rem;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
+  .privacy-inner :global(a) {
+    color: var(--brand-blue);
+    text-decoration: none;
+  }
+
+  .privacy-inner :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .privacy-inner :global(.privacy-updated) {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 2.5rem;
+  }
+</style>

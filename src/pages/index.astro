@@ -1,0 +1,561 @@
+---
+import IndexLayout from '../layouts/IndexLayout.astro';
+import Hero from '../components/Hero.astro';
+import CreditCard from '../components/CreditCard.astro';
+import Footer from '../components/Footer.astro';
+---
+<IndexLayout>
+  <Hero
+    title='Static credentials = <span class="serif">Predictable fraud.</span>'
+    accent="It's time for change."
+    description="Traditional security relies on static data that can be stolen. We're building a future where authentication is dynamic, invisible, and impossible to compromise."
+  >
+    <div slot="visual" class="hero-visual">
+      <CreditCard />
+    </div>
+  </Hero>
+
+  <section class="index-stats" id="mission">
+    <div class="stats-container">
+      <h2 class="stats-hero">Zero fraud.</h2>
+      <p class="stats-number"><span id="transactionCount">0</span>+ transactions</p>
+      <div class="stats-detail">
+        <p class="stats-label">Not reduced. Eliminated.</p>
+        <p class="stats-award">Winner, Best Financial Crime Prevention Initiative - Irish Fintech Awards 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beliefs" id="beliefs">
+    <div class="beliefs-watermark">S</div>
+    <div class="beliefs-container">
+      <div class="beliefs-header">
+        <h2 class="beliefs-title">What we believe</h2>
+        <div class="beliefs-line"></div>
+      </div>
+      <div class="beliefs-grid">
+        <div class="belief-card">
+          <span class="belief-number">01</span>
+          <h3 class="belief-text">Don't reduce. <span class="serif-accent">Eliminate.</span></h3>
+          <div class="belief-visual">
+            <span class="belief-counter" id="counter1">1</span>
+          </div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-number">02</span>
+          <h3 class="belief-text">Dynamic data. <span class="serif-accent">Applied intelligence.</span></h3>
+          <div class="belief-visual">
+            <div class="belief-dots">
+              <div class="belief-dot"></div>
+              <div class="belief-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-number">03</span>
+          <h3 class="belief-text">Nothing there. <span class="serif-accent">Nothing to steal.</span></h3>
+          <div class="belief-visual">
+            <div class="belief-square"></div>
+          </div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-number">04</span>
+          <h3 class="belief-text">Not probability, but <span class="serif-accent">certainty.</span></h3>
+          <div class="belief-visual">
+            <div class="belief-blur"></div>
+          </div>
+        </div>
+        <div class="belief-card wide">
+          <span class="belief-number">05</span>
+          <h3 class="belief-text">Easier for users. <span class="serif-accent">Impossible for fraudsters.</span></h3>
+          <div class="belief-visual">
+            <div class="belief-wall">
+              <div class="belief-wall-dot"></div>
+              <div class="belief-wall-line-v"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <h2>The only acceptable number in fraud is <span class="serif-accent">zero.</span> If you believe that too, then we can help.</h2>
+          <div class="contact-logo">
+            <img src="/assets/imgs/safecypher-shield.png" alt="SafeCypher" width="300" height="300" />
+          </div>
+        </div>
+        <div class="contact-form-card">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" required />
+              </div>
+              <div class="form-group full-width">
+                <label for="company">Company Name</label>
+                <input type="text" id="institution" name="institution" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone <span class="optional">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group full-width">
+                <label for="message">What's your biggest fraud challenge right now? <span class="optional">(optional)</span></label>
+                <textarea id="message" name="message" rows="4"></textarea>
+              </div>
+              <div class="form-submit full-width">
+                <button type="submit" class="submit-btn">Let's Talk</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/fade-up';
+  </script>
+  <script>
+    const counter = document.getElementById('counter1');
+    if (counter) {
+      const counts = [1, 2, 3, 2, 1, 0];
+      let idx = 0;
+      setInterval(() => {
+        idx = (idx + 1) % counts.length;
+        counter.textContent = String(counts[idx]);
+      }, 800);
+    }
+  </script>
+  <script>
+    const transactionEl = document.getElementById('transactionCount');
+    const statsSection = document.querySelector('.index-stats');
+    if (transactionEl && statsSection) {
+      const target = 700000;
+      let hasAnimated = false;
+      function animateCount(el, targetNum, duration) {
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(easeOut * targetNum).toLocaleString();
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = targetNum.toLocaleString();
+        }
+        requestAnimationFrame(step);
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            setTimeout(() => animateCount(transactionEl, target, 2000), 300);
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(statsSection);
+    }
+  </script>
+</IndexLayout>
+
+<style>
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-visual {
+      justify-content: flex-end;
+    }
+  }
+
+  .index-stats {
+    padding: 6rem 0;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    text-align: center;
+  }
+
+  .stats-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .stats-hero {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--brand-blue);
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-number {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+  }
+
+  .stats-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--gray-600);
+  }
+
+  .stats-award {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+  }
+
+  .beliefs {
+    padding: 6rem 0;
+    background: var(--brand-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .beliefs-watermark {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.02);
+    pointer-events: none;
+    font-family: var(--font-serif);
+  }
+
+  .beliefs-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .beliefs-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--brand-blue);
+    margin-bottom: 1rem;
+  }
+
+  .beliefs-line {
+    height: 0.25rem;
+    width: 6rem;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .beliefs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .belief-card {
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+  }
+
+  .belief-card:hover {
+    border-color: rgba(0, 102, 255, 0.5);
+    transform: translateY(-4px);
+  }
+
+  .belief-number {
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--brand-blue);
+    margin-bottom: 1rem;
+  }
+
+  .belief-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .belief-text .serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .belief-visual {
+    margin-top: 2rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .belief-counter {
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.3s;
+  }
+
+  .belief-card:hover .belief-counter {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .belief-dots {
+    display: flex;
+    gap: 0;
+  }
+
+  .belief-dot {
+    width: 1rem;
+    height: 1rem;
+    background: var(--white);
+    border-radius: 50%;
+  }
+
+  .belief-dot:last-child {
+    animation: splitRight 3s ease-in-out infinite;
+  }
+
+  @keyframes splitRight {
+    0%, 20%, 100% { transform: translateX(0); }
+    50%, 70% { transform: translateX(1.75rem); }
+  }
+
+  .belief-square {
+    width: 2rem;
+    height: 2rem;
+    background: var(--white);
+    border-radius: 0.375rem;
+    animation: dissolve 4s ease-in-out infinite;
+  }
+
+  @keyframes dissolve {
+    0%, 25% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0; transform: scale(0.3); }
+    75%, 100% { opacity: 1; transform: scale(1); }
+  }
+
+  .belief-blur {
+    width: 2rem;
+    height: 2rem;
+    background: var(--white);
+    border-radius: 50%;
+    animation: sharpen 4s ease-in-out infinite;
+  }
+
+  @keyframes sharpen {
+    0%, 25% { filter: blur(12px); opacity: 0.3; }
+    50%, 75% { filter: blur(0); opacity: 1; }
+    100% { filter: blur(12px); opacity: 0.3; }
+  }
+
+  .belief-wall {
+    position: relative;
+    width: 5.5rem;
+    height: 2.75rem;
+  }
+
+  .belief-wall-dot {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.875rem;
+    height: 0.875rem;
+    background: var(--white);
+    border-radius: 50%;
+    animation: toWall 3s ease-in-out infinite;
+  }
+
+  @keyframes toWall {
+    0%, 10% { left: 0; }
+    40%, 100% { left: 3.875rem; }
+  }
+
+  .belief-wall-line-v {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.25rem;
+    height: 2.5rem;
+    background: var(--white);
+    border-radius: 0.125rem;
+  }
+
+  @media (min-width: 768px) {
+    .beliefs-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .belief-card.wide {
+      grid-column: span 2;
+    }
+  }
+
+  .contact {
+    padding: 6rem 0;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+  }
+
+  .contact-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .contact-intro h2 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .contact-intro h2 .serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--brand-blue);
+  }
+
+  .contact-logo {
+    display: none;
+    margin-top: 5rem;
+  }
+
+  .contact-logo img {
+    width: 300px;
+    opacity: 0.15;
+  }
+
+  .contact-form-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+  }
+
+  .form-group label .optional {
+    font-weight: 400;
+    text-transform: none;
+    color: var(--gray-400);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    background: rgba(0, 0, 0, 0.02);
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    color: var(--brand-dark);
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-bottom-color: var(--brand-blue);
+  }
+
+  .form-group textarea {
+    resize: none;
+    min-height: 6rem;
+  }
+
+  .submit-btn {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--brand-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .submit-btn:hover {
+    background: #0055dd;
+  }
+
+  @media (min-width: 640px) {
+    .form-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .submit-btn {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-logo {
+      display: block;
+    }
+  }
+</style>

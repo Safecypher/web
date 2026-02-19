@@ -1,0 +1,40 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface NavLink {
+  href: string;
+  label: string;
+  isCta?: boolean;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  navLinks?: NavLink[];
+}
+
+const { title, description, navLinks } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description ?? 'SafeCypher: Eliminating payment fraud through dynamic credentials and proven identity verification.'} />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/assets/imgs/safecypher-shield.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <slot name="head" />
+  </head>
+  <body>
+    <Nav links={navLinks} />
+    <slot />
+    <Footer />
+    <slot name="scripts" />
+  </body>
+</html>

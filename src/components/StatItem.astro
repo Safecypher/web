@@ -1,0 +1,33 @@
+---
+interface Props {
+  number: string;
+  unit: string;
+  description: string;
+}
+const { number, unit, description } = Astro.props;
+---
+<div class="stat-item">
+  <div class="stat-number">{number}<span class="stat-unit"> {unit}</span></div>
+  <div class="stat-desc">{description}</div>
+</div>
+
+<style>
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--brand-dark);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stat-unit {
+    font-size: 1.5rem;
+    color: var(--brand-blue);
+  }
+
+  .stat-desc {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+</style>
