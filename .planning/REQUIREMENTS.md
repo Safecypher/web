@@ -133,54 +133,54 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 (0a) | Pending |
-| FOUND-02 | Phase 1 (0a) | Pending |
-| FOUND-03 | Phase 1 (0a) | Pending |
-| FOUND-04 | Phase 1 (0a) | Pending |
-| FOUND-05 | Phase 1 (0a) | Pending |
-| HOME-01 | Phase 2 (0b) | Pending |
-| HOME-02 | Phase 2 (0b) | Pending |
-| HOME-03 | Phase 2 (0b) | Pending |
-| HOME-04 | Phase 2 (0b) | Pending |
-| HOME-05 | Phase 2 (0b) | Pending |
-| HOME-06 | Phase 2 (0b) | Pending |
-| HOME-07 | Phase 2 (0b) | Pending |
-| PLAT-01 | Phase 3 (0b) | Pending |
-| PLAT-02 | Phase 3 (0b) | Pending |
-| PLAT-03 | Phase 3 (0b) | Pending |
-| PLAT-04 | Phase 3 (0b) | Pending |
-| PLAT-05 | Phase 3 (0b) | Pending |
-| PLAT-06 | Phase 3 (0b) | Pending |
-| DSC-01 | Phase 4 (0b) | Pending |
-| DSC-02 | Phase 4 (0b) | Pending |
-| DSC-03 | Phase 4 (0b) | Pending |
-| DSC-04 | Phase 4 (0b) | Pending |
-| DSC-05 | Phase 4 (0b) | Pending |
-| DSC-06 | Phase 4 (0b) | Pending |
-| SV-01 | Phase 5 (0b) | Pending |
-| SV-02 | Phase 5 (0b) | Pending |
-| SV-03 | Phase 5 (0b) | Pending |
-| SV-04 | Phase 5 (0b) | Pending |
-| SV-05 | Phase 5 (0b) | Pending |
-| SV-06 | Phase 5 (0b) | Pending |
-| SV-07 | Phase 5 (0b) | Pending |
-| SV-08 | Phase 5 (0b) | Pending |
-| SV-09 | Phase 5 (0b) | Pending |
-| COMP-01 | Phase 6 (0b) | Pending |
-| COMP-02 | Phase 6 (0b) | Pending |
-| COMP-03 | Phase 6 (0b) | Pending |
-| COMP-04 | Phase 6 (0b) | Pending |
-| CONT-01 | Phase 6 (0b) | Pending |
-| CONT-02 | Phase 6 (0b) | Pending |
-| CONT-03 | Phase 6 (0b) | Pending |
-| ANLT-01 | Phase 7 (0c) | Pending |
-| ANLT-02 | Phase 7 (0c) | Pending |
+| FOUND-01 | Phase 1 — Foundation | Pending |
+| FOUND-02 | Phase 1 — Foundation | Pending |
+| FOUND-03 | Phase 1 — Foundation | Pending |
+| FOUND-04 | Phase 1 — Foundation | Pending |
+| FOUND-05 | Phase 1 — Foundation | Pending |
+| HOME-01 | Phase 2 — Homepage | Pending |
+| HOME-02 | Phase 2 — Homepage | Pending |
+| HOME-03 | Phase 2 — Homepage | Pending |
+| HOME-04 | Phase 2 — Homepage | Pending |
+| HOME-05 | Phase 2 — Homepage | Pending |
+| HOME-06 | Phase 2 — Homepage | Pending |
+| HOME-07 | Phase 2 — Homepage | Pending |
+| PLAT-01 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-02 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-03 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-04 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-05 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-06 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-01 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-02 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-03 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-04 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-05 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-06 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| SV-01 | Phase 4 — Safe Verify | Pending |
+| SV-02 | Phase 4 — Safe Verify | Pending |
+| SV-03 | Phase 4 — Safe Verify | Pending |
+| SV-04 | Phase 4 — Safe Verify | Pending |
+| SV-05 | Phase 4 — Safe Verify | Pending |
+| SV-06 | Phase 4 — Safe Verify | Pending |
+| SV-07 | Phase 4 — Safe Verify | Pending |
+| SV-08 | Phase 4 — Safe Verify | Pending |
+| SV-09 | Phase 4 — Safe Verify | Pending |
+| COMP-01 | Phase 5 — Company + Contact | Pending |
+| COMP-02 | Phase 5 — Company + Contact | Pending |
+| COMP-03 | Phase 5 — Company + Contact | Pending |
+| COMP-04 | Phase 5 — Company + Contact | Pending |
+| CONT-01 | Phase 5 — Company + Contact | Pending |
+| CONT-02 | Phase 5 — Company + Contact | Pending |
+| CONT-03 | Phase 5 — Company + Contact | Pending |
+| ANLT-01 | Phase 6 — Analytics + CRM | Pending |
+| ANLT-02 | Phase 6 — Analytics + CRM | Pending |
 
 **Coverage:**
-- v1 requirements: 38 total
-- Mapped to phases: 38
-- Unmapped: 0 ✓
+- v1 requirements: 41 total
+- Mapped to phases: 41
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-19*
-*Last updated: 2026-02-19 after initial definition*
+*Last updated: 2026-02-19 — traceability updated after roadmap creation (phases consolidated: PLAT+DSC into Phase 3, COMP+CONT into Phase 5, ANLT into Phase 6)*
