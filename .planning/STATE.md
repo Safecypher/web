@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 1 of 6 (Foundation)
-Plan: 3 of 4 in current phase
-Status: In progress
-Last activity: 2026-02-19 — Plan 01-03 complete
+Plan: 4 of 4 in current phase
+Status: Complete — Phase 1 done, ready for Phase 2
+Last activity: 2026-02-19 — Plan 01-04 complete
 
-Progress: [███░░░░░░░] 18%
+Progress: [████░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 6 min
-- Total execution time: 17 min
+- Total plans completed: 4
+- Average duration: 15 min
+- Total execution time: 62 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 3/4 | 17 min | 6 min |
+| 01-foundation | 4/4 | 62 min | 15 min |
 
 **Recent Trend:**
-- Last 5 plans: 9 min, 5 min, 3 min
-- Trend: fast (CSS config + typed component wrappers)
+- Last 5 plans: 9 min, 5 min, 3 min, 45 min
+- Trend: checkpoint plan with human verify adds time
 
 *Updated after each plan completion*
 
@@ -54,6 +54,10 @@ Recent decisions affecting current work:
 - [Phase 01-02]: _archive/ and dist/ added to eslint globalIgnores — prevents archived Astro files from failing CI lint gate
 - [Phase 01-03]: Empty interfaces in Card.tsx replaced with type aliases — satisfies @typescript-eslint/no-empty-object-type rule
 - [Phase 01-03]: CSS import order in globals.css: @import tailwindcss → @plugin daisyui → @import theme.css (strict Tailwind v4 order)
+- [Phase 01-04]: Inline SVG for icons — no Bootstrap Icons CDN or npm icon package; zero dependency, SSR-safe
+- [Phase 01-04]: Nav is Client Component ('use client') — mega-menu needs useState; Footer stays Server Component
+- [Phase 01-04]: DaisyUI v5 button tokens: --border: 0 + --depth: 0 (not --border-btn which was v4-only)
+- [Phase 01-04]: Nav font size: text-base font-medium on ghost nav links (not btn-sm which forced 12px)
 
 ### Pending Todos
 
@@ -67,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 01-03-PLAN.md — DaisyUI v5 + Tailwind v4 SafeCypher theme and base UI component library
+Stopped at: Completed 01-04-PLAN.md — Sticky mega-menu Nav + Footer + marketing layout. Phase 1 Foundation complete.
 Resume file: None

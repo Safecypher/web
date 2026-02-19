@@ -13,7 +13,7 @@
 - [x] **FOUND-02**: Netlify deployment configured with @netlify/plugin-nextjs; `main` → production, `develop` → staging — completed 01-01
 - [x] **FOUND-03**: GitHub Actions CI/CD pipeline runs lint, type-check, and build on every PR; failing checks block merge
 - [x] **FOUND-04**: DaisyUI + Tailwind CSS installed with custom SafeCypher brand theme (teal primary, dark background, brand typography)
-- [ ] **FOUND-05**: Core layout components built: sticky persistent nav with mega-menu (Platform dropdown, Proof, Company, Resources, Portal icon, Request Demo CTA), footer with proof stat + award badge
+- [x] **FOUND-05**: Core layout components built: sticky persistent nav with mega-menu (Platform dropdown, Proof, Company, Resources, Portal icon, Request Demo CTA), footer with proof stat + award badge — completed 01-04
 
 ### Marketing — Homepage (Phase 0b)
 
@@ -137,7 +137,7 @@
 | FOUND-02 | Phase 1 — Foundation | Pending |
 | FOUND-03 | Phase 1 — Foundation | Complete |
 | FOUND-04 | Phase 1 — Foundation | Complete |
-| FOUND-05 | Phase 1 — Foundation | Pending |
+| FOUND-05 | Phase 1 — Foundation | Complete |
 | HOME-01 | Phase 2 — Homepage | Pending |
 | HOME-02 | Phase 2 — Homepage | Pending |
 | HOME-03 | Phase 2 — Homepage | Pending |

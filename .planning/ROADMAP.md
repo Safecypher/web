@@ -12,7 +12,7 @@ Migrate three static HTML files to a Next.js 14+ App Router site with a public m
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Next.js 14+ App Router project with CI/CD, design system, and shared layout
+- [x] **Phase 1: Foundation** - Next.js 14+ App Router project with CI/CD, design system, and shared layout
 - [ ] **Phase 2: Homepage** - Primary conversion page with hero, urgency block, proof, and demo CTA
 - [ ] **Phase 3: Platform + Dynamic Security Codes** - Platform Overview and first product page, sharing the one-API-to-seven-products narrative
 - [ ] **Phase 4: Safe Verify** - Full port of existing Safe Verify page into React components
@@ -35,9 +35,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Next.js scaffold, archive existing files, folder structure, TypeScript strict mode, netlify.toml
-- [ ] 01-02-PLAN.md — GitHub Actions CI/CD pipeline (lint, type-check, build on every PR)
-- [ ] 01-03-PLAN.md — DaisyUI v5 + Tailwind v4 CSS-only theme, SafeCypher brand tokens, base UI components
-- [ ] 01-04-PLAN.md — Sticky mega-menu Nav, Footer with proof stat, marketing layout wiring
+- [x] 01-02-PLAN.md — GitHub Actions CI/CD pipeline (lint, type-check, build on every PR)
+- [x] 01-03-PLAN.md — DaisyUI v5 + Tailwind v4 CSS-only theme, SafeCypher brand tokens, base UI components
+- [x] 01-04-PLAN.md — Sticky mega-menu Nav, Footer with proof stat, marketing layout wiring
 
 ### Phase 2: Homepage
 **Goal**: The primary conversion page is live, giving Heads of Fraud and Digital at card issuers a clear argument, social proof, and a way to request a demo or calculate value
@@ -132,7 +132,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/4 | In progress | - |
+| 1. Foundation | 4/4 | Complete | 2026-02-19 |
 | 2. Homepage | 0/4 | Not started | - |
 | 3. Platform + Dynamic Security Codes | 0/4 | Not started | - |
 | 4. Safe Verify | 0/4 | Not started | - |

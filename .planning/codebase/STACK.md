@@ -1,16 +1,13 @@
 # Technology Stack
 
-**Analysis Date:** 2026-02-19
+**Last updated:** 2026-02-19 (Phase 01 Foundation complete)
 
 ## Languages
 
 **Primary:**
-- TypeScript - Used for scripts and components (astro integration)
-- HTML - Page structure and semantic markup
-- CSS - Styling with custom CSS variables and responsive design
-
-**Secondary:**
-- JavaScript - Client-side interactivity and animations
+- TypeScript (strict mode) — all source files
+- TSX — React/Next.js components
+- CSS — Tailwind v4 utility classes + DaisyUI v5 theme tokens
 
 ## Runtime
 
@@ -18,108 +15,97 @@
 - Node.js (npm-based project)
 
 **Package Manager:**
-- npm - Manages dependencies
-- Lockfile: `package-lock.json` present
+- npm — lockfile: `package-lock.json`
 
 ## Frameworks
 
 **Core:**
-- Astro 4.16.0 - Static site generator with component-based architecture
-  - Purpose: Build fast, static website with reusable components and islands architecture
+- Next.js 15+ (App Router) — React framework with SSR, file-based routing, middleware
+- React 19 — UI component model
 
-**Web Standards:**
-- Vanilla JavaScript - No additional JS frameworks
+**Styling:**
+- Tailwind CSS v4 — utility-first CSS (`@import tailwindcss` syntax, no config object needed)
+- DaisyUI v5 — component class library (`@plugin "daisyui"` in CSS, not tailwind.config.ts)
 
 **Fonts & Icons:**
-- Google Fonts - Outfit (sans-serif) and Playfair Display (serif) fonts
-- Bootstrap Icons 1.11.3 - Icon library via CDN
+- Inline SVG — icons (no CDN dependency; Bootstrap Icons from legacy site not used)
+- System fonts / Next.js font optimisation (Google Fonts to be added in later phases as needed)
 
 ## Key Dependencies
 
 **Critical:**
-- astro@^4.16.0 - Main framework for building and serving the site
+- `next` — App Router framework
+- `react` / `react-dom` — UI rendering
+- `tailwindcss` — utility CSS
+- `daisyui` — component classes and theming
+
+**Dev / Tooling:**
+- `typescript` — strict type checking
+- `eslint` + `eslint-config-next` — linting
+- `@types/react` / `@types/node` — type definitions
 
 ## Configuration
 
 **Environment:**
-- No `.env` file detected - Project uses static configuration
-- Deployment platform: Netlify with `netlify.toml` configuration
+- `.env.local` for secrets (Attio API key, etc.) — not committed
+- Deployment platform: Netlify
 - Site URL: https://safecypher.com
 
 **Build:**
-- `astro.config.mjs` - Astro configuration
-- `netlify.toml` - Netlify build and deployment configuration
+- `next.config.ts` — Next.js configuration (turbopack.root set to suppress workspace warning)
+- `tailwind.config.ts` — minimal (content paths only; all design config in CSS)
+- `tsconfig.json` — strict mode TypeScript
 
 **Build Scripts:**
 ```bash
-npm run dev         # Development server with hot reload
-npm run start       # Alias for dev
-npm run build       # Build static site to dist/
-npm run preview     # Preview built site locally
+npm run dev          # Development server (Turbopack)
+npm run build        # Production build
+npm run start        # Serve production build locally
+npm run lint         # ESLint (next recommended)
+npx tsc --noEmit     # Type-check without emitting
 ```
+
+## CI/CD
+
+**GitHub Actions** (`.github/workflows/ci.yml`):
+- Trigger: pull_request to main
+- Steps: lint → type-check → build
+- Uses: `npm run lint` (not `next lint` — not a valid CLI subcommand in Next.js 15+)
+
+**Netlify:**
+- Build command: `npm run build`
+- Publish directory: `.next/`
+- Node version: 20+
 
 ## Platform Requirements
 
 **Development:**
-- Node.js with npm
+- Node.js 20+ with npm
 - Git for version control
-- Astro CLI (installed via npm)
 
 **Production:**
-- Netlify hosting
-- Build command: `npm run build`
-- Publish directory: `dist/`
-- No server-side runtime required (fully static)
-
-## Code Structure
-
-**Astro Project Layout:**
-- `src/pages/` - File-based routing for public pages (index.astro, safe-verify.astro, privacy.md)
-- `src/components/` - Reusable Astro components (Hero.astro, Nav.astro, Footer.astro, CreditCard.astro, etc.)
-- `src/layouts/` - Layout components (BaseLayout.astro, IndexLayout.astro, PrivacyLayout.astro)
-- `src/styles/` - Global CSS with design tokens
-- `src/scripts/` - TypeScript scripts for client-side functionality (fade-up.ts)
-- `public/` - Static assets (images, demos)
-- `.astro/` - Generated Astro types and cache
+- Netlify hosting with Next.js SSR support
 
 ## Asset Management
 
 **Images:**
-- Location: `public/assets/imgs/`
-- Formats: PNG (safecypher-shield.png, safecypher-shield-grey.png)
+- `public/` — static assets served at root URL
+- `public/demos/boa/` — Bank of America agentic demo mockup assets
 
-**Demo Assets:**
-- Location: `public/demos/boa/`
-- Contains Bank of America mockup demo files
+**Archive:**
+- `_archive/` — legacy static HTML/Astro files (excluded from ESLint via `globalIgnores`)
 
-## Stylesheet Approach
+## Third-Party Integrations (Planned)
 
-**Global Styles:**
-- CSS custom properties (variables) for theming
-- Design tokens in `src/styles/global.css`:
-  - Color palette: `--brand-blue`, `--brand-dark`, `--brand-light`
-  - Typography: `--font-sans`, `--font-serif`
-  - Gray scale: `--gray-300` through `--gray-900`
+**Analytics:**
+- Simple Analytics — privacy-first (to be wired in later phase)
 
-**Component Styles:**
-- Component-scoped styles using Astro's `<style>` blocks
-- No CSS-in-JS framework (plain CSS)
-- Media queries for responsive design
+**CRM:**
+- Attio API — lead capture and deal pipeline (API key stubbed in dev, real key in Netlify env)
 
-## Third-Party Integrations (Loaded)
-
-**Fonts:**
-- Google Fonts API - Outfit and Playfair Display families
-
-**Icons:**
-- Bootstrap Icons CDN - Icon library
-
-**Analytics (in script):**
-- Simple Analytics - Privacy-first analytics service (see INTEGRATIONS.md)
-
-**Form Submission:**
-- Netlify Forms - Contact form handling via form submission
+**Forms:**
+- Netlify Forms or Next.js server actions (to be decided in contact/demo phase)
 
 ---
 
-*Stack analysis: 2026-02-19*
+*Stack analysis updated: Phase 01-Foundation complete (2026-02-19)*
