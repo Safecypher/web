@@ -31,13 +31,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The sticky nav with Platform mega-menu dropdown, Portal icon, and "Request Demo" CTA appears and functions on every page
   4. The footer with proof stat and award badge renders on every page
   5. A DaisyUI component (e.g., a button with the brand theme) renders correctly in the browser
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: Next.js project scaffold, folder structure, TypeScript strict mode, Netlify adapter
-- [ ] 01-02: GitHub Actions CI/CD pipeline (lint, type-check, build) + Netlify deploy previews
-- [ ] 01-03: DaisyUI + Tailwind CSS installation and SafeCypher custom brand theme
-- [ ] 01-04: Core layout — sticky nav with mega-menu, footer, shared components
+- [ ] 01-01-PLAN.md — Next.js scaffold, archive existing files, folder structure, TypeScript strict mode, netlify.toml
+- [ ] 01-02-PLAN.md — GitHub Actions CI/CD pipeline (lint, type-check, build on every PR)
+- [ ] 01-03-PLAN.md — DaisyUI v5 + Tailwind v4 CSS-only theme, SafeCypher brand tokens, base UI components
+- [ ] 01-04-PLAN.md — Sticky mega-menu Nav, Footer with proof stat, marketing layout wiring
 
 ### Phase 2: Homepage
 **Goal**: The primary conversion page is live, giving Heads of Fraud and Digital at card issuers a clear argument, social proof, and a way to request a demo or calculate value
