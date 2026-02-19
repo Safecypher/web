@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Next.js scaffold, archive existing files, folder structure, TypeScript strict mode, netlify.toml
+- [x] 01-01-PLAN.md — Next.js scaffold, archive existing files, folder structure, TypeScript strict mode, netlify.toml
 - [ ] 01-02-PLAN.md — GitHub Actions CI/CD pipeline (lint, type-check, build on every PR)
 - [ ] 01-03-PLAN.md — DaisyUI v5 + Tailwind v4 CSS-only theme, SafeCypher brand tokens, base UI components
 - [ ] 01-04-PLAN.md — Sticky mega-menu Nav, Footer with proof stat, marketing layout wiring
@@ -132,7 +132,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/4 | Not started | - |
+| 1. Foundation | 1/4 | In progress | - |
 | 2. Homepage | 0/4 | Not started | - |
 | 3. Platform + Dynamic Security Codes | 0/4 | Not started | - |
 | 4. Safe Verify | 0/4 | Not started | - |

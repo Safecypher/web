@@ -9,8 +9,8 @@
 
 ### Foundation (Phase 0a)
 
-- [ ] **FOUND-01**: Next.js 14+ App Router project initialised with TypeScript strict mode, folder structure matching PRD (`app/`, `components/ui`, `components/marketing`, `components/portal`, `lib/`)
-- [ ] **FOUND-02**: Netlify deployment configured with @netlify/plugin-nextjs; `main` → production, `develop` → staging
+- [x] **FOUND-01**: Next.js 14+ App Router project initialised with TypeScript strict mode, folder structure matching PRD (`app/`, `components/ui`, `components/marketing`, `components/portal`, `lib/`) — completed 01-01
+- [x] **FOUND-02**: Netlify deployment configured with @netlify/plugin-nextjs; `main` → production, `develop` → staging — completed 01-01
 - [ ] **FOUND-03**: GitHub Actions CI/CD pipeline runs lint, type-check, and build on every PR; failing checks block merge
 - [ ] **FOUND-04**: DaisyUI + Tailwind CSS installed with custom SafeCypher brand theme (teal primary, dark background, brand typography)
 - [ ] **FOUND-05**: Core layout components built: sticky persistent nav with mega-menu (Platform dropdown, Proof, Company, Resources, Portal icon, Request Demo CTA), footer with proof stat + award badge
