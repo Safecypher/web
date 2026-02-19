@@ -18,7 +18,7 @@ export function Nav() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-base-content">
+          <span className="text-2xl font-bold text-base-content">
             Safe<span className="text-primary">Cypher</span>
           </span>
         </Link>
@@ -29,7 +29,7 @@ export function Nav() {
           <div className="relative">
             <button
               onClick={() => setPlatformOpen((prev) => !prev)}
-              className="btn btn-ghost btn-sm gap-1"
+              className="btn btn-ghost text-base font-medium gap-1"
               aria-expanded={platformOpen}
               aria-haspopup="true"
             >
@@ -66,9 +66,9 @@ export function Nav() {
             )}
           </div>
 
-          <Link href="/proof" className="btn btn-ghost btn-sm">Proof</Link>
-          <Link href="/company" className="btn btn-ghost btn-sm">Company</Link>
-          <Link href="/resources" className="btn btn-ghost btn-sm">Resources</Link>
+          <Link href="/proof" className="btn btn-ghost text-base font-medium">Proof</Link>
+          <Link href="/company" className="btn btn-ghost text-base font-medium">Company</Link>
+          <Link href="/resources" className="btn btn-ghost text-base font-medium">Resources</Link>
         </div>
 
         {/* Right side: Portal icon + CTA */}
@@ -76,7 +76,7 @@ export function Nav() {
           {/* Portal icon (lock) */}
           <Link
             href="/portal"
-            className="btn btn-ghost btn-sm btn-square"
+            className="btn btn-ghost btn-square"
             aria-label="Customer Portal"
             title="Customer Portal"
           >
@@ -98,7 +98,7 @@ export function Nav() {
 
           {/* Request Demo CTA */}
           <Link href="/contact">
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="md">
               Request Demo
             </Button>
           </Link>
