@@ -1,0 +1,100 @@
+/* =============================================================================
+   SafeCypher Brand Tokens
+   CSS custom properties for the SafeCypher design system.
+   To rebrand: update values here. DaisyUI inherits these variables.
+   Primary colour: #3b82f6 (blue) — canonical token until rebrand.
+============================================================================= */
+
+:root {
+  --brand-blue: #3b82f6;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Dark theme (default) */
+@plugin "daisyui/theme" {
+  name: "safecypher-dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Primary — brand blue #3b82f6 */
+  --color-primary: oklch(62% 0.214 259.815);
+  --color-primary-content: oklch(98% 0.01 260);
+
+  /* Secondary — subtle blue-grey */
+  --color-secondary: oklch(55% 0.15 260);
+  --color-secondary-content: oklch(98% 0.01 260);
+
+  /* Accent — teal for highlights */
+  --color-accent: oklch(70% 0.18 195);
+  --color-accent-content: oklch(10% 0.02 195);
+
+  /* Neutral */
+  --color-neutral: oklch(25% 0.01 260);
+  --color-neutral-content: oklch(90% 0.01 260);
+
+  /* Base — dark backgrounds */
+  --color-base-100: oklch(10% 0.005 260);
+  --color-base-200: oklch(14% 0.005 260);
+  --color-base-300: oklch(18% 0.005 260);
+  --color-base-content: oklch(95% 0.01 260);
+
+  /* Semantic */
+  --color-info: oklch(70% 0.18 230);
+  --color-info-content: oklch(10% 0.02 230);
+  --color-success: oklch(70% 0.18 150);
+  --color-success-content: oklch(10% 0.02 150);
+  --color-warning: oklch(80% 0.2 80);
+  --color-warning-content: oklch(10% 0.02 80);
+  --color-error: oklch(65% 0.22 25);
+  --color-error-content: oklch(98% 0.01 25);
+
+  /* Shape */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
+}
+
+/* Light theme */
+@plugin "daisyui/theme" {
+  name: "safecypher-light";
+  color-scheme: light;
+
+  /* Primary — brand blue #3b82f6 */
+  --color-primary: oklch(62% 0.214 259.815);
+  --color-primary-content: oklch(98% 0.01 260);
+
+  /* Secondary */
+  --color-secondary: oklch(55% 0.15 260);
+  --color-secondary-content: oklch(98% 0.01 260);
+
+  /* Accent — teal */
+  --color-accent: oklch(55% 0.18 195);
+  --color-accent-content: oklch(98% 0.01 195);
+
+  /* Neutral */
+  --color-neutral: oklch(85% 0.01 260);
+  --color-neutral-content: oklch(20% 0.01 260);
+
+  /* Base — light backgrounds */
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(96% 0.005 260);
+  --color-base-300: oklch(92% 0.005 260);
+  --color-base-content: oklch(15% 0.01 260);
+
+  /* Semantic */
+  --color-info: oklch(55% 0.18 230);
+  --color-info-content: oklch(98% 0.01 230);
+  --color-success: oklch(55% 0.18 150);
+  --color-success-content: oklch(98% 0.01 150);
+  --color-warning: oklch(65% 0.2 80);
+  --color-warning-content: oklch(10% 0.02 80);
+  --color-error: oklch(55% 0.22 25);
+  --color-error-content: oklch(98% 0.01 25);
+
+  /* Shape */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
+}
