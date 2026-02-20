@@ -21,8 +21,8 @@
 - [x] **HOME-02**: Urgency block: CNP fraud statistics, agentic commerce as emerging attack surface, core argument (static credentials root cause), CTA to calculator
 - [x] **HOME-03**: Three Audiences strip: Transactions | People | Agents — icon + one-liner + link per audience; mobile vertical stack
 - [x] **HOME-04**: One Integration block: architecture diagram placeholder, "Integrate once. Unlock everything." copy, TSYS note
-- [ ] **HOME-05**: Proof section: 800,000+ transactions / 18 months / zero CNP fraud headline stat, An Post logo, Irish Fintech Award badge, link to `/proof/an-post`
-- [ ] **HOME-06**: Human Cost section: emotionally resonant fraud impact copy, link to Company page
+- [x] **HOME-05**: Proof section: 800,000+ transactions / 18 months / zero CNP fraud headline stat, An Post logo, Irish Fintech Award badge, link to `/proof/an-post`
+- [x] **HOME-06**: Human Cost section: emotionally resonant fraud impact copy, link to Company page
 - [ ] **HOME-07**: CTA block: short demo form (name, email, company, role + optional message) and/or Calendly embed; portfolio size teaser input → redirects to `/portal/calculator` with value pre-populated
 
 ### Marketing — Platform Overview (Phase 0b)
@@ -142,8 +142,8 @@
 | HOME-02 | Phase 2 — Homepage | Complete |
 | HOME-03 | Phase 2 — Homepage | Complete |
 | HOME-04 | Phase 2 — Homepage | Complete |
-| HOME-05 | Phase 2 — Homepage | Pending |
-| HOME-06 | Phase 2 — Homepage | Pending |
+| HOME-05 | Phase 2 — Homepage | Complete |
+| HOME-06 | Phase 2 — Homepage | Complete |
 | HOME-07 | Phase 2 — Homepage | Pending |
 | PLAT-01 | Phase 3 — Platform + Dynamic Security Codes | Pending |
 | PLAT-02 | Phase 3 — Platform + Dynamic Security Codes | Pending |
