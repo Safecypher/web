@@ -85,13 +85,13 @@ Plans:
   3. Tabs for Inbound, Bi-directional, and Branch use cases are functional and display distinct content
   4. Integration details (Amazon Connect, REST API, IVR drop-in) are present and readable
   5. The page links to Dynamic Security Codes to explain shared underlying technology, and ends with calculator and demo CTAs
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 04-01: Problem frame, six-step how-it-works flow (port from existing HTML)
-- [ ] 04-02: Nuclear key concept, use-case tabs (Inbound, Bi-directional, Branch)
-- [ ] 04-03: Integration details, quantified benefits, outbound flow diagram placeholder
-- [ ] 04-04: Cross-link to DSC, CTAs, final review and parity check against source HTML
+- [ ] 04-01-PLAN.md — Page scaffold (page.tsx + seven stubs), globals.css animations (sv-phone-float, sv-notif-slide), SvHeroSection (animated phone mockup + stats strip)
+- [ ] 04-02-PLAN.md — SvUseCaseTabs (4-tab section: Outbound/Inbound/Bi-directional/Branch with flow steps), SvFlowDiagram (CSS call flow placeholder)
+- [ ] 04-03-PLAN.md — SvNuclearKeySection (three key exchange cards), SvBenefitsSection (four benefits + metrics panel with strikethrough row)
+- [ ] 04-04-PLAN.md — SvIntegrationSection (seven feature cards + DSC cross-link), SvCtaSection (PageCtaSection wrapper), parity check against source HTML
 
 ### Phase 5: Company + Contact
 **Goal**: Supporting pages that build trust (Company/About) and capture leads (Contact/Request Demo) are live and accessible from the nav
