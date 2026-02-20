@@ -27,9 +27,9 @@
 
 ### Marketing — Platform Overview (Phase 0b)
 
-- [ ] **PLAT-01**: Problem frame section: fundamental issue with static credentials, single clear argument
-- [ ] **PLAT-02**: SafeCypher approach section: dynamic time-limited credentials through existing banking app
-- [ ] **PLAT-03**: Architecture diagram placeholder: one core API → seven products across three audiences
+- [x] **PLAT-01**: Problem frame section: fundamental issue with static credentials, single clear argument
+- [x] **PLAT-02**: SafeCypher approach section: dynamic time-limited credentials through existing banking app
+- [x] **PLAT-03**: Architecture diagram placeholder: one core API → seven products across three audiences
 - [ ] **PLAT-04**: Integration model section: processor-level, serving all downstream issuers; quantified incremental effort per additional product
 - [ ] **PLAT-05**: Competitive context section (honest, not attack copy): how this differs from tokenisation, 3DS, behavioural analytics
 - [ ] **PLAT-06**: CTAs: "See the value for your portfolio" (→ calculator) and "Request a demo"
@@ -145,9 +145,9 @@
 | HOME-05 | Phase 2 — Homepage | Complete |
 | HOME-06 | Phase 2 — Homepage | Complete |
 | HOME-07 | Phase 2 — Homepage | Complete |
-| PLAT-01 | Phase 3 — Platform + Dynamic Security Codes | Pending |
-| PLAT-02 | Phase 3 — Platform + Dynamic Security Codes | Pending |
-| PLAT-03 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| PLAT-01 | Phase 3 — Platform + Dynamic Security Codes | Complete |
+| PLAT-02 | Phase 3 — Platform + Dynamic Security Codes | Complete |
+| PLAT-03 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | PLAT-04 | Phase 3 — Platform + Dynamic Security Codes | Pending |
 | PLAT-05 | Phase 3 — Platform + Dynamic Security Codes | Pending |
 | PLAT-06 | Phase 3 — Platform + Dynamic Security Codes | Pending |

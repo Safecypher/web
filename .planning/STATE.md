@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every page must convert visitors into demo requests, deepen portal engagement, or give the sales team deal-readiness signal — nothing ships that doesn't serve one of those three outcomes.
-**Current focus:** Phase 2 — Homepage
+**Current focus:** Phase 3 — Platform + Dynamic Security Codes
 
 ## Current Position
 
-Phase: 2 of 6 (Homepage)
-Plan: 4 of 4 in current phase
-Status: Phase Complete — Plan 02-04 complete
-Last activity: 2026-02-20 — Plan 02-04 complete
+Phase: 3 of 6 (Platform + Dynamic Security Codes)
+Plan: 1 of 4 in current phase
+Status: In Progress — Plan 03-01 complete
+Last activity: 2026-02-20 — Plan 03-01 complete
 
-Progress: [████████░░] 47%
+Progress: [█████████░] 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 9 min
-- Total execution time: 72 min
+- Total plans completed: 9
+- Average duration: 8.5 min
+- Total execution time: 76 min
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [████████░░] 47%
 |-------|-------|-------|----------|
 | 01-foundation | 4/4 | 62 min | 15 min |
 | 02-homepage | 4/4 | 10 min | 2.5 min |
+| 03-platform-dynamic-security-codes | 1/4 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 45 min, 4 min, 2 min, 2 min, 2 min
+- Last 5 plans: 4 min, 2 min, 2 min, 2 min, 4 min
 - Trend: pure implementation plans with no checkpoints are fast
 
 *Updated after each plan completion*
@@ -71,6 +72,10 @@ Recent decisions affecting current work:
 - [Phase 02-03]: HumanCostSection uses max-w-4xl container for editorial feel; error colour (not red-*) for pull stat borders
 - [Phase 02-04]: DaisyUI v5 fieldset/fieldset-legend pattern for all form field components — no form-control or label-text (Input.tsx updated, Textarea.tsx created)
 - [Phase 02-04]: Portfolio calculator link placed below form as standalone link outside form element — per locked decision in CONTEXT.md
+- [Phase 03-01]: max-w-5xl for argument sections (PlatformHeroSection, ApproachSection) — narrower editorial width vs 7xl gallery sections
+- [Phase 03-01]: Stub files for all four plan 03-02 sections (ProductPortfolioSection, CompetitiveSection, PlatformProofSection, PlatformCtaSection) created immediately — /platform builds from Task 1
+- [Phase 03-01]: CSS connector lines in ArchitectureDiagram hidden on mobile (hidden sm:block) — diagram degrades to stacked product cards on narrow viewports
+- [Phase 03-01]: DSC and Safe Verify at primary visual weight (border-primary), five additional products at secondary (border-base-300) — matches two-tier CONTEXT.md decision
 
 ### Pending Todos
 
@@ -78,11 +83,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 3]: Architecture diagram (one API → seven products) must be commissioned separately — cannot use stock imagery; placeholder ships in Phase 3, production diagram replaces it later
+- [Phase 3 - RESOLVED]: Architecture diagram (one API → seven products) delivered as CSS two-tier box diagram in Plan 03-01; production SVG can replace it later without page structure change
 - [Phase 4]: Production SVG for Safe Verify outbound flow diagram must replace the PDF in a future update (Phase 1 v2 milestone)
 
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 02-04-PLAN.md — DemoFormSection (Netlify Forms, six fields, inline success/error state, portfolio calculator deep-link), Input.tsx DaisyUI v5 update, new Textarea.tsx. Phase 02 homepage is complete.
+Stopped at: Completed 03-01-PLAN.md — /platform route with PlatformHeroSection (static credentials argument), ApproachSection (three feature cards + /dynamic-security-codes link), ArchitectureDiagram (two-tier CSS, seven products). Four stub components ready for plan 03-02.
 Resume file: None
