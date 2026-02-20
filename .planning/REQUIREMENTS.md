@@ -47,10 +47,10 @@
 
 - [x] **SV-01**: Problem frame: vishing growing, knowledge-based auth broken, OTPs intercepted
 - [x] **SV-02**: Six-step how-it-works flow (ported from existing HTML)
-- [ ] **SV-03**: Nuclear key / three-key exchange concept (ported from existing HTML)
+- [x] **SV-03**: Nuclear key / three-key exchange concept (ported from existing HTML)
 - [x] **SV-04**: Use-case segmentation via tabs: Inbound | Bi-directional | Branch
 - [ ] **SV-05**: Integration details section: Amazon Connect, REST API, IVR drop-in (ported from existing HTML)
-- [ ] **SV-06**: Quantified benefits section (ported from existing HTML)
+- [x] **SV-06**: Quantified benefits section (ported from existing HTML)
 - [ ] **SV-07**: Cross-link to Dynamic Security Codes (shared underlying technology)
 - [x] **SV-08**: Outbound flow diagram (SVG placeholder; production SVG to replace PDF in Phase 1)
 - [ ] **SV-09**: CTAs: calculator link + demo request
@@ -159,10 +159,10 @@
 | DSC-06 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | SV-01 | Phase 4 — Safe Verify | Complete |
 | SV-02 | Phase 4 — Safe Verify | Complete |
-| SV-03 | Phase 4 — Safe Verify | Pending |
+| SV-03 | Phase 4 — Safe Verify | Complete |
 | SV-04 | Phase 4 — Safe Verify | Complete |
 | SV-05 | Phase 4 — Safe Verify | Pending |
-| SV-06 | Phase 4 — Safe Verify | Pending |
+| SV-06 | Phase 4 — Safe Verify | Complete |
 | SV-07 | Phase 4 — Safe Verify | Pending |
 | SV-08 | Phase 4 — Safe Verify | Complete |
 | SV-09 | Phase 4 — Safe Verify | Pending |
