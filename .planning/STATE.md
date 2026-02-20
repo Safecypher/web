@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every page must convert visitors into demo requests, deepen portal engagement, or give the sales team deal-readiness signal — nothing ships that doesn't serve one of those three outcomes.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — Homepage
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation)
-Plan: 4 of 4 in current phase
-Status: Complete — Phase 1 done, ready for Phase 2
-Last activity: 2026-02-19 — Plan 01-04 complete
+Phase: 2 of 6 (Homepage)
+Plan: 1 of 4 in current phase
+Status: In Progress — Plan 02-01 complete
+Last activity: 2026-02-20 — Plan 02-01 complete
 
-Progress: [████░░░░░░] 25%
+Progress: [█████░░░░░] 31%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 15 min
-- Total execution time: 62 min
+- Total plans completed: 5
+- Average duration: 13 min
+- Total execution time: 66 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 4/4 | 62 min | 15 min |
+| 02-homepage | 1/4 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 9 min, 5 min, 3 min, 45 min
-- Trend: checkpoint plan with human verify adds time
+- Last 5 plans: 9 min, 5 min, 3 min, 45 min, 4 min
+- Trend: pure implementation plans with no checkpoints are fast
 
 *Updated after each plan completion*
 
@@ -58,6 +59,10 @@ Recent decisions affecting current work:
 - [Phase 01-04]: Nav is Client Component ('use client') — mega-menu needs useState; Footer stays Server Component
 - [Phase 01-04]: DaisyUI v5 button tokens: --border: 0 + --depth: 0 (not --border-btn which was v4-only)
 - [Phase 01-04]: Nav font size: text-base font-medium on ghost nav links (not btn-sm which forced 12px)
+- [Phase 02-01]: Stub files created for plans 02-02 through 02-04 — page.tsx compiles immediately, parallel plan execution unblocked
+- [Phase 02-01]: useCallback wrapping rotateCvv — stabilises useEffect dependency, prevents interval recreation on each render
+- [Phase 02-01]: Teal glow via sibling div bg-accent blur-xl opacity-40 — no custom CSS keyframe needed
+- [Phase 02-01]: ESLint globalIgnores updated with '**/* 2.*' pattern — excludes accidental duplicate files from CI lint
 
 ### Pending Todos
 
@@ -70,6 +75,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-19
-Stopped at: Completed 01-04-PLAN.md — Sticky mega-menu Nav + Footer + marketing layout. Phase 1 Foundation complete.
+Last session: 2026-02-20
+Stopped at: Completed 02-01-PLAN.md — Homepage compositor, HeroSection with split layout, HeroCvvCard slot-machine animation.
 Resume file: None

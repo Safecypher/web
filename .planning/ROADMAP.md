@@ -52,7 +52,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Homepage compositor (page.tsx), HeroSection split-layout, HeroCvvCard slot-machine animation
+- [x] 02-01-PLAN.md — Homepage compositor (page.tsx), HeroSection split-layout, HeroCvvCard slot-machine animation
 - [ ] 02-02-PLAN.md — UrgencySection (CNP fraud argument + CTAs), AudiencesSection (Transactions/People/Agents), OneIntegrationSection
 - [ ] 02-03-PLAN.md — ProofSection (An Post stats + logo + badge), HumanCostSection (emotional fraud victim copy)
 - [ ] 02-04-PLAN.md — DemoFormSection (Netlify Forms + inline success), Input.tsx DaisyUI v5 fix, Textarea.tsx, public/__forms.html
@@ -133,7 +133,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete | 2026-02-19 |
-| 2. Homepage | 0/4 | Not started | - |
+| 2. Homepage | 1/4 | In Progress | - |
 | 3. Platform + Dynamic Security Codes | 0/4 | Not started | - |
 | 4. Safe Verify | 0/4 | Not started | - |
 | 5. Company + Contact | 0/3 | Not started | - |

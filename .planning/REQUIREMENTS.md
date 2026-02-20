@@ -17,7 +17,7 @@
 
 ### Marketing — Homepage (Phase 0b)
 
-- [ ] **HOME-01**: Hero section with headline "Eliminate card-not-present fraud. Not reduce. Eliminate.", sub-headline, animated CVV card, primary CTA (Request Demo), secondary CTA (See How It Works — smooth scroll)
+- [x] **HOME-01**: Hero section with headline "Eliminate card-not-present fraud. Not reduce. Eliminate.", sub-headline, animated CVV card, primary CTA (Request Demo), secondary CTA (See How It Works — smooth scroll)
 - [ ] **HOME-02**: Urgency block: CNP fraud statistics, agentic commerce as emerging attack surface, core argument (static credentials root cause), CTA to calculator
 - [ ] **HOME-03**: Three Audiences strip: Transactions | People | Agents — icon + one-liner + link per audience; mobile vertical stack
 - [ ] **HOME-04**: One Integration block: architecture diagram placeholder, "Integrate once. Unlock everything." copy, TSYS note
@@ -138,7 +138,7 @@
 | FOUND-03 | Phase 1 — Foundation | Complete |
 | FOUND-04 | Phase 1 — Foundation | Complete |
 | FOUND-05 | Phase 1 — Foundation | Complete |
-| HOME-01 | Phase 2 — Homepage | Pending |
+| HOME-01 | Phase 2 — Homepage | Complete |
 | HOME-02 | Phase 2 — Homepage | Pending |
 | HOME-03 | Phase 2 — Homepage | Pending |
 | HOME-04 | Phase 2 — Homepage | Pending |
