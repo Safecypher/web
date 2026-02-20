@@ -12,7 +12,8 @@ export function HeroSection() {
               Card-Not-Present Fraud Prevention
             </span>
             <h1 className="text-4xl lg:text-6xl font-bold text-base-content leading-tight">
-              Eliminate card-not-present fraud. Not reduce. Eliminate.
+              Eliminate card-not-present fraud.{' '}
+              <span className="font-serif italic">Not reduce. Eliminate.</span>
             </h1>
             <p className="text-lg text-base-content/70 mt-6 max-w-lg">
               SafeCypher replaces static CVV credentials with dynamic security codes

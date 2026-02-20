@@ -35,42 +35,61 @@ export function HeroCvvCard() {
     <div className="relative mx-auto w-80 select-none" aria-hidden="true">
       {/* Teal glow layer */}
       <div className="absolute inset-0 rounded-2xl blur-xl opacity-40 bg-accent" />
-      {/* Card body */}
-      <div className="relative rounded-2xl bg-base-300 p-6 shadow-2xl border border-base-content/10">
-        {/* Chip */}
-        <div className="mb-6 h-8 w-12 rounded bg-warning/80" />
-        {/* Card number */}
-        <p className="mb-4 font-mono text-sm tracking-widest text-base-content/60">
-          4539 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 7821
-        </p>
-        {/* Expiry */}
-        <p className="mb-6 font-mono text-xs text-base-content/40">
-          EXPIRES 12/28
-        </p>
-        {/* CVV row */}
-        <div className="flex items-end justify-between">
-          <span className="text-xs uppercase tracking-wider text-base-content/40">CVV</span>
-          <div className="flex gap-1" role="status" aria-label="Security code updating">
-            {cvv.map((digit, i) => (
-              <div key={i} className="relative h-8 w-6 overflow-hidden rounded text-center">
-                <div
-                  className="absolute flex flex-col transition-transform duration-500 ease-in-out"
-                  style={{
-                    transform: `translateY(-${digit * 10}%)`,
-                    transitionDelay: flipping ? `${i * FLIP_STAGGER_MS}ms` : '0ms',
-                  }}
-                >
-                  {DIGITS.map((d) => (
-                    <span
-                      key={d}
-                      className="flex h-8 w-6 items-center justify-center font-mono text-lg font-bold text-accent"
+      {/* Card body — back of card */}
+      <div className="relative rounded-2xl bg-base-300 shadow-2xl border border-base-content/10 overflow-hidden">
+        {/* Top gap before magnetic stripe */}
+        <div className="h-8" />
+        {/* Magnetic stripe — full width dark bar */}
+        <div className="h-11 bg-base-content/85 w-full" />
+        {/* Card interior */}
+        <div className="px-5 pt-4 pb-5">
+          {/* Signature strip + CVV box row */}
+          <div className="flex items-stretch gap-3 mb-5">
+            {/* Signature strip */}
+            <div className="flex-1 rounded bg-base-content/10 border border-base-content/15 flex items-center px-3 py-2 min-h-[2.75rem]">
+              <span className="font-serif italic text-xs text-base-content/30 tracking-wide">
+                Authorised Signature
+              </span>
+            </div>
+            {/* CVV box */}
+            <div className="flex flex-col items-center justify-center gap-1">
+              <span className="text-[10px] uppercase tracking-wider text-base-content/40">CVV</span>
+              <div
+                className="flex gap-0.5 rounded bg-base-content/10 border border-base-content/15 px-2 py-1"
+                role="status"
+                aria-label="Security code updating"
+              >
+                {cvv.map((digit, i) => (
+                  <div key={i} className="relative h-7 w-5 overflow-hidden text-center">
+                    <div
+                      className="absolute flex flex-col transition-transform duration-500 ease-in-out"
+                      style={{
+                        transform: `translateY(-${digit * 10}%)`,
+                        transitionDelay: flipping ? `${i * FLIP_STAGGER_MS}ms` : '0ms',
+                      }}
                     >
-                      {d}
-                    </span>
-                  ))}
-                </div>
+                      {DIGITS.map((d) => (
+                        <span
+                          key={d}
+                          className="flex h-7 w-5 items-center justify-center font-mono text-base font-bold text-accent"
+                        >
+                          {d}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+          {/* Bottom labels */}
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] uppercase tracking-widest text-base-content/30">
+              Electronic Use Only
+            </span>
+            <span className="font-mono text-[10px] tracking-wider text-base-content/30">
+              SAFECYPHER LTD.
+            </span>
           </div>
         </div>
       </div>
