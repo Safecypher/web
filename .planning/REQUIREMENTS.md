@@ -39,9 +39,9 @@
 - [x] **DSC-01**: Problem frame: static CVVs printed on card, never change, valid forever once exposed
 - [x] **DSC-02**: Solution section: dynamic time-sensitive code in cardholder's banking app, expires after single use
 - [x] **DSC-03**: Visual how-it-works flow: Open banking app → Tap card → Code generated → Enter at checkout → Validated in real time → Expires
-- [ ] **DSC-04**: Proof section: An Post metrics, Irish Fintech Award
-- [ ] **DSC-05**: For issuers section: single API integration, no card reissuance, live in weeks, major processor compatibility
-- [ ] **DSC-06**: CTAs: calculator link + demo request
+- [x] **DSC-04**: Proof section: An Post metrics, Irish Fintech Award
+- [x] **DSC-05**: For issuers section: single API integration, no card reissuance, live in weeks, major processor compatibility
+- [x] **DSC-06**: CTAs: calculator link + demo request
 
 ### Marketing — Safe Verify (Phase 0b)
 
@@ -154,9 +154,9 @@
 | DSC-01 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | DSC-02 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | DSC-03 | Phase 3 — Platform + Dynamic Security Codes | Complete |
-| DSC-04 | Phase 3 — Platform + Dynamic Security Codes | Pending |
-| DSC-05 | Phase 3 — Platform + Dynamic Security Codes | Pending |
-| DSC-06 | Phase 3 — Platform + Dynamic Security Codes | Pending |
+| DSC-04 | Phase 3 — Platform + Dynamic Security Codes | Complete |
+| DSC-05 | Phase 3 — Platform + Dynamic Security Codes | Complete |
+| DSC-06 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | SV-01 | Phase 4 — Safe Verify | Pending |
 | SV-02 | Phase 4 — Safe Verify | Pending |
 | SV-03 | Phase 4 — Safe Verify | Pending |
