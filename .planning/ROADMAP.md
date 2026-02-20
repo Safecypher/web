@@ -67,13 +67,13 @@ Plans:
   3. A visitor can navigate to /dynamic-security-codes and follow the six-step visual how-it-works flow
   4. Both pages surface An Post proof metrics and end with a calculator link and demo request CTA
   5. Competitive context on /platform (vs tokenisation, 3DS, behavioural analytics) is present without being attack copy
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: Platform Overview page — problem frame, SafeCypher approach, architecture diagram placeholder
-- [ ] 03-02: Platform Overview page — integration model, competitive context, CTAs
-- [ ] 03-03: Dynamic Security Codes page — problem frame, solution, visual how-it-works flow
-- [ ] 03-04: Dynamic Security Codes page — proof section, for issuers section, CTAs
+- [ ] 03-01-PLAN.md — Platform Overview page — problem frame (PlatformHeroSection), dynamic approach (ApproachSection), architecture diagram (ArchitectureDiagram)
+- [ ] 03-02-PLAN.md — Platform Overview page — product portfolio table (ProductPortfolioSection), competitive comparison (CompetitiveSection), CTAs (PlatformCtaSection + shared PageCtaSection)
+- [ ] 03-03-PLAN.md — Dynamic Security Codes page — problem frame (DscHeroSection), solution (DscSolutionSection), six-step how-it-works flow (HowItWorksSection)
+- [ ] 03-04-PLAN.md — Dynamic Security Codes page — proof section (DscProofSection), for issuers section (ForIssuersSection), CTAs (DscCtaSection)
 
 ### Phase 4: Safe Verify
 **Goal**: The existing Safe Verify landing page is fully ported to a React component page that preserves all six-step flow content, nuclear key concept, integration details, and quantified benefits
