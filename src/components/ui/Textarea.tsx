@@ -1,28 +1,30 @@
-import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type TextareaHTMLAttributes, forwardRef } from 'react'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string
   error?: string
   helpText?: string
   fullWidth?: boolean
+  rows?: number
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helpText, fullWidth = false, className = '', id, ...props }, ref) => {
-    const inputId = id ?? label?.toLowerCase().replace(/\s+/g, '-')
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ label, error, helpText, fullWidth = false, rows = 4, className = '', id, ...props }, ref) => {
+    const fieldId = id ?? label?.toLowerCase().replace(/\s+/g, '-')
 
     return (
       <fieldset className={['fieldset', fullWidth ? 'w-full' : ''].filter(Boolean).join(' ')}>
         {label && (
           <legend className="fieldset-legend">{label}</legend>
         )}
-        <input
+        <textarea
           ref={ref}
-          id={inputId}
+          id={fieldId}
+          rows={rows}
           className={[
-            'input',
+            'textarea',
             'w-full',
-            error ? 'input-error' : '',
+            error ? 'textarea-error' : '',
             className,
           ]
             .filter(Boolean)
@@ -39,4 +41,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 )
 
-Input.displayName = 'Input'
+Textarea.displayName = 'Textarea'
