@@ -18,9 +18,9 @@
 ### Marketing — Homepage (Phase 0b)
 
 - [x] **HOME-01**: Hero section with headline "Eliminate card-not-present fraud. Not reduce. Eliminate.", sub-headline, animated CVV card, primary CTA (Request Demo), secondary CTA (See How It Works — smooth scroll)
-- [ ] **HOME-02**: Urgency block: CNP fraud statistics, agentic commerce as emerging attack surface, core argument (static credentials root cause), CTA to calculator
-- [ ] **HOME-03**: Three Audiences strip: Transactions | People | Agents — icon + one-liner + link per audience; mobile vertical stack
-- [ ] **HOME-04**: One Integration block: architecture diagram placeholder, "Integrate once. Unlock everything." copy, TSYS note
+- [x] **HOME-02**: Urgency block: CNP fraud statistics, agentic commerce as emerging attack surface, core argument (static credentials root cause), CTA to calculator
+- [x] **HOME-03**: Three Audiences strip: Transactions | People | Agents — icon + one-liner + link per audience; mobile vertical stack
+- [x] **HOME-04**: One Integration block: architecture diagram placeholder, "Integrate once. Unlock everything." copy, TSYS note
 - [ ] **HOME-05**: Proof section: 800,000+ transactions / 18 months / zero CNP fraud headline stat, An Post logo, Irish Fintech Award badge, link to `/proof/an-post`
 - [ ] **HOME-06**: Human Cost section: emotionally resonant fraud impact copy, link to Company page
 - [ ] **HOME-07**: CTA block: short demo form (name, email, company, role + optional message) and/or Calendly embed; portfolio size teaser input → redirects to `/portal/calculator` with value pre-populated
@@ -139,9 +139,9 @@
 | FOUND-04 | Phase 1 — Foundation | Complete |
 | FOUND-05 | Phase 1 — Foundation | Complete |
 | HOME-01 | Phase 2 — Homepage | Complete |
-| HOME-02 | Phase 2 — Homepage | Pending |
-| HOME-03 | Phase 2 — Homepage | Pending |
-| HOME-04 | Phase 2 — Homepage | Pending |
+| HOME-02 | Phase 2 — Homepage | Complete |
+| HOME-03 | Phase 2 — Homepage | Complete |
+| HOME-04 | Phase 2 — Homepage | Complete |
 | HOME-05 | Phase 2 — Homepage | Pending |
 | HOME-06 | Phase 2 — Homepage | Pending |
 | HOME-07 | Phase 2 — Homepage | Pending |

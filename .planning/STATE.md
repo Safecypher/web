@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 2 of 6 (Homepage)
-Plan: 1 of 4 in current phase
-Status: In Progress — Plan 02-01 complete
-Last activity: 2026-02-20 — Plan 02-01 complete
+Plan: 2 of 4 in current phase
+Status: In Progress — Plan 02-02 complete
+Last activity: 2026-02-20 — Plan 02-02 complete
 
-Progress: [█████░░░░░] 31%
+Progress: [█████░░░░░] 35%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 13 min
-- Total execution time: 66 min
+- Total plans completed: 6
+- Average duration: 11 min
+- Total execution time: 68 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 4/4 | 62 min | 15 min |
-| 02-homepage | 1/4 | 4 min | 4 min |
+| 02-homepage | 2/4 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 9 min, 5 min, 3 min, 45 min, 4 min
+- Last 5 plans: 5 min, 3 min, 45 min, 4 min, 2 min
 - Trend: pure implementation plans with no checkpoints are fast
 
 *Updated after each plan completion*
@@ -63,6 +63,9 @@ Recent decisions affecting current work:
 - [Phase 02-01]: useCallback wrapping rotateCvv — stabilises useEffect dependency, prevents interval recreation on each render
 - [Phase 02-01]: Teal glow via sibling div bg-accent blur-xl opacity-40 — no custom CSS keyframe needed
 - [Phase 02-01]: ESLint globalIgnores updated with '**/* 2.*' pattern — excludes accidental duplicate files from CI lint
+- [Phase 02-02]: UrgencySection uses bg-neutral for light section — contrasts against dark hero above, matches DaisyUI v5 semantic token as specified
+- [Phase 02-02]: id="audiences" preserved on AudiencesSection — smooth-scroll anchor for hero "See How It Works" CTA
+- [Phase 02-02]: Architecture diagram placeholder as nested divs — no SVG needed, exactly matches plan spec with border-accent connector lines
 
 ### Pending Todos
 
@@ -76,5 +79,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 02-01-PLAN.md — Homepage compositor, HeroSection with split layout, HeroCvvCard slot-machine animation.
+Stopped at: Completed 02-02-PLAN.md — UrgencySection CNP fraud argument, AudiencesSection Three Audiences strip, OneIntegrationSection architecture placeholder.
 Resume file: None
