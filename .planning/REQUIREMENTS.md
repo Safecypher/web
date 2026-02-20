@@ -45,7 +45,7 @@
 
 ### Marketing — Safe Verify (Phase 0b)
 
-- [ ] **SV-01**: Problem frame: vishing growing, knowledge-based auth broken, OTPs intercepted
+- [x] **SV-01**: Problem frame: vishing growing, knowledge-based auth broken, OTPs intercepted
 - [ ] **SV-02**: Six-step how-it-works flow (ported from existing HTML)
 - [ ] **SV-03**: Nuclear key / three-key exchange concept (ported from existing HTML)
 - [ ] **SV-04**: Use-case segmentation via tabs: Inbound | Bi-directional | Branch
@@ -157,7 +157,7 @@
 | DSC-04 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | DSC-05 | Phase 3 — Platform + Dynamic Security Codes | Complete |
 | DSC-06 | Phase 3 — Platform + Dynamic Security Codes | Complete |
-| SV-01 | Phase 4 — Safe Verify | Pending |
+| SV-01 | Phase 4 — Safe Verify | Complete |
 | SV-02 | Phase 4 — Safe Verify | Pending |
 | SV-03 | Phase 4 — Safe Verify | Pending |
 | SV-04 | Phase 4 — Safe Verify | Pending |
