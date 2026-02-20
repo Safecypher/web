@@ -30,7 +30,7 @@ export function HeroSection() {
           </div>
 
           {/* Right column — animated CVV card */}
-          <div className="order-first lg:order-last">
+          <div className="order-first lg:order-last overflow-visible py-8">
             <HeroCvvCard />
           </div>
         </div>

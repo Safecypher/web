@@ -32,35 +32,39 @@ export function HeroCvvCard() {
   }, [rotateCvv])
 
   return (
-    <div className="relative mx-auto w-80 select-none" aria-hidden="true">
+    <div
+      className="relative w-full select-none"
+      style={{ transform: 'rotate(-3deg)' }}
+      aria-hidden="true"
+    >
       {/* Teal glow layer */}
-      <div className="absolute inset-0 rounded-2xl blur-xl opacity-40 bg-accent" />
+      <div className="absolute -inset-4 rounded-3xl blur-2xl opacity-30 bg-accent" />
       {/* Card body — back of card */}
       <div className="relative rounded-2xl bg-base-300 shadow-2xl border border-base-content/10 overflow-hidden">
         {/* Top gap before magnetic stripe */}
-        <div className="h-8" />
+        <div className="h-10" />
         {/* Magnetic stripe — full width dark bar */}
-        <div className="h-11 bg-base-content/85 w-full" />
+        <div className="h-14 bg-base-content/85 w-full" />
         {/* Card interior */}
-        <div className="px-5 pt-4 pb-5">
+        <div className="px-8 pt-5 pb-7">
           {/* Signature strip + CVV box row */}
-          <div className="flex items-stretch gap-3 mb-5">
+          <div className="flex items-stretch gap-4 mb-6">
             {/* Signature strip */}
-            <div className="flex-1 rounded bg-base-content/10 border border-base-content/15 flex items-center px-3 py-2 min-h-[2.75rem]">
-              <span className="font-serif italic text-xs text-base-content/30 tracking-wide">
+            <div className="flex-1 rounded-lg bg-base-content/10 border border-base-content/15 flex items-center px-4 py-3 min-h-[3.5rem]">
+              <span className="font-serif italic text-sm text-base-content/30 tracking-wide">
                 Authorised Signature
               </span>
             </div>
             {/* CVV box */}
-            <div className="flex flex-col items-center justify-center gap-1">
-              <span className="text-[10px] uppercase tracking-wider text-base-content/40">CVV</span>
+            <div className="flex flex-col items-center justify-center gap-1.5">
+              <span className="text-xs uppercase tracking-wider text-base-content/40">CVV</span>
               <div
-                className="flex gap-0.5 rounded bg-base-content/10 border border-base-content/15 px-2 py-1"
+                className="flex gap-1 rounded-lg bg-base-content/10 border border-base-content/15 px-3 py-1.5"
                 role="status"
                 aria-label="Security code updating"
               >
                 {cvv.map((digit, i) => (
-                  <div key={i} className="relative h-7 w-5 overflow-hidden text-center">
+                  <div key={i} className="relative h-8 w-6 overflow-hidden text-center">
                     <div
                       className="absolute flex flex-col transition-transform duration-500 ease-in-out"
                       style={{
@@ -71,7 +75,7 @@ export function HeroCvvCard() {
                       {DIGITS.map((d) => (
                         <span
                           key={d}
-                          className="flex h-7 w-5 items-center justify-center font-mono text-base font-bold text-accent"
+                          className="flex h-8 w-6 items-center justify-center font-mono text-lg font-bold text-accent"
                         >
                           {d}
                         </span>
@@ -84,10 +88,10 @@ export function HeroCvvCard() {
           </div>
           {/* Bottom labels */}
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-widest text-base-content/30">
+            <span className="text-xs uppercase tracking-widest text-base-content/30">
               Electronic Use Only
             </span>
-            <span className="font-mono text-[10px] tracking-wider text-base-content/30">
+            <span className="font-mono text-xs tracking-wider text-base-content/30">
               SAFECYPHER LTD.
             </span>
           </div>
