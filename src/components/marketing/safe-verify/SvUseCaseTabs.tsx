@@ -284,7 +284,7 @@ export function SvUseCaseTabs() {
   return (
     <section id="use-cases" className="bg-base-100 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">// How It Works</p>
+        <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">{'// How It Works'}</p>
         <h2 className="text-3xl lg:text-4xl font-bold text-base-content">
           Outbound call <span className="font-serif italic font-normal">verification flow</span>
         </h2>
