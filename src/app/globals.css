@@ -6,3 +6,7 @@
 }
 
 @import "../styles/theme.css";
+
+html {
+  scroll-behavior: smooth;
+}

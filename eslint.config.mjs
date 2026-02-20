@@ -16,6 +16,9 @@ const eslintConfig = defineConfig([
     "_archive/**",
     "dist/**",
     "node_modules/**",
+    // Accidental duplicate files (contain spaces in name — not part of project):
+    "**/* 2.*",
+    "**/* 2/**",
   ]),
 ]);
 
