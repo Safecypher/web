@@ -10,3 +10,30 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Hero credit card — original 3D styling */
+.hero-credit-card {
+  transform: perspective(1000px) rotateY(-12deg);
+  transition: transform 0.7s ease;
+}
+.hero-credit-card:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Safe Verify — phone mockup float */
+@keyframes sv-phone-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.sv-phone-mockup {
+  animation: sv-phone-float 6s ease-in-out infinite;
+}
+
+/* Safe Verify — notification card slide-in */
+@keyframes sv-notif-slide {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sv-notif-card {
+  animation: sv-notif-slide 0.8s ease-out 0.5s both;
+}
