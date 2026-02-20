@@ -49,13 +49,13 @@ Plans:
   3. The Three Audiences strip (Transactions, People, Agents) renders correctly on mobile as a vertical stack
   4. The Proof section displays the 800,000+ transaction / zero CNP fraud stat alongside the An Post logo and Irish Fintech Award badge
   5. Clicking "See the value for your portfolio" from the urgency block navigates toward the calculator (deep link works, even if portal auth is not yet complete)
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: Hero section — animated CVV card, headline, primary + secondary CTAs
-- [ ] 02-02: Urgency block + Three Audiences strip + One Integration block
-- [ ] 02-03: Proof section + Human Cost section
-- [ ] 02-04: CTA block with demo request form and portfolio size teaser input
+- [ ] 02-01-PLAN.md — Homepage compositor (page.tsx), HeroSection split-layout, HeroCvvCard slot-machine animation
+- [ ] 02-02-PLAN.md — UrgencySection (CNP fraud argument + CTAs), AudiencesSection (Transactions/People/Agents), OneIntegrationSection
+- [ ] 02-03-PLAN.md — ProofSection (An Post stats + logo + badge), HumanCostSection (emotional fraud victim copy)
+- [ ] 02-04-PLAN.md — DemoFormSection (Netlify Forms + inline success), Input.tsx DaisyUI v5 fix, Textarea.tsx, public/__forms.html
 
 ### Phase 3: Platform + Dynamic Security Codes
 **Goal**: Prospects who want to understand the architecture or the flagship DSC product can navigate to fully-built pages that explain the one-API model and the dynamic CVV solution
