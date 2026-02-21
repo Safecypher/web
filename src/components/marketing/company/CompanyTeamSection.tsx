@@ -1,3 +1,87 @@
+type TeamMember = {
+  name: string
+  title: string
+  bio: string
+}
+
+const team: TeamMember[] = [
+  {
+    name: 'Mark Wright',
+    title: 'CEO & Co-founder',
+    bio: 'Fintech entrepreneur with a decade building fraud prevention infrastructure for card issuers.',
+  },
+  {
+    name: '[Name]',
+    title: 'CTO & Co-founder',
+    bio: 'Placeholder bio — one sentence about technical background.',
+  },
+  {
+    name: '[Name]',
+    title: 'Head of Product',
+    bio: 'Placeholder bio — one sentence about product background.',
+  },
+  {
+    name: '[Name]',
+    title: 'Head of Engineering',
+    bio: 'Placeholder bio — one sentence about engineering background.',
+  },
+  {
+    name: '[Name]',
+    title: 'Head of Sales',
+    bio: 'Placeholder bio — one sentence about sales background.',
+  },
+  {
+    name: '[Name]',
+    title: 'Head of Operations',
+    bio: 'Placeholder bio — one sentence about operations background.',
+  },
+]
+
+function PersonSilhouette() {
+  return (
+    <svg
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+      aria-hidden="true"
+    >
+      <rect width="80" height="80" rx="40" fill="currentColor" className="text-base-300" />
+      <circle cx="40" cy="30" r="14" fill="currentColor" className="text-base-content/20" />
+      <path
+        d="M12 72c0-15.464 12.536-28 28-28s28 12.536 28 28"
+        fill="currentColor"
+        className="text-base-content/20"
+      />
+    </svg>
+  )
+}
+
 export function CompanyTeamSection() {
-  return <section data-stub>CompanyTeamSection</section>
+  return (
+    <section className="bg-base-100 border-t border-base-300 py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">
+          The Team
+        </p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-base-content mb-12">
+          The people behind{' '}
+          <span className="font-serif italic font-normal text-primary">the mission.</span>
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {team.map((member) => (
+            <div key={member.name + member.title} className="flex flex-col items-center text-center">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 bg-base-200">
+                <PersonSilhouette />
+              </div>
+              <h3 className="font-semibold text-base-content">{member.name}</h3>
+              <p className="text-sm text-primary mb-2">{member.title}</p>
+              <p className="text-sm text-base-content/60 leading-relaxed">{member.bio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }

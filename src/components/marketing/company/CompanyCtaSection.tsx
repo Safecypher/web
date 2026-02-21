@@ -1,3 +1,5 @@
+import { PageCtaSection } from '@/components/marketing/shared/PageCtaSection'
+
 export function CompanyCtaSection() {
-  return <section data-stub>CompanyCtaSection</section>
+  return <PageCtaSection />
 }
