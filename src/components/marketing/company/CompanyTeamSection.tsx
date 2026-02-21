@@ -1,19 +1,24 @@
+import Image from 'next/image'
+
 type TeamMember = {
   name: string
   title: string
   bio: string
+  photo?: string
 }
 
 const team: TeamMember[] = [
   {
-    name: 'Mark Wright',
-    title: 'CEO & Co-founder',
+    name: 'Mark Phillips',
+    title: 'CEO',
     bio: 'Fintech entrepreneur with a decade building fraud prevention infrastructure for card issuers.',
+    photo: '/team/mark-phillips.png',
   },
   {
-    name: '[Name]',
-    title: 'CTO & Co-founder',
+    name: 'Andy Perry',
+    title: 'CTO',
     bio: 'Placeholder bio — one sentence about technical background.',
+    photo: '/team/andy-perry.png',
   },
   {
     name: '[Name]',
@@ -73,7 +78,17 @@ export function CompanyTeamSection() {
           {team.map((member) => (
             <div key={member.name + member.title} className="flex flex-col items-center text-center">
               <div className="w-24 h-24 rounded-full overflow-hidden mb-4 bg-base-200">
-                <PersonSilhouette />
+                {member.photo ? (
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <PersonSilhouette />
+                )}
               </div>
               <h3 className="font-semibold text-base-content">{member.name}</h3>
               <p className="text-sm text-primary mb-2">{member.title}</p>
