@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 
 ## Current Position
 
-Phase: 4 of 6 (Safe Verify) — COMPLETE
-Plan: 4 of 4 in current phase — COMPLETE
-Status: Phase 04 complete — all four plans executed, /safe-verify fully implemented
-Last activity: 2026-02-20 — Plan 04-04 complete (Phase 04 complete)
+Phase: 5 of 6 (Company + Contact)
+Plan: 1 of 2 in current phase — COMPLETE
+Status: Phase 05 in progress — Plan 05-01 executed, /company fully implemented; Plan 05-02 (Contact page) next
+Last activity: 2026-02-21 — Plan 05-01 complete (/company page — six sections)
 
-Progress: [████████████████████] 100% of Phase 04
+Progress: [██████████----------] 50% of Phase 05
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: 8.8 min
-- Total execution time: 143 min
+- Total execution time: 152 min
 
 **By Phase:**
 
@@ -31,14 +31,16 @@ Progress: [████████████████████] 100% of
 | 02-homepage | 4/4 | 10 min | 2.5 min |
 | 03-platform-dynamic-security-codes | 4/4 | 12 min | 3 min |
 | 04-safe-verify | 4/4 | 65 min | 16 min |
+| 05-company-contact | 1/2 | 9 min | 9 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 2 min, 38 min, 19 min, 2 min
-- Trend: 04-04 matched 04-03 pace — two clean Server Components, no complex state, parity check automated
+- Last 5 plans: 2 min, 38 min, 19 min, 2 min, 9 min
+- Trend: 05-01 was a clean Server Component plan — no interactivity, stub-first pattern, build clean on first attempt
 
 *Updated after each plan completion*
 | Phase 04 P03 | 6 | 2 tasks | 2 files |
 | Phase 04-safe-verify P04 | 2 | 2 tasks | 2 files |
+| Phase 05-company-contact P01 | 9 | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -99,6 +101,10 @@ Recent decisions affecting current work:
 - [Phase 04-safe-verify]: SvCtaSection mirrors DscCtaSection exactly: 5-line thin wrapper over shared PageCtaSection
 - [Phase 04-safe-verify]: DSC cross-link placed as inline paragraph below cards grid, matching DscSolutionSection cross-link pattern
 - [Phase 04-safe-verify]: Seven-card xl/4-col grid produces 4+3 row split — accepted as-is without centring hack
+- [Phase 05-01]: CompanyHumanCostSection is self-contained — not imported from home/HumanCostSection.tsx; dedicated Company framing with /contact CTA (not /#demo)
+- [Phase 05-01]: CompanyCtaSection is a 4-line thin wrapper over shared PageCtaSection — consistent with DscCtaSection and SvCtaSection pattern
+- [Phase 05-01]: PersonSilhouette inline SVG uses rx=40 on rect for full-circle appearance inside rounded-full overflow-hidden container
+- [Phase 05-01]: TeamMember key uses name+title concatenation — handles duplicate '[Name]' placeholder keys without React warning
 
 ### Pending Todos
 
@@ -111,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-20
-Stopped at: Completed 04-04-PLAN.md — SvIntegrationSection (seven integration cards + DSC cross-link, bg-base-200) and SvCtaSection (5-line wrapper over PageCtaSection) implemented; Phase 04 /safe-verify fully complete with all seven sections, build/lint/tsc-clean, parity check passed all 8 items.
+Last session: 2026-02-21
+Stopped at: Completed 05-01-PLAN.md — /company page fully implemented with six Server Component sections (Hero, Mission, Beliefs, HumanCost, Team, CTA); all beliefs verbatim from archive; build/lint/tsc clean; Phase 05 Plan 02 (Contact page) is next.
 Resume file: None

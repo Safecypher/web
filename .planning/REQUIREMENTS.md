@@ -57,10 +57,10 @@
 
 ### Marketing — Company (Phase 0b)
 
-- [ ] **COMP-01**: Mission section: "eliminate fraud" framing (elevated from current copy)
-- [ ] **COMP-02**: Human Cost section: fraud is not a line item — parents, children, elderly, psychological damage
-- [ ] **COMP-03**: Beliefs section: five beliefs migrated verbatim from current site
-- [ ] **COMP-04**: Team section: headshots + bios (existing photos; placeholder bios)
+- [x] **COMP-01**: Mission section: "eliminate fraud" framing (elevated from current copy)
+- [x] **COMP-02**: Human Cost section: fraud is not a line item — parents, children, elderly, psychological damage
+- [x] **COMP-03**: Beliefs section: five beliefs migrated verbatim from current site
+- [x] **COMP-04**: Team section: headshots + bios (existing photos; placeholder bios)
 
 ### Marketing — Contact (Phase 0b)
 
@@ -166,10 +166,10 @@
 | SV-07 | Phase 4 — Safe Verify | Complete |
 | SV-08 | Phase 4 — Safe Verify | Complete |
 | SV-09 | Phase 4 — Safe Verify | Complete |
-| COMP-01 | Phase 5 — Company + Contact | Pending |
-| COMP-02 | Phase 5 — Company + Contact | Pending |
-| COMP-03 | Phase 5 — Company + Contact | Pending |
-| COMP-04 | Phase 5 — Company + Contact | Pending |
+| COMP-01 | Phase 5 — Company + Contact | Complete |
+| COMP-02 | Phase 5 — Company + Contact | Complete |
+| COMP-03 | Phase 5 — Company + Contact | Complete |
+| COMP-04 | Phase 5 — Company + Contact | Complete |
 | CONT-01 | Phase 5 — Company + Contact | Pending |
 | CONT-02 | Phase 5 — Company + Contact | Pending |
 | CONT-03 | Phase 5 — Company + Contact | Pending |
