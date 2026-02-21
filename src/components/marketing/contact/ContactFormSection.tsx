@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui'
 import { Textarea } from '@/components/ui'
@@ -25,24 +25,23 @@ export function ContactFormSection() {
   const [formState, setFormState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  // Derive source from URL param or sessionStorage — no setState needed.
-  // useSearchParams() is reactive: re-renders when URL changes.
-  const source = useMemo<Source>(() => {
-    const param = searchParams.get('from')
-    if (isValidSource(param)) return param
-    if (typeof window !== 'undefined') {
-      const stored = sessionStorage.getItem('contactSource')
-      if (isValidSource(stored)) return stored
-    }
-    return 'default'
-  }, [searchParams])
+  // Read sessionStorage once on mount for cross-navigation persistence.
+  const [storedSource] = useState<Source>(() => {
+    if (typeof window === 'undefined') return 'default'
+    const stored = sessionStorage.getItem('contactSource')
+    return isValidSource(stored) ? stored : 'default'
+  })
 
-  // Persist source to sessionStorage (external system sync — no setState).
+  // Prefer URL param (reactive), fall back to stored value — plain variable, no state.
+  const urlParam = searchParams.get('from')
+  const source: Source = isValidSource(urlParam) ? urlParam : storedSource
+
+  // Persist URL param to sessionStorage when present (external side-effect only, no setState).
   useEffect(() => {
-    if (source !== 'default') {
-      sessionStorage.setItem('contactSource', source)
+    if (isValidSource(urlParam)) {
+      sessionStorage.setItem('contactSource', urlParam)
     }
-  }, [source])
+  }, [urlParam])
 
   const { heading, buttonText } = COPY[source]
 
