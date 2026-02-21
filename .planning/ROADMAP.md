@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: Homepage** - Primary conversion page with hero, urgency block, proof, and demo CTA
 - [x] **Phase 3: Platform + Dynamic Security Codes** - Platform Overview and first product page, sharing the one-API-to-seven-products narrative (completed 2026-02-20)
 - [ ] **Phase 4: Safe Verify** - Full port of existing Safe Verify page into React components
-- [ ] **Phase 5: Company + Contact** - Company/About page and Contact/Request Demo page
+- [x] **Phase 5: Company + Contact** - Company/About page and Contact/Request Demo page (completed 2026-02-21)
 - [ ] **Phase 6: Analytics + CRM** - PostHog and Attio event streaming wired across site and portal
 
 ## Phase Details
@@ -135,5 +135,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Homepage | 2/4 | In Progress|  |
 | 3. Platform + Dynamic Security Codes | 4/4 | Complete   | 2026-02-20 |
 | 4. Safe Verify | 2/4 | In Progress|  |
-| 5. Company + Contact | 1/2 | In Progress|  |
+| 5. Company + Contact | 2/2 | Complete   | 2026-02-21 |
 | 6. Analytics + CRM | 0/2 | Not started | - |

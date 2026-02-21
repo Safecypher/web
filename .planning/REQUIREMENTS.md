@@ -64,9 +64,9 @@
 
 ### Marketing — Contact (Phase 0b)
 
-- [ ] **CONT-01**: Contact form: name, email, company, role, message (optional)
-- [ ] **CONT-02**: Optional Calendly embed for direct scheduling
-- [ ] **CONT-03**: Source-specific CTA text per referring page (product pages → "Request a demo", SafeAgent → "Join the pilot", calculator → "Talk to us about your results")
+- [x] **CONT-01**: Contact form: name, email, company, role, message (optional)
+- [x] **CONT-02**: Optional Calendly embed for direct scheduling
+- [x] **CONT-03**: Source-specific CTA text per referring page (product pages → "Request a demo", SafeAgent → "Join the pilot", calculator → "Talk to us about your results")
 
 ### Analytics & CRM (Phase 0b/0c)
 
@@ -170,9 +170,9 @@
 | COMP-02 | Phase 5 — Company + Contact | Complete |
 | COMP-03 | Phase 5 — Company + Contact | Complete |
 | COMP-04 | Phase 5 — Company + Contact | Complete |
-| CONT-01 | Phase 5 — Company + Contact | Pending |
-| CONT-02 | Phase 5 — Company + Contact | Pending |
-| CONT-03 | Phase 5 — Company + Contact | Pending |
+| CONT-01 | Phase 5 — Company + Contact | Complete |
+| CONT-02 | Phase 5 — Company + Contact | Complete |
+| CONT-03 | Phase 5 — Company + Contact | Complete |
 | ANLT-01 | Phase 6 — Analytics + CRM | Pending |
 | ANLT-02 | Phase 6 — Analytics + CRM | Pending |
 

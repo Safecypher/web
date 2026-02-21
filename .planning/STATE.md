@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 5 of 6 (Company + Contact)
-Plan: 1 of 2 in current phase — COMPLETE
-Status: Phase 05 in progress — Plan 05-01 executed, /company fully implemented; Plan 05-02 (Contact page) next
-Last activity: 2026-02-21 — Plan 05-01 complete (/company page — six sections)
+Plan: 2 of 2 in current phase — COMPLETE
+Status: Phase 05 COMPLETE — /company and /contact both fully implemented; Phase 06 next
+Last activity: 2026-02-21 — Plan 05-02 complete (/contact page — source-aware Netlify form + Calendly button)
 
-Progress: [██████████----------] 50% of Phase 05
+Progress: [████████████████████] 100% of Phase 05
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
-- Average duration: 8.8 min
-- Total execution time: 152 min
+- Total plans completed: 18
+- Average duration: 9.3 min
+- Total execution time: 168 min
 
 **By Phase:**
 
@@ -31,16 +31,17 @@ Progress: [██████████----------] 50% of Phase 05
 | 02-homepage | 4/4 | 10 min | 2.5 min |
 | 03-platform-dynamic-security-codes | 4/4 | 12 min | 3 min |
 | 04-safe-verify | 4/4 | 65 min | 16 min |
-| 05-company-contact | 1/2 | 9 min | 9 min |
+| 05-company-contact | 2/2 | 25 min | 12.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 38 min, 19 min, 2 min, 9 min
-- Trend: 05-01 was a clean Server Component plan — no interactivity, stub-first pattern, build clean on first attempt
+- Last 5 plans: 38 min, 19 min, 2 min, 9 min, 16 min
+- Trend: 05-02 required one lint deviation fix (useMemo pattern for useSearchParams-derived state); otherwise clean
 
 *Updated after each plan completion*
 | Phase 04 P03 | 6 | 2 tasks | 2 files |
 | Phase 04-safe-verify P04 | 2 | 2 tasks | 2 files |
 | Phase 05-company-contact P01 | 9 | 3 tasks | 7 files |
+| Phase 05-company-contact P02 | 16 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -105,6 +106,9 @@ Recent decisions affecting current work:
 - [Phase 05-01]: CompanyCtaSection is a 4-line thin wrapper over shared PageCtaSection — consistent with DscCtaSection and SvCtaSection pattern
 - [Phase 05-01]: PersonSilhouette inline SVG uses rx=40 on rect for full-circle appearance inside rounded-full overflow-hidden container
 - [Phase 05-01]: TeamMember key uses name+title concatenation — handles duplicate '[Name]' placeholder keys without React warning
+- [Phase 05-02]: useMemo (not useState+useEffect) for source derived from useSearchParams — eliminates react-hooks/set-state-in-effect ESLint violation while keeping reactivity
+- [Phase 05-02]: react-calendly PopupWidget with placeholder CALENDLY_URL constant at module scope — real URL is a content substitution post-deployment
+- [Phase 05-02]: Contact form fields: name, role, company, email, message (no phone; message not challenge — distinct from demo-request)
 
 ### Pending Todos
 
@@ -118,5 +122,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 05-01-PLAN.md — /company page fully implemented with six Server Component sections (Hero, Mission, Beliefs, HumanCost, Team, CTA); all beliefs verbatim from archive; build/lint/tsc clean; Phase 05 Plan 02 (Contact page) is next.
+Stopped at: Completed 05-02-PLAN.md — /contact page fully implemented with source-aware Netlify form (contact-request), Calendly PopupWidget via react-calendly, sessionStorage persistence, and mandatory Suspense boundary. Phase 05 complete. Phase 06 next.
 Resume file: None
