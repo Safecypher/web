@@ -103,12 +103,11 @@ Plans:
   3. A visitor can navigate to /contact and submit a form with name, email, company, role, and optional message
   4. The contact page CTA text changes based on the referring page (product pages show "Request a demo", calculator shows "Talk to us about your results")
   5. An optional Calendly embed loads on /contact for direct scheduling
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: Company page — mission, Human Cost section, five beliefs (migrated verbatim)
-- [ ] 05-02: Company page — team section with headshots and placeholder bios
-- [ ] 05-03: Contact page — form, source-specific CTA text, Calendly embed
+- [ ] 05-01-PLAN.md — Company page: scaffold + all six sections (Hero, Mission, Beliefs, Human Cost, Team, CTA)
+- [ ] 05-02-PLAN.md — Contact page: Calendly button, source-aware form, Netlify form registration
 
 ### Phase 6: Analytics + CRM
 **Goal**: Every meaningful user action across the public site and portal fires a trackable event — PostHog captures the funnel, Attio receives server-side CRM signals — so the sales team has real deal-readiness visibility from day one of launch
@@ -136,5 +135,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Homepage | 2/4 | In Progress|  |
 | 3. Platform + Dynamic Security Codes | 4/4 | Complete   | 2026-02-20 |
 | 4. Safe Verify | 2/4 | In Progress|  |
-| 5. Company + Contact | 0/3 | Not started | - |
+| 5. Company + Contact | 0/2 | Not started | - |
 | 6. Analytics + CRM | 0/2 | Not started | - |
