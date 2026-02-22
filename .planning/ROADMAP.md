@@ -118,11 +118,12 @@ Plans:
   2. Submitting the demo request form fires a `demo_request` Attio event (verifiable in Attio activity feed in prod; console.log in dev)
   3. The `/api/attio/event` server-side route exists and rejects client-side calls that do not go through the route (Attio API key never appears in browser network tab)
   4. PostHog captures CTA clicks and form starts on the public site without requiring a login
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: Attio event streaming — `/api/attio/event` server-side route, dev stub (console.log), prod env var wiring
-- [ ] 06-02: PostHog installation — public site page views, CTA clicks, form starts, funnel events
+- [ ] 06-01-PLAN.md — Attio event streaming: /api/attio/event guarded route + intermediate form-handler routes (/api/submit/demo-request, /api/submit/contact-request) + netlify.toml env var stubs
+- [ ] 06-02-PLAN.md — PostHog infrastructure: posthog-js install, Providers wrapper, PostHogPageView tracker, ConsentBanner, root layout wiring
+- [ ] 06-03-PLAN.md — Event instrumentation: refactor form components to use intermediate routes; add form_start, demo_request, contact_request, posthog.identify, cta_click, calendly_open events
 
 ## Progress
 
@@ -136,4 +137,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Platform + Dynamic Security Codes | 4/4 | Complete   | 2026-02-20 |
 | 4. Safe Verify | 2/4 | In Progress|  |
 | 5. Company + Contact | 2/2 | Complete   | 2026-02-21 |
-| 6. Analytics + CRM | 0/2 | Not started | - |
+| 6. Analytics + CRM | 0/3 | Not started | - |
