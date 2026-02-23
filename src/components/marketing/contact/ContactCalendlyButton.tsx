@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePostHog } from 'posthog-js/react'
 
 declare global {
   interface Window {
@@ -12,6 +13,8 @@ declare global {
 const CALENDLY_URL = 'https://calendly.com/safecypher/30min'
 
 export function ContactCalendlyButton() {
+  const posthog = usePostHog()
+
   useEffect(() => {
     if (document.querySelector('script[src*="assets.calendly.com"]')) return
     const script = document.createElement('script')
@@ -23,7 +26,10 @@ export function ContactCalendlyButton() {
   return (
     <button
       type="button"
-      onClick={() => window.Calendly?.initPopupWidget({ url: CALENDLY_URL })}
+      onClick={() => {
+        posthog?.capture('calendly_open')
+        window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
+      }}
       className="btn btn-outline btn-lg w-full"
     >
       Book a time

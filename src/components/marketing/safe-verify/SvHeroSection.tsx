@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link'
+import { usePostHog } from 'posthog-js/react'
 
 export function SvHeroSection() {
+  const posthog = usePostHog()
+
   return (
     <>
       <section className="bg-base-100 py-24 lg:py-32 overflow-hidden relative">
@@ -14,7 +19,7 @@ export function SvHeroSection() {
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">Safe Verify</p>
 
             <h1 className="text-4xl lg:text-6xl font-bold text-base-content leading-tight tracking-tight">
-              Vishing calls erode{' '}
+              Phishing calls erode{' '}
               <span className="font-serif italic font-normal text-primary">customer trust.</span>
             </h1>
 
@@ -30,7 +35,13 @@ export function SvHeroSection() {
             </p>
 
             <div className="flex flex-wrap gap-4 mt-8">
-              <Link href="/#demo" className="btn btn-primary btn-lg">Request Demo</Link>
+              <Link
+                href="/#demo"
+                className="btn btn-primary btn-lg"
+                onClick={() => posthog?.capture('cta_click', { source: 'product-page' })}
+              >
+                Request Demo
+              </Link>
               <a href="#use-cases" className="btn btn-ghost btn-lg border border-base-content/20">See How It Works</a>
             </div>
           </div>

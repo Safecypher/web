@@ -1,6 +1,11 @@
+'use client'
+
 import Link from "next/link"
+import { usePostHog } from 'posthog-js/react'
 
 export function UrgencySection() {
+  const posthog = usePostHog()
+
   return (
     <section className="bg-neutral border-t border-base-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
@@ -41,7 +46,7 @@ export function UrgencySection() {
                 </p>
               </div>
               <div className="border-t border-base-300 pt-6">
-                <p className="text-5xl font-bold text-error">340%</p>
+                <p className="text-5xl font-bold text-accent">340%</p>
                 <p className="text-base-content/70 mt-2 text-sm">
                   increase in AI-driven fraud attempts year-on-year
                 </p>
@@ -49,10 +54,18 @@ export function UrgencySection() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="#demo" className="btn btn-primary">
+              <Link
+                href="#demo"
+                className="btn btn-primary"
+                onClick={() => posthog?.capture('cta_click', { source: 'urgency' })}
+              >
                 Request Demo
               </Link>
-              <Link href="/portal/calculator" className="btn btn-ghost">
+              <Link
+                href="/portal/calculator"
+                className="btn btn-ghost"
+                onClick={() => posthog?.capture('cta_click', { source: 'calculator' })}
+              >
                 See the value for your portfolio →
               </Link>
             </div>
