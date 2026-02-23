@@ -7,3 +7,11 @@
 
 [context.develop]
   command = "npm run build"
+
+# Environment variables required in Netlify Dashboard → Site → Environment variables
+# ATTIO_ENABLED     = "true"          (production context only — preview branches behave like dev)
+# ATTIO_API_KEY     = "<secret>"      (Attio API key with people+notes write access)
+# INTERNAL_API_SECRET = "<secret>"    (random secret shared between /api/submit/* and /api/attio/event)
+# NEXT_PUBLIC_POSTHOG_KEY = "<key>"   (PostHog project API key — set in both production and preview)
+# NEXT_PUBLIC_POSTHOG_HOST = "https://app.posthog.com"  (or your EU cloud endpoint)
+# NEXT_PUBLIC_SITE_URL = "https://safecypher.com"        (production canonical URL)
