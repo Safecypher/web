@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { usePostHog } from 'posthog-js/react'
 import { Input } from '@/components/ui'
 import { Textarea } from '@/components/ui'
 import { Button } from '@/components/ui'
@@ -22,6 +23,7 @@ function isValidSource(value: string | null): value is Source {
 
 export function ContactFormSection() {
   const searchParams = useSearchParams()
+  const posthog = usePostHog()
   const [formState, setFormState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState<string>('')
 
@@ -51,17 +53,31 @@ export function ContactFormSection() {
     setErrorMessage('')
 
     const formData = new FormData(e.currentTarget)
+    const payload = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      role: formData.get('role') as string,
+      message: (formData.get('message') as string) || undefined,
+    }
 
     try {
-      const res = await fetch('/__forms.html', {
+      const res = await fetch('/api/submit/contact-request', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(
-          Object.fromEntries(formData) as Record<string, string>
-        ).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       })
 
       if (res.ok) {
+        posthog?.capture('contact_request', {
+          email: payload.email,
+          company: payload.company,
+          role: payload.role,
+        })
+        posthog?.identify(payload.email, {
+          name: payload.name,
+          company: payload.company,
+        })
         setFormState('success')
       } else {
         setFormState('error')
@@ -75,7 +91,7 @@ export function ContactFormSection() {
 
   if (formState === 'success') {
     return (
-      <section className="bg-base-100 border-t border-base-300 py-24 lg:py-32">
+      <section className="bg-neutral bg-base-100 border-t border-base-300 py-24 lg:py-32">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-6">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-success">
@@ -92,7 +108,7 @@ export function ContactFormSection() {
   }
 
   return (
-    <section className="bg-base-100 border-t border-base-300 py-24 lg:py-32">
+    <section className="bg-neutral bg-base-100 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-3xl lg:text-4xl font-bold text-base-content">{heading}</h1>
