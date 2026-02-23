@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Outfit, Playfair_Display } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
+import { Providers } from '@/app/providers'
+import { PostHogPageView } from '@/components/analytics/PostHogPageView'
+import { ConsentBanner } from '@/components/analytics/ConsentBanner'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -27,7 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="safecypher-dark" className={`${outfit.variable} ${playfair.variable}`}>
       <body className="antialiased">
-        {children}
+        <Providers>
+          <Suspense fallback={null}>
+            <PostHogPageView />
+          </Suspense>
+          {children}
+          <ConsentBanner />
+        </Providers>
       </body>
     </html>
   )
