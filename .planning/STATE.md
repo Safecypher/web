@@ -128,6 +128,7 @@ Recent decisions affecting current work:
 - Wire real Calendly URL in production (`.planning/todos/pending/2026-02-23-wire-real-calendly-url-in-production.md`)
 - Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
 - Change portal nav link from lock icon to descriptive label (`.planning/todos/pending/2026-02-23-change-portal-nav-link-from-lock-icon-to-descriptive-label.md`)
+- Replace Irish Fintech Award placeholder with real badge image (`.planning/todos/pending/2026-02-23-replace-irish-fintech-award-placeholder-with-real-badge-image.md`)
 
 ### Blockers/Concerns
 
