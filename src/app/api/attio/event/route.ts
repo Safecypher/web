@@ -1,0 +1,97 @@
+import { NextRequest } from 'next/server'
+
+type AttioEventBody = {
+  event: string
+  email: string
+  name: string
+  company: string
+  role: string
+  message?: string
+}
+
+export async function POST(request: NextRequest): Promise<Response> {
+  // 403 guard — reject direct browser calls
+  const internalToken = request.headers.get('x-internal-token')
+  if (!internalToken || internalToken !== process.env.INTERNAL_API_SECRET) {
+    return new Response('Forbidden', { status: 403 })
+  }
+
+  const body = (await request.json()) as AttioEventBody
+
+  const attioEnabled = process.env.ATTIO_ENABLED === 'true'
+  const attioApiKey = process.env.ATTIO_API_KEY
+
+  // Dev stub mode
+  if (!attioEnabled || !attioApiKey) {
+    if (attioEnabled && !attioApiKey) {
+      console.error('[Attio] ATTIO_ENABLED=true but ATTIO_API_KEY is missing')
+    }
+    console.log('[Attio stub]', body)
+    return Response.json({ stub: true, event: body.event, email: body.email })
+  }
+
+  // Production mode
+  try {
+    // Step 1 — Upsert Attio person using email as matching key
+    const nameParts = body.name.split(' ')
+    const firstName = nameParts[0] ?? body.name
+    const lastName = nameParts.slice(1).join(' ') || ''
+
+    const personRes = await fetch(
+      'https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses',
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${attioApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: {
+            values: {
+              email_addresses: [{ email_address: body.email }],
+              name: [{ first_name: firstName, last_name: lastName }],
+            },
+          },
+        }),
+      }
+    )
+
+    if (!personRes.ok) {
+      console.error('[Attio] Person upsert failed', personRes.status)
+      return Response.json({ ok: false }, { status: 502 })
+    }
+
+    const personData = (await personRes.json()) as {
+      data: { id: { record_id: string } }
+    }
+    const personRecordId = personData.data.id.record_id
+
+    // Step 2 — Create event note linked to person
+    const noteRes = await fetch('https://api.attio.com/v2/notes', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${attioApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          format: 'plaintext',
+          parent_object: 'people',
+          parent_record_id: personRecordId,
+          title: body.event,
+          content: `Event: ${body.event}\nName: ${body.name}\nCompany: ${body.company}\nRole: ${body.role}\nMessage: ${body.message ?? ''}`,
+        },
+      }),
+    })
+
+    if (!noteRes.ok) {
+      console.error('[Attio] Note creation failed', noteRes.status)
+      // Silent prod failure — do not re-throw
+    }
+
+    return Response.json({ ok: true, personRecordId })
+  } catch (err) {
+    console.error('[Attio] Unexpected error', err)
+    return Response.json({ ok: false }, { status: 500 })
+  }
+}
