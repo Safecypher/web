@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 6 of 6 (Analytics + CRM)
-Plan: 1 of 3 in current phase — Plan 01 COMPLETE
-Status: Phase 06 In Progress — Attio CRM infrastructure complete; PostHog and form wiring next
-Last activity: 2026-02-23 — Plan 06-01 complete (Attio CRM: guarded /api/attio/event route + intermediate form handlers)
+Plan: 2 of 3 in current phase — Plan 02 COMPLETE
+Status: Phase 06 In Progress — PostHog analytics infrastructure complete; form event instrumentation next
+Last activity: 2026-02-23 — Plan 06-02 complete (PostHog: providers.tsx, PostHogPageView, ConsentBanner wired into root layout)
 
-Progress: [█░░] 33% of Phase 06
+Progress: [██░] 66% of Phase 06
 
 ## Performance Metrics
 
@@ -43,6 +43,7 @@ Progress: [█░░] 33% of Phase 06
 | Phase 05-company-contact P01 | 9 | 3 tasks | 7 files |
 | Phase 05-company-contact P02 | 16 | 2 tasks | 4 files |
 | Phase 06-analytics-crm P01 | 2 | 2 tasks | 4 files |
+| Phase 06-analytics-crm P02 | 3 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -113,6 +114,9 @@ Recent decisions affecting current work:
 - [Phase 06-analytics-crm]: x-internal-token guard: 403 on absent/mismatched header — Attio API key never reaches browser network tab
 - [Phase 06-analytics-crm]: ATTIO_ENABLED=true required explicitly (not just ATTIO_API_KEY presence) — prevents accidental Attio calls on Netlify preview branches
 - [Phase 06-analytics-crm]: Silent prod failure on Attio note creation — user sees form success, Netlify already captured the lead (per locked CONTEXT.md decision)
+- [Phase 06-analytics-crm]: opt_out_capturing_persistence_type:'memory' removed — posthog-js v1.352 types only accept localStorage|cookie; session-only consent via ConsentBanner useState
+- [Phase 06-analytics-crm]: PostHogPageView wrapped in Suspense fallback=null — mandatory for useSearchParams in Next.js App Router
+- [Phase 06-analytics-crm]: layout.tsx remains Server Component — Providers.tsx is sole client boundary for PostHog
 
 ### Pending Todos
 
@@ -126,5 +130,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-23
-Stopped at: Completed 06-01-PLAN.md — Attio CRM infrastructure: guarded /api/attio/event route (403 on direct browser calls), /api/submit/demo-request and /api/submit/contact-request intermediate handlers. All secrets stay server-side. Phase 06 Plan 1/3 done.
+Stopped at: Completed 06-02-PLAN.md — PostHog analytics infrastructure: providers.tsx (PostHogProvider, opt-in-by-default), PostHogPageView (UTM $pageview), ConsentBanner (session-only Accept/Decline). posthog-js installed. Root layout updated with Providers + Suspense + ConsentBanner. Phase 06 Plan 2/3 done.
 Resume file: None

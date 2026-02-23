@@ -71,7 +71,7 @@
 ### Analytics & CRM (Phase 0b/0c)
 
 - [x] **ANLT-01**: Attio event streaming infrastructure: `/api/attio/event` server-side route; fires to console.log in dev, real Attio API key wired in prod via Netlify env var; events: `portal_login`, `calculator_run`, `document_download`, `product_page_view`, `demo_request`, `mockup_viewed`
-- [ ] **ANLT-02**: PostHog installed on public site and portal; tracks page views, CTA clicks, form starts, funnel events
+- [x] **ANLT-02**: PostHog installed on public site and portal; tracks page views, CTA clicks, form starts, funnel events
 
 ---
 
@@ -174,7 +174,7 @@
 | CONT-02 | Phase 5 — Company + Contact | Complete |
 | CONT-03 | Phase 5 — Company + Contact | Complete |
 | ANLT-01 | Phase 6 — Analytics + CRM | Complete |
-| ANLT-02 | Phase 6 — Analytics + CRM | Pending |
+| ANLT-02 | Phase 6 — Analytics + CRM | Complete |
 
 **Coverage:**
 - v1 requirements: 41 total
