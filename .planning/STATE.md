@@ -130,6 +130,7 @@ Recent decisions affecting current work:
 - Change portal nav link from lock icon to descriptive label (`.planning/todos/pending/2026-02-23-change-portal-nav-link-from-lock-icon-to-descriptive-label.md`)
 - Replace Irish Fintech Award placeholder with real badge image (`.planning/todos/pending/2026-02-23-replace-irish-fintech-award-placeholder-with-real-badge-image.md`)
 - Create privacy policy and terms and conditions pages (`.planning/todos/pending/2026-02-23-create-privacy-policy-and-terms-and-conditions-pages.md`)
+- Add resources page or remove footer link (`.planning/todos/pending/2026-02-23-add-resources-page-or-remove-footer-link.md`)
 
 ### Blockers/Concerns
 
