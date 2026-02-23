@@ -129,6 +129,7 @@ Recent decisions affecting current work:
 - Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
 - Change portal nav link from lock icon to descriptive label (`.planning/todos/pending/2026-02-23-change-portal-nav-link-from-lock-icon-to-descriptive-label.md`)
 - Replace Irish Fintech Award placeholder with real badge image (`.planning/todos/pending/2026-02-23-replace-irish-fintech-award-placeholder-with-real-badge-image.md`)
+- Create privacy policy and terms and conditions pages (`.planning/todos/pending/2026-02-23-create-privacy-policy-and-terms-and-conditions-pages.md`)
 
 ### Blockers/Concerns
 
