@@ -125,7 +125,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None yet.
+- Wire real Calendly URL in production (`.planning/todos/pending/2026-02-23-wire-real-calendly-url-in-production.md`)
 
 ### Blockers/Concerns
 
