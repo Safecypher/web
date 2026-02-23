@@ -126,6 +126,7 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 - Wire real Calendly URL in production (`.planning/todos/pending/2026-02-23-wire-real-calendly-url-in-production.md`)
+- Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
 
 ### Blockers/Concerns
 
