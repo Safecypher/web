@@ -1,0 +1,48 @@
+'use client'
+
+import { useState } from 'react'
+import { usePostHog } from 'posthog-js/react'
+
+export function ConsentBanner() {
+  const [visible, setVisible] = useState(true)
+  const posthog = usePostHog()
+
+  if (!visible) return null
+
+  const handleAccept = () => {
+    posthog?.opt_in_capturing()
+    setVisible(false)
+  }
+
+  const handleDecline = () => {
+    posthog?.opt_out_capturing()
+    setVisible(false)
+  }
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-base-200 border-t border-base-300">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="text-sm text-base-content/70 text-center sm:text-left">
+          We use analytics to understand how visitors use this site.{' '}
+          <span className="text-base-content/50">No personal data is shared with third parties.</span>
+        </p>
+        <div className="flex gap-3 flex-shrink-0">
+          <button
+            type="button"
+            onClick={handleDecline}
+            className="btn btn-ghost btn-sm"
+          >
+            Decline
+          </button>
+          <button
+            type="button"
+            onClick={handleAccept}
+            className="btn btn-primary btn-sm"
+          >
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
