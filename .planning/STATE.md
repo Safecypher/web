@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 6 of 6 (Analytics + CRM)
-Plan: 2 of 3 in current phase — Plan 02 COMPLETE
-Status: Phase 06 In Progress — PostHog analytics infrastructure complete; form event instrumentation next
-Last activity: 2026-02-23 — Plan 06-02 complete (PostHog: providers.tsx, PostHogPageView, ConsentBanner wired into root layout)
+Plan: 3 of 3 in current phase — Plan 03 COMPLETE
+Status: Phase 06 COMPLETE — All PostHog event instrumentation wired; forms route through intermediate API; CTA clicks tracked
+Last activity: 2026-02-23 — Plan 06-03 complete (form event instrumentation + CTA click tracking across all public pages)
 
-Progress: [██░] 66% of Phase 06
+Progress: [███] 100% of Phase 06
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
-- Average duration: 9.3 min
-- Total execution time: 168 min
+- Total plans completed: 19
+- Average duration: 9.1 min
+- Total execution time: 172 min
 
 **By Phase:**
 
@@ -44,6 +44,7 @@ Progress: [██░] 66% of Phase 06
 | Phase 05-company-contact P02 | 16 | 2 tasks | 4 files |
 | Phase 06-analytics-crm P01 | 2 | 2 tasks | 4 files |
 | Phase 06-analytics-crm P02 | 3 | 2 tasks | 5 files |
+| Phase 06-analytics-crm P03 | 4 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -117,6 +118,10 @@ Recent decisions affecting current work:
 - [Phase 06-analytics-crm]: opt_out_capturing_persistence_type:'memory' removed — posthog-js v1.352 types only accept localStorage|cookie; session-only consent via ConsentBanner useState
 - [Phase 06-analytics-crm]: PostHogPageView wrapped in Suspense fallback=null — mandatory for useSearchParams in Next.js App Router
 - [Phase 06-analytics-crm]: layout.tsx remains Server Component — Providers.tsx is sole client boundary for PostHog
+- [Phase 06-03]: HeroSection, UrgencySection, SvHeroSection converted to Client Components — required for usePostHog(); no RSC benefits were exploited by these three sections
+- [Phase 06-03]: form_start deduplication via formStarted boolean state — fires once on first name-field keystroke, not on every keystroke
+- [Phase 06-03]: Input component accepts onKeyDown directly — forwardRef + ...props spread pattern confirmed; no wrapper div needed
+- [Phase 06-03]: SvBenefitsSection unchanged — confirmed content-only section with no CTA links after reading current file
 
 ### Pending Todos
 
@@ -130,5 +135,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-23
-Stopped at: Completed 06-02-PLAN.md — PostHog analytics infrastructure: providers.tsx (PostHogProvider, opt-in-by-default), PostHogPageView (UTM $pageview), ConsentBanner (session-only Accept/Decline). posthog-js installed. Root layout updated with Providers + Suspense + ConsentBanner. Phase 06 Plan 2/3 done.
+Stopped at: Completed 06-03-PLAN.md — Form event instrumentation: DemoFormSection + ContactFormSection POST JSON to intermediate routes; form_start, demo_request, contact_request, posthog.identify wired. CTA clicks instrumented: cta_click {source: hero/urgency/calculator/product-page}; calendly_open on Calendly button. Phase 06 COMPLETE (3/3 plans done).
 Resume file: None
