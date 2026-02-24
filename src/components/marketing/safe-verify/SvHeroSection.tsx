@@ -16,7 +16,13 @@ export function SvHeroSection() {
 
           {/* Left column — hero text */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">Safe Verify</p>
+            <div className="flex items-center gap-3 mb-4">
+              <p className="text-xs uppercase tracking-widest text-accent font-semibold">Safe Verify</p>
+              <span className="inline-flex items-center gap-1.5 bg-success/15 text-success text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-success inline-block" />
+                Launching now
+              </span>
+            </div>
 
             <h1 className="text-4xl lg:text-6xl font-bold text-base-content leading-tight tracking-tight">
               Phishing calls erode{' '}
@@ -32,6 +38,9 @@ export function SvHeroSection() {
               Safe Verify transforms your banking app into a secure verification channel. When your bank
               calls a customer, they know it&rsquo;s really you — confirmed in-app with biometric
               authentication. No more security questions. No more doubt.
+            </p>
+            <p className="text-base-content/40 text-sm mt-3 max-w-xl">
+              Deploys independently of processor integrations — the fastest path to live.
             </p>
 
             <div className="flex flex-wrap gap-4 mt-8">
