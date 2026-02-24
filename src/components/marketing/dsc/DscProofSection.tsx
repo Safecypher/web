@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export function DscProofSection() {
@@ -77,26 +78,13 @@ export function DscProofSection() {
             </blockquote>
 
             {/* Irish Fintech Award badge */}
-            <div className="flex items-center gap-3 mt-6 p-3 bg-base-200 rounded-lg border border-base-300">
-              <div className="w-10 h-10 rounded-full bg-warning/20 flex items-center justify-center flex-shrink-0">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="text-warning"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-neutral-content">
-                  Irish Fintech Award
-                </p>
-                <p className="text-xs text-neutral-content/50">
-                  Fraud Prevention Category
-                </p>
-              </div>
+            <div className="mt-6">
+              <Image
+                src="/badges/fintech-awards-2025.png"
+                alt="Irish Fintech Awards 2025"
+                width={180}
+                height={60}
+              />
             </div>
 
           </div>
