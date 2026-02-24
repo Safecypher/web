@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PlatformHeroSection } from '@/components/marketing/platform/PlatformHeroSection'
 import { ApproachSection } from '@/components/marketing/platform/ApproachSection'
+import { WhyNowSection } from '@/components/marketing/platform/WhyNowSection'
 import { ArchitectureDiagram } from '@/components/marketing/platform/ArchitectureDiagram'
 import { ProductPortfolioSection } from '@/components/marketing/platform/ProductPortfolioSection'
 import { CompetitiveSection } from '@/components/marketing/platform/CompetitiveSection'
@@ -19,6 +20,7 @@ export default function PlatformPage() {
     <>
       <PlatformHeroSection />
       <ApproachSection />
+      <WhyNowSection />
       <ArchitectureDiagram />
       <ProductPortfolioSection />
       <CompetitiveSection />
