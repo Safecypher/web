@@ -41,9 +41,8 @@ export function AudiencesSection() {
             </svg>
             <p className="text-xl font-bold text-base-content mt-4">Transactions</p>
             <p className="text-base-content/70 mt-2 text-sm leading-relaxed">
-              Every card-not-present transaction is validated against a dynamic
-              security code that expires in seconds. Stolen credentials are
-              worthless before the thief can use them.
+              Dynamic codes replace static CVVs. Every code is unique,
+              single-use, and expires. Nothing static remains to steal.
             </p>
             <Link
               href="/platform"
@@ -72,12 +71,11 @@ export function AudiencesSection() {
             </svg>
             <p className="text-xl font-bold text-base-content mt-4">People</p>
             <p className="text-base-content/70 mt-2 text-sm leading-relaxed">
-              Real cardholders get genuine protection, not friction. No app
-              required. No extra step for the customer. The security is
-              invisible — until a fraudster tries to use a stolen number.
+              Cryptographic identity verification replaces KBA and OTPs. The
+              device becomes the credential.
             </p>
             <Link
-              href="/dynamic-security-codes"
+              href="/safe-verify"
               className="text-accent text-sm font-medium mt-4 block"
             >
               See how it works →
@@ -107,9 +105,8 @@ export function AudiencesSection() {
             </svg>
             <p className="text-xl font-bold text-base-content mt-4">Agents</p>
             <p className="text-base-content/70 mt-2 text-sm leading-relaxed">
-              AI agents initiating legitimate purchases are authenticated just
-              like human cardholders. Fraudulent bots fail instantly — they
-              have no access to the dynamic credential.
+              Human-in-the-loop controls for AI commerce. Every autonomous
+              transaction requires cardholder approval.
             </p>
             <Link
               href="/platform"
