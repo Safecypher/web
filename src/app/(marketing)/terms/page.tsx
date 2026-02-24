@@ -29,8 +29,9 @@ export default function TermsPage() {
               elimination solutions. The Site is a marketing and information resource; it does not
               constitute an offer to provide services.
             </p>
-            <p className="mt-3 leading-relaxed text-base-content/50 italic text-sm">
-              [Company registration number and registered address to be added.]
+            <p className="mt-3 leading-relaxed">
+              Company registration number: 14233172. VAT registration: GB419939941.
+              Registered correspondence address: Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
             </p>
           </section>
 
@@ -105,10 +106,11 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">10. Contact</h2>
             <p className="mt-3 leading-relaxed">
-              Questions about these terms? Email{' '}
-              <a href="mailto:legal@safecypher.com" className="text-primary hover:underline">
-                legal@safecypher.com
-              </a>.
+              Questions about these terms? Contact Mr Richard Pickard at{' '}
+              <a href="mailto:richard.pickard@safecypher.com" className="text-primary hover:underline">
+                richard.pickard@safecypher.com
+              </a>{' '}
+              or write to Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
             </p>
           </section>
 
