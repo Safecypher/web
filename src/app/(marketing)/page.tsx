@@ -5,6 +5,7 @@ import { OneIntegrationSection } from '@/components/marketing/home/OneIntegratio
 import { ProofSection } from '@/components/marketing/home/ProofSection'
 import { HumanCostSection } from '@/components/marketing/home/HumanCostSection'
 import { DemoFormSection } from '@/components/marketing/home/DemoFormSection'
+import { QuoteSection } from '@/components/marketing/shared/QuoteSection'
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <AudiencesSection />
       <OneIntegrationSection />
       <ProofSection />
+      <QuoteSection />
       <HumanCostSection />
       <DemoFormSection />
     </>

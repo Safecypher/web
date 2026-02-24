@@ -6,6 +6,7 @@ import { ProductPortfolioSection } from '@/components/marketing/platform/Product
 import { CompetitiveSection } from '@/components/marketing/platform/CompetitiveSection'
 import { PlatformProofSection } from '@/components/marketing/platform/PlatformProofSection'
 import { PlatformCtaSection } from '@/components/marketing/platform/PlatformCtaSection'
+import { QuoteSection } from '@/components/marketing/shared/QuoteSection'
 
 export const metadata: Metadata = {
   title: 'Platform Overview — SafeCypher',
@@ -22,6 +23,7 @@ export default function PlatformPage() {
       <ProductPortfolioSection />
       <CompetitiveSection />
       <PlatformProofSection />
+      <QuoteSection />
       <PlatformCtaSection />
     </>
   )
