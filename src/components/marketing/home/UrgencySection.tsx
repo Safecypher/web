@@ -20,35 +20,50 @@ export function UrgencySection() {
               Card-not-present fraud is accelerating. Agentic commerce is about
               to make it catastrophic.
             </h2>
-            <p className="text-neutral-content/70 mt-6 text-base leading-relaxed">
-              CNP fraud costs card issuers billions annually. With no physical
-              card present, static CVV credentials are the only line of defence
-              — and fraudsters know it.
-            </p>
-            <p className="text-neutral-content/70 mt-4 text-base leading-relaxed">
-              AI agents can now initiate thousands of card-not-present
-              transactions autonomously. Each transaction uses the same static
-              credentials. One breach exposes every future purchase.
-            </p>
-            <p className="text-neutral-content/70 mt-4 text-base leading-relaxed">
-              The root cause is not fraud detection. It is static credentials.
-              SafeCypher eliminates the root cause.
-            </p>
+            <div className="mt-6 space-y-4 text-neutral-content/70 text-base leading-relaxed">
+              <p>
+                Card numbers, expiry dates, CVVs: the entire credential set is static.
+                Once stolen, it stays stolen. A compromised number means unlimited fraud
+                until the cardholder notices.{' '}
+                <span className="text-neutral-content font-semibold">This is the transaction problem.</span>
+              </p>
+              <p>
+                The same static credentials break identity verification: issuers verify
+                cardholders through Knowledge-Based Authentication (KBA) and one-time
+                passwords (OTPs) vulnerable to interception.{' '}
+                <span className="text-neutral-content font-semibold">This is the people problem.</span>
+              </p>
+              <p>
+                And now, AI agents initiate autonomous purchases where fraud tools cannot
+                distinguish agent from human.{' '}
+                <span className="text-neutral-content font-semibold">This is the agent problem.</span>
+              </p>
+              <p className="text-neutral-content font-semibold pt-2">
+                Three audiences. Three control failures. One root cause: static credentials
+                that anyone can copy and reuse.
+              </p>
+            </div>
           </div>
 
           {/* Right column — stats + CTAs */}
           <div>
             <div className="card bg-base-100 p-6 rounded-xl mb-6">
               <div className="pb-6">
-                <p className="text-5xl font-bold text-primary">£8.4bn</p>
+                <p className="text-5xl font-bold text-primary">$12B+</p>
                 <p className="text-base-content/70 mt-2 text-sm">
-                  annual CNP fraud losses globally (2024)
+                  annual CNP fraud losses (US)
+                </p>
+              </div>
+              <div className="border-t border-base-300 pt-6 pb-6">
+                <p className="text-5xl font-bold text-primary">80%</p>
+                <p className="text-base-content/70 mt-2 text-sm">
+                  of card details already on the dark web
                 </p>
               </div>
               <div className="border-t border-base-300 pt-6">
-                <p className="text-5xl font-bold text-accent">340%</p>
+                <p className="text-5xl font-bold text-accent">450%</p>
                 <p className="text-base-content/70 mt-2 text-sm">
-                  increase in AI-driven fraud attempts year-on-year
+                  increase in AI agent threats (Visa, 2025)
                 </p>
               </div>
             </div>
