@@ -46,6 +46,12 @@ export function ProofSection() {
                 CNP fraud incidents
               </p>
             </div>
+            <div>
+              <p className="text-5xl font-bold text-primary">50%</p>
+              <p className="text-neutral-content/70 text-base mt-1">
+                increase in card usage
+              </p>
+            </div>
 
             <Link
               href="/proof/an-post"
@@ -64,10 +70,10 @@ export function ProofSection() {
                 className="font-bold text-2xl"
                 style={{ color: "#006229" }}
               >
-                An Post
+                An Post Money
               </span>
               <p className="text-neutral-content/50 text-sm mt-1">
-                Ireland&apos;s national postal service
+                Ireland&apos;s national postal service — Live production since 2024
               </p>
             </div>
 
@@ -82,6 +88,12 @@ export function ProofSection() {
                 — An Post Financial Services
               </cite>
             </blockquote>
+
+            <p className="text-neutral-content/60 text-sm mt-4 leading-relaxed">
+              Cardholders who trust their card use it more. An Post Money saw
+              50% higher card usage and the interchange revenue that comes with
+              it. This stops being a fraud line item. It becomes a growth lever.
+            </p>
 
             {/* Irish Fintech Award badge */}
             <div className="mt-6">
