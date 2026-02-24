@@ -49,8 +49,8 @@ export function PlatformProofSection() {
               </p>
             </div>
 
-            <Link href="/proof/an-post" className="btn btn-outline btn-primary mt-8">
-              Read the An Post case study &rarr;
+            <Link href="/contact" className="btn btn-outline btn-primary mt-8">
+              Request a demonstration &rarr;
             </Link>
           </div>
 

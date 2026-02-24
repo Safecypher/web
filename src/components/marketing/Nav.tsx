@@ -66,7 +66,6 @@ export function Nav() {
             )}
           </div>
 
-          <Link href="/proof" className="btn btn-ghost text-base font-medium">Proof</Link>
           <Link href="/company" className="btn btn-ghost text-base font-medium">Company</Link>
           <Link href="/resources" className="btn btn-ghost text-base font-medium">Resources</Link>
         </div>

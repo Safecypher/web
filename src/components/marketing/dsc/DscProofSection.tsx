@@ -50,10 +50,10 @@ export function DscProofSection() {
             </div>
 
             <Link
-              href="/proof/an-post"
+              href="/platform"
               className="btn btn-outline btn-primary mt-8"
             >
-              Read the An Post case study &rarr;
+              Explore the platform &rarr;
             </Link>
           </div>
 
