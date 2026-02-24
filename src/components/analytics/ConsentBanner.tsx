@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { usePostHog } from 'posthog-js/react'
 
 export function ConsentBanner() {
@@ -23,8 +24,8 @@ export function ConsentBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-base-200 border-t border-base-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-sm text-base-content/70 text-center sm:text-left">
-          We use analytics to understand how visitors use this site.{' '}
-          <span className="text-base-content/50">No personal data is shared with third parties.</span>
+          We use analytics to understand how visitors use this site. No personal data is shared with third parties.{' '}
+          <Link href="/privacy" className="underline hover:text-base-content transition-colors">Privacy Policy</Link>.
         </p>
         <div className="flex gap-3 flex-shrink-0">
           <button
