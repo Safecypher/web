@@ -67,7 +67,6 @@ export function Nav() {
           </div>
 
           <Link href="/company" className="btn btn-ghost text-base font-medium">Company</Link>
-          <Link href="/resources" className="btn btn-ghost text-base font-medium">Resources</Link>
         </div>
 
         {/* Right side: Portal icon + CTA */}
