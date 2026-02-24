@@ -1,53 +1,56 @@
 import Link from 'next/link'
 
+type StatusVariant = 'live' | 'launching' | 'mvp' | 'available' | 'development'
+
+const statusConfig: Record<StatusVariant, { label: string; classes: string }> = {
+  live:        { label: 'Live in production', classes: 'bg-success/15 text-success' },
+  launching:   { label: 'Launching now',      classes: 'bg-info/15 text-info' },
+  mvp:         { label: 'MVP: 8–12 weeks',    classes: 'bg-warning/15 text-warning' },
+  available:   { label: 'Available now',      classes: 'bg-base-content/10 text-base-content/60' },
+  development: { label: 'In development',     classes: 'bg-base-content/10 text-base-content/60' },
+}
+
 const products = [
   {
-    name: 'Dynamic Security Codes',
+    capability: 'Dynamic Security Code',
     audience: 'Transactions',
-    description: "Time-limited CVV in the cardholder\u2019s banking app eliminates CNP fraud at the credential layer.",
-    effort: 'Core integration',
+    description: 'Eliminates CNP fraud by replacing static CVV with a single-use, time-sensitive code.',
+    status: 'live' as StatusVariant,
     href: '/dynamic-security-codes',
   },
   {
-    name: 'Safe Verify',
+    capability: 'Safe Verify',
     audience: 'People',
-    description: 'Dynamic phone-channel authentication for call centres — eliminates vishing and OTP intercept.',
-    effort: 'Incremental — 1 endpoint',
+    description: 'Replaces KBA and OTPs in call centres and branches with cryptographic identity verification.',
+    status: 'launching' as StatusVariant,
     href: '/safe-verify',
   },
   {
-    name: 'SafeAgent',
+    capability: 'Safe Agent',
     audience: 'Agents',
-    description: 'Authenticates AI agents initiating card transactions — the emerging agentic commerce attack surface.',
-    effort: 'Incremental — 1 endpoint',
+    description: 'AI agent identification and human-in-the-loop approval for autonomous card transactions.',
+    status: 'mvp' as StatusVariant,
     href: null,
   },
   {
-    name: 'SafePay (dCVV V2)',
-    audience: 'Commerce',
-    description: 'Dynamic CVV for e-commerce checkout — an upgraded credential layer for card-present equivalent assurance.',
-    effort: 'Incremental — 1 endpoint',
+    capability: 'E-Wallet + New Card',
+    audience: 'Transactions',
+    description: 'Secures wallet onboarding and new card activation with dynamic credential handshake.',
+    status: 'available' as StatusVariant,
     href: null,
   },
   {
-    name: 'E-Wallet Onboarding',
-    audience: 'Onboarding',
-    description: 'Secure digital wallet provisioning — dynamic credential handshake at the point of card digitisation.',
-    effort: 'Incremental — 1 endpoint',
+    capability: 'Secure Card Delivery',
+    audience: 'Transactions',
+    description: 'Protects card details during digital delivery — closes the window between issue and activation.',
+    status: 'available' as StatusVariant,
     href: null,
   },
   {
-    name: 'Card Issuance Protection',
-    audience: 'Issuance',
-    description: 'Protects credentials at the point of card issuance — closing the window between print and activation.',
-    effort: 'Incremental — 1 endpoint',
-    href: null,
-  },
-  {
-    name: 'OTP Replacement',
-    audience: 'Authentication',
-    description: 'Replaces SMS OTP with dynamic in-app codes — eliminates SIM-swap and SS7 interception vectors.',
-    effort: 'Incremental — 1 endpoint',
+    capability: 'Safe Pay',
+    audience: 'Transactions',
+    description: 'Auto-populates payment details like Apple Pay, on your rails.',
+    status: 'development' as StatusVariant,
     href: null,
   },
 ]
@@ -60,13 +63,13 @@ export function ProductPortfolioSection() {
         {/* Section header */}
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-            The Full Portfolio
+            The Full Platform
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-base-content">
-            One integration. Seven products.
+            One integration. One API. The entire platform.
           </h2>
           <p className="text-base-content/60 mt-4 max-w-2xl mx-auto">
-            Every additional product activates from the same processor-level integration — no new infrastructure, no new contracts.
+            Every capability activates from the same processor-level API connection — no new infrastructure, no new contracts.
           </p>
         </div>
 
@@ -75,37 +78,42 @@ export function ProductPortfolioSection() {
           <table className="table table-zebra w-full">
             <thead>
               <tr className="bg-base-300 text-base-content/60 text-xs uppercase tracking-wider">
-                <th className="py-4 px-6">Product</th>
+                <th className="py-4 px-6">Capability</th>
                 <th className="py-4 px-6">Audience</th>
-                <th className="py-4 px-6">What it does</th>
-                <th className="py-4 px-6">Integration effort</th>
+                <th className="py-4 px-6">What it solves</th>
+                <th className="py-4 px-6">Status</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
-                <tr key={product.name}>
-                  <td className="py-4 px-6 font-semibold text-base-content whitespace-nowrap">
-                    {product.href ? (
-                      <Link href={product.href} className="text-accent hover:underline">
-                        {product.name}
-                      </Link>
-                    ) : (
-                      product.name
-                    )}
-                  </td>
-                  <td className="py-4 px-6">
-                    <span className="badge badge-outline badge-sm text-base-content/60">
-                      {product.audience}
-                    </span>
-                  </td>
-                  <td className="py-4 px-6 text-base-content/70 text-sm">
-                    {product.description}
-                  </td>
-                  <td className="py-4 px-6 text-base-content/50 text-sm font-mono">
-                    {product.effort}
-                  </td>
-                </tr>
-              ))}
+              {products.map((product) => {
+                const { label, classes } = statusConfig[product.status]
+                return (
+                  <tr key={product.capability}>
+                    <td className="py-4 px-6 font-semibold text-base-content whitespace-nowrap">
+                      {product.href ? (
+                        <Link href={product.href} className="text-accent hover:underline">
+                          {product.capability}
+                        </Link>
+                      ) : (
+                        product.capability
+                      )}
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="badge badge-outline badge-sm text-base-content/60">
+                        {product.audience}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-base-content/70 text-sm">
+                      {product.description}
+                    </td>
+                    <td className="py-4 px-6 whitespace-nowrap">
+                      <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${classes}`}>
+                        {label}
+                      </span>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
