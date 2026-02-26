@@ -1,39 +1,51 @@
 const steps = [
   {
     number: 1,
-    heading: 'Open your banking app',
+    heading: 'Accounts list',
     description:
-      "Navigate to your card account in your issuer's mobile banking app — the same app cardholders use every day.",
+      'The cardholder opens their mobile banking app and sees their accounts — the starting point for every journey.',
   },
   {
     number: 2,
-    heading: 'Go to Manage card',
+    heading: 'Account detail',
     description:
-      'Find the card management section to access security and protection settings.',
+      'They select their card account to view the full detail view, where card management options are surfaced.',
   },
   {
     number: 3,
-    heading: 'Enable Dynamic CVV',
+    heading: 'Manage card',
     description:
-      'Toggle on the "3-digit Dynamic CVV" to activate fraud protection for card-not-present transactions.',
+      'The card management screen gives access to security and protection settings — including Dynamic CVV.',
   },
   {
     number: 4,
-    heading: 'Understand the protection',
+    heading: 'Fraud explanation',
     description:
-      'The app explains how dynamic codes eliminate CNP fraud — transparency builds cardholder trust.',
+      'The app clearly explains what CNP fraud is and why Dynamic CVV eliminates it — transparency that builds trust.',
   },
   {
     number: 5,
-    heading: 'New code every transaction',
+    heading: 'How it works',
     description:
-      'A fresh security code is generated each time you shop online. Used once, it expires immediately.',
+      'A simple explanation shows how a fresh code is generated for each transaction, making intercepted data worthless.',
   },
   {
     number: 6,
-    heading: 'Find your code in the app',
+    heading: 'dCVV location',
     description:
-      'Your dynamic CVV is always visible in the app — ready for your next purchase, and worthless to anyone who intercepts it.',
+      'The cardholder is shown exactly where to find their dynamic CVV in the app — no confusion, no friction.',
+  },
+  {
+    number: 7,
+    heading: 'dCVV on',
+    description:
+      'A single toggle activates Dynamic CVV. Protection is live immediately — no branch visit, no card replacement.',
+  },
+  {
+    number: 8,
+    heading: 'Show dCVV',
+    description:
+      'The current dynamic code is displayed in-app, ready to use at checkout. Used once, it expires immediately.',
   },
 ]
 
@@ -51,12 +63,12 @@ export function HowItWorksSection() {
             How it works
           </h2>
           <p className="text-base-content/60 mt-4 max-w-2xl mx-auto">
-            Six taps. Full protection. No friction for genuine cardholders.
+            Eight screens. Full protection. No friction for genuine cardholders.
           </p>
         </div>
 
         {/* Step cards grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {steps.map((step) => (
             <div
               key={step.number}
