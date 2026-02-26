@@ -33,68 +33,104 @@ export function HeroCvvCard() {
 
   return (
     <div
-      className="relative w-full select-none"
-      style={{ transform: 'rotate(-3deg)' }}
+      className="relative w-full max-w-[38rem] select-none"
       aria-hidden="true"
     >
       {/* Teal glow layer */}
       <div className="absolute -inset-4 rounded-3xl blur-2xl opacity-30 bg-accent" />
-      {/* Card body — back of card */}
-      <div className="relative rounded-2xl bg-base-300 shadow-2xl border border-base-content/10 overflow-hidden">
-        {/* Top gap before magnetic stripe */}
-        <div className="h-10" />
-        {/* Magnetic stripe — full width dark bar */}
-        <div className="h-14 bg-base-content/85 w-full" />
-        {/* Card interior */}
-        <div className="px-8 pt-5 pb-7">
-          {/* Signature strip + CVV box row */}
-          <div className="flex items-stretch gap-4 mb-6">
-            {/* Signature strip */}
-            <div className="flex-1 rounded-lg bg-base-content/10 border border-base-content/15 flex items-center px-4 py-3 min-h-[3.5rem]">
-              <span className="font-serif italic text-sm text-base-content/30 tracking-wide">
-                Authorised Signature
-              </span>
-            </div>
-            {/* CVV box */}
-            <div className="flex flex-col items-center justify-center gap-1.5">
-              <span className="text-xs uppercase tracking-wider text-base-content/40">CVV</span>
-              <div
-                className="flex gap-1 rounded-lg bg-base-content/10 border border-base-content/15 px-3 py-1.5"
-                role="status"
-                aria-label="Security code updating"
-              >
-                {cvv.map((digit, i) => (
-                  <div key={i} className="relative h-8 w-6 overflow-hidden text-center">
-                    <div
-                      className="absolute flex flex-col transition-transform duration-500 ease-in-out"
-                      style={{
-                        transform: `translateY(-${digit * 10}%)`,
-                        transitionDelay: flipping ? `${i * FLIP_STAGGER_MS}ms` : '0ms',
-                      }}
-                    >
-                      {DIGITS.map((d) => (
-                        <span
-                          key={d}
-                          className="flex h-8 w-6 items-center justify-center font-mono text-lg font-bold text-accent"
-                        >
-                          {d}
-                        </span>
-                      ))}
-                    </div>
+      {/* Card body — back of card, original styling */}
+      <div
+        className="hero-credit-card relative overflow-hidden rounded-[1.25rem] border border-white/10 p-10"
+        style={{
+          background: 'linear-gradient(to bottom right, #1f2937, #111827)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+          aspectRatio: '1.586 / 1',
+        }}
+      >
+        {/* Magnetic stripe */}
+        <div
+          className="absolute left-0 right-0 top-10 h-16 bg-black/80"
+          aria-hidden
+        />
+        {/* Signature area + CVV */}
+        <div className="absolute left-10 right-10 top-36 flex items-center gap-5">
+          <div
+            className="hero-signature-panel flex flex-1 items-center rounded px-3 py-0"
+            style={{
+              height: '3.25rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              backgroundImage: `repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 4px,
+                rgba(0,0,0,0.03) 4px,
+                rgba(0,0,0,0.03) 5px
+              )`,
+            }}
+          >
+            <span
+              className="text-sm text-[#4b5563]"
+              style={{
+                fontFamily: "'Brush Script MT', cursive",
+                transform: 'rotate(-2deg)',
+              }}
+            >
+              Authorized Signature
+            </span>
+          </div>
+          <div
+            className="flex h-[3.25rem] w-[5.25rem] items-center justify-center rounded-lg"
+            style={{
+              border: '2px solid rgba(59, 130, 246, 0.5)',
+              backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            }}
+            role="status"
+            aria-label="Security code updating"
+          >
+            <div className="flex gap-[3px]">
+              {cvv.map((digit, i) => (
+                <div key={i} className="relative h-8 w-5 overflow-hidden text-center">
+                  <div
+                    className="absolute flex flex-col transition-transform duration-600 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+                    style={{
+                      transform: `translateY(-${digit * 10}%)`,
+                      transitionDelay: flipping ? `${i * FLIP_STAGGER_MS}ms` : '0ms',
+                    }}
+                  >
+                    {DIGITS.map((d) => (
+                      <span
+                        key={d}
+                        className="flex h-8 w-5 items-center justify-center font-mono text-xl font-bold tracking-wider"
+                        style={{ color: 'var(--brand-blue)' }}
+                      >
+                        {d}
+                      </span>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
-          {/* Bottom labels */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-widest text-base-content/30">
-              Electronic Use Only
-            </span>
-            <span className="font-mono text-xs tracking-wider text-base-content/30">
-              SAFECYPHER LTD.
-            </span>
+        </div>
+        {/* Footer: chip + labels */}
+        <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between text-[0.75rem] uppercase tracking-widest text-gray-500">
+          <div className="flex flex-col gap-1.5">
+            <div
+              className="flex h-11 w-16 items-center justify-center rounded"
+              style={{
+                background: 'linear-gradient(to right, rgba(250, 204, 21, 0.5), rgba(202, 138, 4, 0.5))',
+              }}
+            >
+              <div
+                className="h-7 w-11 rounded"
+                style={{
+                  background: 'linear-gradient(to right, rgba(250, 204, 21, 0.3), rgba(202, 138, 4, 0.3))',
+                }}
+              />
+            </div>
+            <span>Electronic Use Only</span>
           </div>
+          <span className="font-mono">SafeCypher Ltd.</span>
         </div>
       </div>
     </div>

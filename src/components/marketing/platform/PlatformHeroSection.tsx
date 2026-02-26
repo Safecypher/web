@@ -22,7 +22,7 @@ export function PlatformHeroSection() {
         </p>
         <p className="text-base-content/70 text-lg leading-relaxed">
           SafeCypher&apos;s position is simple: the only fix is a credential that expires before it
-          can be used. Dynamic, time-sensitive, single-use. Everything else — tokenisation, 3DS,
+          can be re-used. Dynamic, time-sensitive, single-use. Everything else — tokenisation, 3DS,
           behavioural scoring — is valuable, and insufficient.
         </p>
       </div>

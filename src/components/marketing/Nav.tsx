@@ -22,10 +22,10 @@ export function Nav() {
 
         {/* Right side: Portal icon + CTA */}
         <div className="flex items-center gap-3">
-          {/* Portal link */}
+          {/* Portal link 
           <Link href="/portal" className="btn btn-ghost text-base font-medium">
             Sign in
-          </Link>
+          </Link>*/}
 
           {/* Request Demo CTA */}
           <Link href="/contact">

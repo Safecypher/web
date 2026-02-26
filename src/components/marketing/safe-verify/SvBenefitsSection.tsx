@@ -78,7 +78,7 @@ const benefits = [
   },
   {
     Icon: ShieldCheckIcon,
-    title: 'Vishing protection built in',
+    title: 'Phishing protection built in',
     desc: "Customers see verified caller identity in-app. Spoof calls that don\u2019t originate from the bank cannot trigger the verification display.",
   },
   {
