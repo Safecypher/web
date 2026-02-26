@@ -132,6 +132,10 @@ Recent decisions affecting current work:
 - Create privacy policy and terms and conditions pages (`.planning/todos/pending/2026-02-23-create-privacy-policy-and-terms-and-conditions-pages.md`)
 - Add resources page or remove footer link (`.planning/todos/pending/2026-02-23-add-resources-page-or-remove-footer-link.md`)
 
+### Roadmap Evolution
+
+- Phase 7 added: Add value calculators to the portal
+
 ### Blockers/Concerns
 
 - [Phase 3 - RESOLVED]: Architecture diagram (one API → seven products) delivered as CSS two-tier box diagram in Plan 03-01; production SVG can replace it later without page structure change

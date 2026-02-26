@@ -138,3 +138,12 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 4. Safe Verify | 2/4 | In Progress|  |
 | 5. Company + Contact | 2/2 | Complete   | 2026-02-21 |
 | 6. Analytics + CRM | 0/3 | Not started | - |
+
+### Phase 7: Add value calculators to the portal
+
+**Goal:** [To be planned]
+**Depends on:** Phase 6
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 7 to break down)
