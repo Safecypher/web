@@ -15,3 +15,5 @@
 # NEXT_PUBLIC_POSTHOG_KEY = "<key>"   (PostHog project API key — set in both production and preview)
 # NEXT_PUBLIC_POSTHOG_HOST = "https://app.posthog.com"  (or your EU cloud endpoint)
 # NEXT_PUBLIC_SITE_URL = "https://safecypher.com"        (production canonical URL)
+# NEXT_PUBLIC_SUPABASE_URL = "<url>"  (Supabase project URL — Dashboard → Project Settings → API → Project URL)
+# NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "<key>"  (Supabase anon/public key — Dashboard → Project Settings → API)

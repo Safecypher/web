@@ -17,7 +17,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">1. Acceptance of terms</h2>
             <p className="mt-3 leading-relaxed">
-              By accessing or using the SafeCypher website at safecypher.com (the "Site"), you agree
+              By accessing or using the SafeCypher website at safecypher.com (the &ldquo;Site&rdquo;), you agree
               to be bound by these Terms &amp; Conditions. If you do not agree, please do not use the Site.
             </p>
           </section>
@@ -53,7 +53,7 @@ export default function TermsPage() {
             <p className="mt-3 leading-relaxed">
               All content on this Site — including text, graphics, logos, and software — is the
               property of SafeCypher Ltd or its licensors and is protected by applicable intellectual
-              property laws. Nothing on this Site grants you a licence to use SafeCypher's intellectual
+              property laws. Nothing on this Site grants you a licence to use SafeCypher&apos;s intellectual
               property except as expressly stated.
             </p>
           </section>
@@ -61,7 +61,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">5. Disclaimers</h2>
             <p className="mt-3 leading-relaxed">
-              The Site is provided on an "as is" basis. SafeCypher makes no warranties, express or
+              The Site is provided on an &ldquo;as is&rdquo; basis. SafeCypher makes no warranties, express or
               implied, regarding the accuracy, completeness, or fitness for a particular purpose of
               any content on the Site. We reserve the right to modify or withdraw the Site at any time.
             </p>

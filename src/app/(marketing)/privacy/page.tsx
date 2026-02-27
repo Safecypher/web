@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">1. Who we are</h2>
             <p className="mt-3 leading-relaxed">
-              SafeCypher Ltd ("SafeCypher", "we", "us", or "our") operates the website at safecypher.com.
+              SafeCypher Ltd (&ldquo;SafeCypher&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website at safecypher.com.
               We are a financial technology company providing card-not-present fraud elimination solutions
               to financial institutions and merchants.
             </p>
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-semibold text-base-content">8. Changes to this policy</h2>
             <p className="mt-3 leading-relaxed">
               We may update this policy from time to time. Material changes will be noted by updating
-              the "Last updated" date at the top of this page.
+              the &ldquo;Last updated&rdquo; date at the top of this page.
             </p>
           </section>
 
