@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T12:27:00.000Z"
+last_updated: "2026-02-27T16:50:00.000Z"
 progress:
   total_phases: 7
   completed_phases: 6
   total_plans: 26
-  completed_plans: 23
+  completed_plans: 24
 ---
 
 # Project State
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 7 of 7 (Add value calculators to the portal)
-Plan: 3 of 5 in current phase — Plan 01 COMPLETE (auth infrastructure), Plan 02 COMPLETE (calculator engine)
-Status: Phase 07 IN PROGRESS — Auth layer wired (Supabase magic link, proxy middleware, PKCE callback); Calculator engine TDD-verified; 2/5 plans complete
-Last activity: 2026-02-27 — Plan 07-01 complete (Supabase auth: proxy.ts, login page, PKCE callback, Attio route fix)
+Plan: 4 of 5 in current phase — Plan 01 COMPLETE (auth infrastructure), Plan 02 COMPLETE (calculator engine), Plan 03 COMPLETE (calculator UI)
+Status: Phase 07 IN PROGRESS — Auth layer wired; Calculator engine TDD-verified; Calculator UI complete with URL state, bar chart, sensitivity table, PDF export; 3/5 plans complete
+Last activity: 2026-02-27 — Plan 07-03 complete (portal shell layout, CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton)
 
-Progress: [███░░] 60% of Phase 07
+Progress: [████░] 80% of Phase 07
 
 ## Performance Metrics
 
@@ -58,6 +58,7 @@ Progress: [███░░] 60% of Phase 07
 | Phase 06-analytics-crm P01 | 2 | 2 tasks | 4 files |
 | Phase 06-analytics-crm P02 | 3 | 2 tasks | 5 files |
 | Phase 06-analytics-crm P03 | 4 | 2 tasks | 6 files |
+| Phase 07 P03 | 32 | 3 tasks | 13 files |
 | Phase 07 P02 | 4 | 3 tasks | 5 files |
 | Phase 07 P01 | 18 | 2 tasks | 12 files |
 
@@ -144,6 +145,12 @@ Recent decisions affecting current work:
 - [Phase 07-01]: getUser() used exclusively for server-side auth checks — getSession() reads cookie without revalidation and can be spoofed
 - [Phase 07-01]: Separate `resending` boolean for resend state in login page — TypeScript control-flow narrows status to 'sent' inside that JSX branch, making status === 'sending' a type error
 - [Phase 07-01]: Three-branch Attio logic: if(name && email) → upsert person+note; elif(email) → note only; else → log only
+- [Phase 07-03]: NuqsAdapter in portal layout only — adding to root layout breaks marketing URL handling (Pitfall 3 confirmed)
+- [Phase 07-03]: Server Actions use absolute BASE URL via NEXT_PUBLIC_SITE_URL — relative URLs fail server-side with no implicit host
+- [Phase 07-03]: jsPDF dynamic import inside onClick handler only — module-scope import causes window is not defined at SSR
+- [Phase 07-03]: Recharts Tooltip formatter takes number | undefined due to exactOptionalPropertyTypes — null guard required
+- [Phase 07-03]: exactOptionalPropertyTypes requires conditional render for optional props: portfolioSize ? <C portfolioSize={v} /> : <C />
+- [Phase 07-03]: Interchange uplift shown separately in ResultsPanel expandable section — NOT added into headline totalYr1Savings
 
 ### Pending Todos
 
@@ -166,5 +173,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 07-01-PLAN.md — Supabase auth infrastructure: proxy.ts, login page, PKCE callback route, Attio route fix. Build and lint pass. Phase 07 IN PROGRESS (2/5 plans done — 01 auth + 02 engine).
+Stopped at: Completed 07-03-PLAN.md — Portal shell layout, full calculator UI (CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton), Server Actions. Build and lint pass. Phase 07 IN PROGRESS (3/5 plans done — 01 auth + 02 engine + 03 calculator UI).
 Resume file: None
