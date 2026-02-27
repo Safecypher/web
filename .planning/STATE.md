@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 7 of 7 (Add value calculators to the portal)
-Plan: 4 of 5 in current phase — Plan 01 COMPLETE (auth infrastructure), Plan 02 COMPLETE (calculator engine), Plan 03 COMPLETE (calculator UI)
-Status: Phase 07 IN PROGRESS — Auth layer wired; Calculator engine TDD-verified; Calculator UI complete with URL state, bar chart, sensitivity table, PDF export; 3/5 plans complete
-Last activity: 2026-02-27 — Plan 07-03 complete (portal shell layout, CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton)
+Plan: 5 of 5 in current phase — Plan 01 COMPLETE (auth infrastructure), Plan 02 COMPLETE (calculator engine), Plan 03 COMPLETE (calculator UI), Plan 04 COMPLETE (portal funnel: demo page, homepage teaser, contact form)
+Status: Phase 07 IN PROGRESS — Auth layer wired; Calculator engine TDD-verified; Calculator UI complete; Portal funnel complete; 4/5 plans complete
+Last activity: 2026-02-27 — Plan 07-04 complete (/portal/demo with BoA mockup iframe + fireMockupViewed Server Action; homepage teaser form with portfolioSize redirect chain; contact form calculator results summary box)
 
-Progress: [████░] 80% of Phase 07
+Progress: [████░] 96% of Phase 07
 
 ## Performance Metrics
 
@@ -151,6 +151,9 @@ Recent decisions affecting current work:
 - [Phase 07-03]: Recharts Tooltip formatter takes number | undefined due to exactOptionalPropertyTypes — null guard required
 - [Phase 07-03]: exactOptionalPropertyTypes requires conditional render for optional props: portfolioSize ? <C portfolioSize={v} /> : <C />
 - [Phase 07-03]: Interchange uplift shown separately in ResultsPanel expandable section — NOT added into headline totalYr1Savings
+- [Phase 07-04]: metadata + 'use client' cannot coexist — split DemoPageTracker into separate 'use client' file; page.tsx stays Server Component exporting metadata
+- [Phase 07-04]: BoA demo assets in public/demos/boa/ — relative img src paths in HTML require co-located images in same directory
+- [Phase 07-04]: window.location.href for teaser redirect — reliable with doubly-encoded callbackUrl containing portfolioSize
 
 ### Pending Todos
 
@@ -173,5 +176,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 07-03-PLAN.md — Portal shell layout, full calculator UI (CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton), Server Actions. Build and lint pass. Phase 07 IN PROGRESS (3/5 plans done — 01 auth + 02 engine + 03 calculator UI).
+Stopped at: Completed 07-04-PLAN.md — /portal/demo page (BoA mockup iframe + context panel + DemoPageTracker firing fireMockupViewed); fireMockupViewed Server Action added to attio.ts; homepage DemoFormSection teaser form with portfolioSize redirect chain; ContactFormSection yr1/breakeven summary box. Build and lint pass. Phase 07 IN PROGRESS (4/5 plans done — 01 auth + 02 engine + 03 calculator UI + 04 portal funnel).
 Resume file: None

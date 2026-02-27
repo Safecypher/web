@@ -144,7 +144,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 **Goal:** Prospects authenticated in the portal can use an interactive ROI calculator to quantify the financial impact of CNP fraud and SafeCypher's solution — with real-time results, shareable URL state, PDF export, and pre-filled sales handoff. The homepage teaser funnels visitors into the portal, and the agentic demo page showcases the product in action.
 **Depends on:** Phase 6
 **Requirements**: PORT-02, PORT-03, PORT-04, PORT-05, PORT-06, PORT-07, PORT-08, HOME-07
-**Plans:** 2/5 plans executed
+**Plans:** 4/5 plans executed
 
 Plans:
 - [ ] 07-01-PLAN.md — Supabase auth: middleware, magic link login page, PKCE callback, Supabase helper factories; fix Attio route `if (body.name && body.email)` guard to prevent TypeError on calculator_run events
