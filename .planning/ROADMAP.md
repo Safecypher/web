@@ -141,9 +141,14 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 ### Phase 7: Add value calculators to the portal
 
-**Goal:** [To be planned]
+**Goal:** Prospects authenticated in the portal can use an interactive ROI calculator to quantify the financial impact of CNP fraud and SafeCypher's solution — with real-time results, shareable URL state, PDF export, and pre-filled sales handoff. The homepage teaser funnels visitors into the portal, and the agentic demo page showcases the product in action.
 **Depends on:** Phase 6
-**Plans:** 0 plans
+**Requirements**: PORT-02, PORT-03, PORT-04, PORT-05, PORT-06, PORT-07, PORT-08, HOME-07
+**Plans:** 5 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 7 to break down)
+- [ ] 07-01-PLAN.md — Supabase auth: middleware, magic link login page, PKCE callback, Supabase helper factories, Attio route genericised
+- [ ] 07-02-PLAN.md — Calculator engine: pure TypeScript formula module (TDD) — types, defaults, calculate() function with unit tests
+- [ ] 07-03-PLAN.md — Portal shell + dashboard + full calculator UI: layout, sidebar, CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton, Server Action for Attio
+- [ ] 07-04-PLAN.md — Demo page, homepage teaser widget, contact form calculator pre-fill
+- [ ] 07-05-PLAN.md — End-to-end human verification of full portal funnel
