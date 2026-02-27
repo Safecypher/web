@@ -173,6 +173,27 @@ None beyond the auto-fixed deviations above.
 - Plan 07-04 (homepage teaser + contact form wiring) can import PortalLoginTracker pattern and use the portal shell
 - NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY must be added to Netlify Dashboard before portal auth works in production (documented in 07-01 summary)
 
+## Self-Check: PASSED
+
+All created files verified present:
+- FOUND: `src/app/actions/attio.ts`
+- FOUND: `src/app/(portal)/layout.tsx`
+- FOUND: `src/app/(portal)/portal/page.tsx`
+- FOUND: `src/app/(portal)/portal/PortalLoginTracker.tsx`
+- FOUND: `src/app/(portal)/portal/calculator/page.tsx`
+- FOUND: `src/components/portal/PortalSidebar.tsx`
+- FOUND: `src/components/portal/calculator/CalculatorPage.tsx`
+- FOUND: `src/components/portal/calculator/InputSlider.tsx`
+- FOUND: `src/components/portal/calculator/ResultsPanel.tsx`
+- FOUND: `src/components/portal/calculator/SavingsBarChart.tsx`
+- FOUND: `src/components/portal/calculator/SensitivityTable.tsx`
+- FOUND: `src/components/portal/calculator/PdfExportButton.tsx`
+
+All commits verified:
+- FOUND: `00e6b23` — feat(07-03): portal shell layout, sidebar, dashboard, and Server Actions
+- FOUND: `c08fbe6` — feat(07-03): calculator route, CalculatorPage, InputSlider, ResultsPanel
+- FOUND: `99bf6b8` — feat(07-03): SavingsBarChart, SensitivityTable, PdfExportButton
+
 ---
 *Phase: 07-add-value-calculators-to-the-portal*
 *Completed: 2026-02-27*
