@@ -45,6 +45,15 @@ export function ContactFormSection() {
     }
   }, [urlParam])
 
+  // Calculator results params (display-only, no form pre-fill)
+  const yr1Param = searchParams.get('yr1')
+  const breakevenParam = searchParams.get('breakeven')
+  const yr1Savings = yr1Param ? parseFloat(yr1Param) : null
+  const breakevenDays = breakevenParam ? parseFloat(breakevenParam) : null
+
+  const formatCurrency = (v: number) =>
+    '$' + Math.round(v).toLocaleString('en', { maximumFractionDigits: 0 })
+
   const { heading, buttonText } = COPY[source]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -117,6 +126,17 @@ export function ContactFormSection() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
           {/* Form — left column, primary action */}
           <form name="contact-request" onSubmit={handleSubmit} className="space-y-6">
+            {source === 'calculator' && yr1Savings != null && (
+              <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
+                <p className="text-sm font-semibold text-primary mb-1">Your calculator results</p>
+                <p className="text-base-content/80 text-sm">
+                  Year 1 savings: <strong>{formatCurrency(yr1Savings)}</strong>
+                  {breakevenDays != null && (
+                    <> &bull; Breakeven: <strong>{Math.round(breakevenDays)} days</strong></>
+                  )}
+                </p>
+              </div>
+            )}
             <input type="hidden" name="form-name" value="contact-request" />
 
             <div className="grid sm:grid-cols-2 gap-6">
