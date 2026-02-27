@@ -1,3 +1,16 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: unknown
+last_updated: "2026-02-27T12:19:47.981Z"
+progress:
+  total_phases: 7
+  completed_phases: 6
+  total_plans: 26
+  completed_plans: 22
+---
+
 # Project State
 
 ## Project Reference
@@ -9,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 
 ## Current Position
 
-Phase: 6 of 6 (Analytics + CRM)
-Plan: 3 of 3 in current phase — Plan 03 COMPLETE
-Status: Phase 06 COMPLETE — All PostHog event instrumentation wired; forms route through intermediate API; CTA clicks tracked
-Last activity: 2026-02-23 — Plan 06-03 complete (form event instrumentation + CTA click tracking across all public pages)
+Phase: 7 of 7 (Add value calculators to the portal)
+Plan: 2 of 5 in current phase — Plan 02 COMPLETE
+Status: Phase 07 IN PROGRESS — Calculator formula engine built and tested; 14/14 tests passing against spreadsheet verified values
+Last activity: 2026-02-27 — Plan 07-02 complete (pure TypeScript calculator engine with vitest TDD; types, defaults, engine)
 
-Progress: [███] 100% of Phase 06
+Progress: [██░░░] 40% of Phase 07
 
 ## Performance Metrics
 
@@ -45,6 +58,7 @@ Progress: [███] 100% of Phase 06
 | Phase 06-analytics-crm P01 | 2 | 2 tasks | 4 files |
 | Phase 06-analytics-crm P02 | 3 | 2 tasks | 5 files |
 | Phase 06-analytics-crm P03 | 4 | 2 tasks | 6 files |
+| Phase 07 P02 | 4 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -122,6 +136,9 @@ Recent decisions affecting current work:
 - [Phase 06-03]: form_start deduplication via formStarted boolean state — fires once on first name-field keystroke, not on every keystroke
 - [Phase 06-03]: Input component accepts onKeyDown directly — forwardRef + ...props spread pattern confirmed; no wrapper div needed
 - [Phase 06-03]: SvBenefitsSection unchanged — confirmed content-only section with no CTA links after reading current file
+- [Phase 07-02]: vitest added as dev dependency for TDD — no test framework existed in project
+- [Phase 07-02]: Fee base is cvvRequired transactions (not total CNP) — using wrong base causes 2x error confirmed against spreadsheet
+- [Phase 07-02]: Interchange uplift tracked separately — NOT added into totalYr1Savings (matches spreadsheet G97 vs G76 distinction)
 
 ### Pending Todos
 
@@ -143,6 +160,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-02-23
-Stopped at: Completed 06-03-PLAN.md — Form event instrumentation: DemoFormSection + ContactFormSection POST JSON to intermediate routes; form_start, demo_request, contact_request, posthog.identify wired. CTA clicks instrumented: cta_click {source: hero/urgency/calculator/product-page}; calendly_open on Calendly button. Phase 06 COMPLETE (3/3 plans done).
+Last session: 2026-02-27
+Stopped at: Completed 07-02-PLAN.md — Calculator formula engine: types.ts + defaults.ts + engine.ts + 14 passing Vitest tests. Verified totalYr1Savings=$3,866,043.47 and breakevenDays=23.85 at USD defaults. Phase 07 IN PROGRESS (2/5 plans done).
 Resume file: None
