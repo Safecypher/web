@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T12:19:47.981Z"
+last_updated: "2026-02-27T12:27:00.000Z"
 progress:
   total_phases: 7
   completed_phases: 6
   total_plans: 26
-  completed_plans: 22
+  completed_plans: 23
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every page must convert visitors into demo requests, deepen portal engagement, or give the sales team deal-readiness signal — nothing ships that doesn't serve one of those three outcomes.
-**Current focus:** Phase 5 (portal)
+**Current focus:** Phase 7 (portal calculators)
 
 ## Current Position
 
 Phase: 7 of 7 (Add value calculators to the portal)
-Plan: 2 of 5 in current phase — Plan 02 COMPLETE
-Status: Phase 07 IN PROGRESS — Calculator formula engine built and tested; 14/14 tests passing against spreadsheet verified values
-Last activity: 2026-02-27 — Plan 07-02 complete (pure TypeScript calculator engine with vitest TDD; types, defaults, engine)
+Plan: 3 of 5 in current phase — Plan 01 COMPLETE (auth infrastructure), Plan 02 COMPLETE (calculator engine)
+Status: Phase 07 IN PROGRESS — Auth layer wired (Supabase magic link, proxy middleware, PKCE callback); Calculator engine TDD-verified; 2/5 plans complete
+Last activity: 2026-02-27 — Plan 07-01 complete (Supabase auth: proxy.ts, login page, PKCE callback, Attio route fix)
 
-Progress: [██░░░] 40% of Phase 07
+Progress: [███░░] 60% of Phase 07
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [██░░░] 40% of Phase 07
 | Phase 06-analytics-crm P02 | 3 | 2 tasks | 5 files |
 | Phase 06-analytics-crm P03 | 4 | 2 tasks | 6 files |
 | Phase 07 P02 | 4 | 3 tasks | 5 files |
+| Phase 07 P01 | 18 | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -139,6 +140,10 @@ Recent decisions affecting current work:
 - [Phase 07-02]: vitest added as dev dependency for TDD — no test framework existed in project
 - [Phase 07-02]: Fee base is cvvRequired transactions (not total CNP) — using wrong base causes 2x error confirmed against spreadsheet
 - [Phase 07-02]: Interchange uplift tracked separately — NOT added into totalYr1Savings (matches spreadsheet G97 vs G76 distinction)
+- [Phase 07-01]: Next.js 16 uses proxy.ts not middleware.ts — exported function must be named `proxy`, not `middleware`
+- [Phase 07-01]: getUser() used exclusively for server-side auth checks — getSession() reads cookie without revalidation and can be spoofed
+- [Phase 07-01]: Separate `resending` boolean for resend state in login page — TypeScript control-flow narrows status to 'sent' inside that JSX branch, making status === 'sending' a type error
+- [Phase 07-01]: Three-branch Attio logic: if(name && email) → upsert person+note; elif(email) → note only; else → log only
 
 ### Pending Todos
 
@@ -161,5 +166,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 07-02-PLAN.md — Calculator formula engine: types.ts + defaults.ts + engine.ts + 14 passing Vitest tests. Verified totalYr1Savings=$3,866,043.47 and breakevenDays=23.85 at USD defaults. Phase 07 IN PROGRESS (2/5 plans done).
+Stopped at: Completed 07-01-PLAN.md — Supabase auth infrastructure: proxy.ts, login page, PKCE callback route, Attio route fix. Build and lint pass. Phase 07 IN PROGRESS (2/5 plans done — 01 auth + 02 engine).
 Resume file: None
