@@ -147,8 +147,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 **Plans:** 5 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — Supabase auth: middleware, magic link login page, PKCE callback, Supabase helper factories, Attio route genericised
-- [ ] 07-02-PLAN.md — Calculator engine: pure TypeScript formula module (TDD) — types, defaults, calculate() function with unit tests
-- [ ] 07-03-PLAN.md — Portal shell + dashboard + full calculator UI: layout, sidebar, CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton, Server Action for Attio
-- [ ] 07-04-PLAN.md — Demo page, homepage teaser widget, contact form calculator pre-fill
-- [ ] 07-05-PLAN.md — End-to-end human verification of full portal funnel
+- [ ] 07-01-PLAN.md — Supabase auth: middleware, magic link login page, PKCE callback, Supabase helper factories; fix Attio route `if (body.name && body.email)` guard to prevent TypeError on calculator_run events
+- [ ] 07-02-PLAN.md — Calculator engine (TDD): pure TypeScript module with verified spreadsheet values ($3,866,043 Yr1 savings, 23.85-day breakeven); fee formula uses cvvRequired base not total CNP
+- [ ] 07-03-PLAN.md — Portal shell + full calculator UI: layout, sidebar, CalculatorPage, InputSlider, ResultsPanel, SavingsBarChart, SensitivityTable, PdfExportButton, Server Actions with absolute BASE URL
+- [ ] 07-04-PLAN.md — Demo page (mockup_viewed event), homepage teaser widget (portfolioSize redirect chain), contact form calculator results display
+- [ ] 07-05-PLAN.md — End-to-end human verification of full portal funnel with verified numeric checks
