@@ -38,3 +38,18 @@ export async function firePortalLogin(email: string) {
     console.error('[Attio] firePortalLogin failed', err)
   }
 }
+
+export async function fireMockupViewed(email?: string) {
+  try {
+    await fetch(`${BASE}/api/attio/event`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-internal-token': process.env.INTERNAL_API_SECRET ?? '',
+      },
+      body: JSON.stringify({ event: 'mockup_viewed', email }),
+    })
+  } catch (err) {
+    console.error('[Attio] fireMockupViewed failed', err)
+  }
+}
