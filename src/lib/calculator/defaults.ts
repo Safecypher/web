@@ -38,6 +38,14 @@ export const USD_DEFAULTS: Omit<CalculatorInputs, 'region'> = {
 // 70/30 split based on typical issuer portfolio composition
 export const PORTFOLIO_SPLIT_RATIO = { debit: 0.70, credit: 0.30 }
 
+// CNP transactions per card account — derived from spreadsheet defaults.
+// Used in simple mode to scale debitCNPTransactions/creditCNPTransactions
+// proportionally when the user changes account counts.
+export const TX_PER_ACCOUNT = {
+  debit: USD_DEFAULTS.debitCNPTransactions / USD_DEFAULTS.debitAccounts,   // ~66.0
+  credit: USD_DEFAULTS.creditCNPTransactions / USD_DEFAULTS.creditAccounts, // ~103.2
+}
+
 export const REGION_CURRENCY: Record<'USD' | 'GBP' | 'EUR', { symbol: string; locale: string }> = {
   USD: { symbol: '$', locale: 'en-US' },
   GBP: { symbol: '£', locale: 'en-GB' },

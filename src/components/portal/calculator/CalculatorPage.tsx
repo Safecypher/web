@@ -3,7 +3,7 @@
 import { useQueryState, parseAsFloat, parseAsStringLiteral } from 'nuqs'
 import { useMemo, useEffect, useRef, useState } from 'react'
 import { calculate } from '@/lib/calculator/engine'
-import { USD_DEFAULTS, PORTFOLIO_SPLIT_RATIO, REGION_CURRENCY } from '@/lib/calculator/defaults'
+import { USD_DEFAULTS, PORTFOLIO_SPLIT_RATIO, REGION_CURRENCY, TX_PER_ACCOUNT } from '@/lib/calculator/defaults'
 import type { CalculatorInputs } from '@/lib/calculator/types'
 import { fireCalculatorRun } from '@/app/actions/attio'
 import { createClient } from '@/lib/supabase/client'
@@ -187,8 +187,15 @@ export function CalculatorPage({ portfolioSize }: CalculatorPageProps) {
       ongoingAdoptionRate,
       debitFraudRate,
       creditFraudRate,
-      debitCNPTransactions,
-      creditCNPTransactions,
+      // In simple mode, scale CNP transactions proportionally from account counts
+      // so the portfolio sliders actually drive the fraud savings calculation.
+      // Advanced mode uses the directly-entered transaction values.
+      debitCNPTransactions: advancedMode
+        ? debitCNPTransactions
+        : Math.round(debitAccounts * TX_PER_ACCOUNT.debit),
+      creditCNPTransactions: advancedMode
+        ? creditCNPTransactions
+        : Math.round(creditAccounts * TX_PER_ACCOUNT.credit),
       debitAvgTxValue,
       creditAvgTxValue,
       debitCvvPct,
@@ -212,7 +219,7 @@ export function CalculatorPage({ portfolioSize }: CalculatorPageProps) {
     }),
     [
       debitAccounts, creditAccounts, year1AdoptionRate, ongoingAdoptionRate,
-      debitFraudRate, creditFraudRate, debitCNPTransactions, creditCNPTransactions,
+      debitFraudRate, creditFraudRate, advancedMode, debitCNPTransactions, creditCNPTransactions,
       debitAvgTxValue, creditAvgTxValue, debitCvvPct, creditCvvPct,
       debitLossPerCase, creditLossPerCase, issuerPct, institutionalCostMethod,
       institutionalCostMultiplier, debitFixedCostPerCase, creditFixedCostPerCase,
