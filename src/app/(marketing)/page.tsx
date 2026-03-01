@@ -4,6 +4,7 @@ import { AudiencesSection } from '@/components/marketing/home/AudiencesSection'
 import { OneIntegrationSection } from '@/components/marketing/home/OneIntegrationSection'
 import { ProofSection } from '@/components/marketing/home/ProofSection'
 import { HumanCostSection } from '@/components/marketing/home/HumanCostSection'
+import { CalculatorTeaserSection } from '@/components/marketing/home/CalculatorTeaserSection'
 import { DemoFormSection } from '@/components/marketing/home/DemoFormSection'
 import { QuoteSection } from '@/components/marketing/shared/QuoteSection'
 
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ProofSection />
       <QuoteSection />
       <HumanCostSection />
+      <CalculatorTeaserSection />
       <DemoFormSection />
     </>
   )

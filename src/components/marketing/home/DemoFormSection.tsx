@@ -14,7 +14,6 @@ export function DemoFormSection() {
   const [formState, setFormState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [formStarted, setFormStarted] = useState(false)
-  const [portfolioSize, setPortfolioSize] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,13 +56,6 @@ export function DemoFormSection() {
       setFormState('error')
       setErrorMessage('Could not reach the server. Check your connection and try again.')
     }
-  }
-
-  const handleTeaserSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!portfolioSize) return
-    const innerCallbackUrl = `/portal/calculator?portfolioSize=${encodeURIComponent(portfolioSize)}`
-    window.location.href = `/portal/login?callbackUrl=${encodeURIComponent(innerCallbackUrl)}`
   }
 
   if (formState === 'success') {
@@ -183,26 +175,6 @@ export function DemoFormSection() {
           </Button>
         </form>
 
-        {/* Portfolio size teaser — NOT a form field, per locked decision */}
-        <div className="mt-8 pt-8 border-t border-base-300 text-center">
-          <p className="text-base-content/50 text-sm mb-3">
-            Already know your transaction volume?
-          </p>
-          <form onSubmit={handleTeaserSubmit} className="flex flex-col sm:flex-row gap-2 justify-center items-center mt-3">
-            <input
-              type="number"
-              min="1"
-              placeholder="Total card accounts (e.g. 5,000,000)"
-              value={portfolioSize}
-              onChange={(e) => setPortfolioSize(e.target.value)}
-              className="input input-bordered input-sm w-56 text-sm"
-              aria-label="Total card accounts"
-            />
-            <button type="submit" className="btn btn-primary btn-sm">
-              See your savings &rarr;
-            </button>
-          </form>
-        </div>
       </div>
     </section>
   )
