@@ -23,7 +23,7 @@ const team: TeamMember[] = [
   {
     name: 'Ben Jordan',
     title: 'Head of Product & Innovation',
-    bio: 'Placeholder bio — one sentence about product background.',
+    bio: 'Ben brings extensive experience from senior leadership roles in payments services and fraud prevention, including work at the forefront of tackling card fraud with Europol. As Head of Product & Innovation, he channels that front-line expertise into the product strategy that makes card-not-present fraud a solved problem.',
     photo: '/team/ben-jordan.png',
   },
   {
