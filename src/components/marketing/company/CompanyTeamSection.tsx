@@ -17,7 +17,7 @@ const team: TeamMember[] = [
   {
     name: 'Andy Perry',
     title: 'CTPO',
-    bio: 'Placeholder bio — one sentence about technical background.',
+    bio: 'Andy brings deep technical and commercial expertise from senior leadership roles at Global Payments and TSYS, where he led infrastructure and business services operations spanning global processor and issuer networks. As CTPO, he applies that hands-on understanding of the payments technology landscape to architect the solutions that make card-not-present fraud obsolete.',
     photo: '/team/andy-perry.png',
   },
   {
