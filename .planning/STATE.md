@@ -165,6 +165,7 @@ All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-0
 - Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
 - Write Andy Perry bio for company team section (`.planning/todos/pending/2026-03-01-write-andy-perry-bio-for-company-team-section.md`)
 - Write Missi Smith bio for company team section (`.planning/todos/pending/2026-03-01-write-missi-smith-bio-for-company-team-section.md`)
+- Write Ben Jordan bio for company team section (`.planning/todos/pending/2026-03-01-write-ben-jordan-bio-for-company-team-section.md`)
 
 ### Blockers/Concerns
 
