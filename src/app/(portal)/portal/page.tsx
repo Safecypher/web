@@ -1,11 +1,8 @@
 import Link from 'next/link'
-import { PortalLoginTracker } from './PortalLoginTracker'
 
 export default function PortalPage() {
   return (
     <div className="max-w-2xl mx-auto py-12">
-      <PortalLoginTracker />
-
       <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
           <h1 className="card-title text-3xl font-bold mb-2">Welcome to SafeCypher Portal</h1>
