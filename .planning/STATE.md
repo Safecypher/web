@@ -163,6 +163,7 @@ All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-0
 
 - Wire real Calendly URL in production (`.planning/todos/pending/2026-02-23-wire-real-calendly-url-in-production.md`)
 - Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
+- Write Andy Perry bio for company team section (`.planning/todos/pending/2026-03-01-write-andy-perry-bio-for-company-team-section.md`)
 
 ### Blockers/Concerns
 
