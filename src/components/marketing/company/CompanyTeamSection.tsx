@@ -29,7 +29,7 @@ const team: TeamMember[] = [
   {
     name: 'Jeff Slawsky',
     title: 'MD - US Operations',
-    bio: 'Placeholder bio — one sentence about engineering background.',
+    bio: 'One of the bankcard industry\'s true pioneers, Jeff developed and launched the first-ever frequent flyer credit card and the first chip-based loyalty card, and has held senior leadership roles at HSBC, Bank One, and Bank of Boston. As MD of US Operations, he brings decades of strategic, operational, and regulatory expertise across the Americas, Europe, and Asia to drive SafeCypher\'s growth in the US market.',
     photo: '/team/jeff-slawsky.jpeg',
   },
   {
