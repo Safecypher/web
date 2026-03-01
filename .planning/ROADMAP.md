@@ -148,7 +148,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 **Gap Closure:** Closes gaps from v1.0-MILESTONE-AUDIT.md
 
 Plans:
-- [ ] 08-01-PLAN.md — Restore SvCtaSection to PageCtaSection wrapper (SV-09) + move PortalLoginTracker to fire on every portal auth regardless of callbackUrl (PORT-04)
+- [x] 08-01-PLAN.md — Restore SvCtaSection to PageCtaSection wrapper (SV-09) + move PortalLoginTracker to fire on every portal auth regardless of callbackUrl (PORT-04)
 
 ---
 

@@ -181,5 +181,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 07-05-PLAN.md — Human verification approved all Phase 7 requirements (PORT-02 through PORT-08 and HOME-07). Pre-verification auto-fix: --webpack flag added to build script + lightningcss-darwin-arm64 installed (commit a4cbf3a). Build and lint pass. Phase 07 COMPLETE. All 7 phases done — project milestone v1.0 complete.
+Stopped at: Completed 08-01-PLAN.md — Human verification approved both gap-closure fixes: /safe-verify dual CTAs confirmed, PortalLoginTracker fires on /portal/calculator entry path confirmed. SV-09 and PORT-04 satisfied. Phase 08 COMPLETE. All 8 phases done — project milestone v1.0 fully closed.
 Resume file: None
