@@ -11,7 +11,7 @@ const team: TeamMember[] = [
   {
     name: 'Mark Phillips',
     title: 'CEO',
-    bio: 'Fintech entrepreneur with a decade building fraud prevention infrastructure for card issuers.',
+    bio: 'Mark brings decades of senior marketing and digital leadership across global brands — from adidas and Beats Music to iFIT — alongside eight years as VP Digital and CMO at McKinsey. As CEO of SafeCypher, he combines deep go-to-market expertise with a passion for technology that helps people live, move, and transact safely in an AI-powered world.',
     photo: '/team/mark-phillips.png',
   },
   {
