@@ -139,7 +139,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 5. Company + Contact | 2/2 | Complete | 2026-02-21 |
 | 6. Analytics + CRM | 3/3 | Complete | 2026-02-23 |
 | 7. Value Calculators | 5/5 | Complete | 2026-03-01 |
-| 8. v1.0 Gap Closure | 0/1 | Not started | - |
+| 8. v1.0 Gap Closure | 1/1 | Complete   | 2026-03-01 |
 
 ### Phase 8: v1.0 Gap Closure
 **Goal:** Close the two gaps identified by the v1.0 milestone audit — restore the Safe Verify CTA to include both calculator and demo links, and fix the portal_login Attio event so it fires for all auth paths (not just manual portal dashboard navigation)
@@ -157,7 +157,7 @@ Plans:
 **Goal:** Prospects authenticated in the portal can use an interactive ROI calculator to quantify the financial impact of CNP fraud and SafeCypher's solution — with real-time results, shareable URL state, PDF export, and pre-filled sales handoff. The homepage teaser funnels visitors into the portal, and the agentic demo page showcases the product in action.
 **Depends on:** Phase 6
 **Requirements**: PORT-02, PORT-03, PORT-04, PORT-05, PORT-06, PORT-07, PORT-08, HOME-07
-**Plans:** 5/5 plans complete
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 07-01-PLAN.md — Supabase auth: middleware, magic link login page, PKCE callback, Supabase helper factories; fix Attio route `if (body.name && body.email)` guard to prevent TypeError on calculator_run events

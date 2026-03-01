@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
+milestone_name: Gap Closure
 status: unknown
-last_updated: "2026-03-01T08:04:30.697Z"
+last_updated: "2026-03-01T12:06:58.765Z"
 progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 26
-  completed_plans: 26
+  total_phases: 8
+  completed_phases: 8
+  total_plans: 27
+  completed_plans: 27
 ---
 
 # Project State
@@ -62,6 +62,7 @@ Progress: [█████] 100% — All phases complete
 | Phase 07 P02 | 4 | 3 tasks | 5 files |
 | Phase 07 P01 | 18 | 2 tasks | 12 files |
 | Phase 07 P05 | 10 | 1 tasks | 1 files |
+| Phase 08-v1-gap-closure P01 | 7 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -156,6 +157,8 @@ Recent decisions affecting current work:
 - [Phase 07-04]: BoA demo assets in public/demos/boa/ — relative img src paths in HTML require co-located images in same directory
 - [Phase 07-04]: window.location.href for teaser redirect — reliable with doubly-encoded callbackUrl containing portfolioSize
 - [Phase 07-05]: Build script uses --webpack not default Turbopack — @tailwindcss/node incompatible with Turbopack on Node 24/25; webpack fallback is stable and matches dev server
+- [Phase 08-v1-gap-closure]: SvCtaSection replaced with 4-line PageCtaSection wrapper — product page CTAs now consistent across DSC, Safe Verify, and Company
+- [Phase 08-v1-gap-closure]: PortalLoginTracker moved to portal layout.tsx — portal_login Attio event fires for all portal entry paths including primary /portal/calculator funnel
 
 ### Pending Todos
 
