@@ -41,12 +41,12 @@ const team: TeamMember[] = [
   {
     name: 'Bruce Bacon',
     title: 'Chief US Market Strategist',
-    bio: 'Placeholder bio — one sentence about operations background.',
+    bio: 'Bruce built an impressive track record in strategic planning and market development during a long career at TSYS, leading international expansions into Europe, China, and Brazil before serving as Group Executive for North American growth across Canada, Mexico, and the US. As Chief US Market Strategist, he brings that depth of payments expertise and commercial insight to drive SafeCypher\'s expansion across North America.',
   },
   {
     name: 'Richard Pickard',
     title: 'Project Management & Administration Manager',
-    bio: 'Placeholder bio — one sentence about operations background.',
+    bio: 'Richard brings over 15 years of IT project delivery experience across the UK and Europe, with a track record spanning vehicle fleet management, emissions reporting, and digital fuel card applications. At SafeCypher, he ensures every customer deployment is executed with precision and delivered to the highest standard.',
   },
 ]
 
