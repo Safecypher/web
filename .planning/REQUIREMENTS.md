@@ -79,14 +79,14 @@
 
 ### Portal (Phase 1)
 
-- **PORT-01**: NextAuth.js v5 magic-link auth — user enters work email → receives link via Loops → authenticated session (JWT, 30-day sliding)
-- **PORT-02**: Next.js middleware protects all `/portal/*` routes; unauthenticated users redirected with `callbackUrl` preserved
-- **PORT-03**: Portal dashboard `/portal` — landing page after login
-- **PORT-04**: Sales team Attio notification on new portal signup
-- **PORT-05**: Value calculator `/portal/calculator` — sliders + numeric override inputs (portfolio size, fraud rate, volume, avg tx value); real-time outputs (annual loss, projected loss, annual saving, 3-year ROI); Attio `calculator_run` event on debounced change (500ms)
-- **PORT-06**: Calculator CTA: "Talk to us about your results" → contact form with results pre-populated
-- **PORT-07**: Agentic commerce demo `/portal/demo` — existing BoA HTML served in iframe; `mockup_viewed` Attio event on page load; context panel alongside mockup
-- **PORT-08**: Homepage calculator teaser: single portfolio size input → redirect to `/portal/calculator?portfolioSize=VALUE` with login prompt; pre-populate after auth
+- [x] **PORT-01**: NextAuth.js v5 magic-link auth — user enters work email → receives link via Loops → authenticated session (JWT, 30-day sliding)
+- [x] **PORT-02**: Next.js middleware protects all `/portal/*` routes; unauthenticated users redirected with `callbackUrl` preserved
+- [x] **PORT-03**: Portal dashboard `/portal` — landing page after login
+- [x] **PORT-04**: Sales team Attio notification on new portal signup
+- [x] **PORT-05**: Value calculator `/portal/calculator` — sliders + numeric override inputs (portfolio size, fraud rate, volume, avg tx value); real-time outputs (annual loss, projected loss, annual saving, 3-year ROI); Attio `calculator_run` event on debounced change (500ms)
+- [x] **PORT-06**: Calculator CTA: "Talk to us about your results" → contact form with results pre-populated
+- [x] **PORT-07**: Agentic commerce demo `/portal/demo` — existing BoA HTML served in iframe; `mockup_viewed` Attio event on page load; context panel alongside mockup
+- [x] **PORT-08**: Homepage calculator teaser: single portfolio size input → redirect to `/portal/calculator?portfolioSize=VALUE` with login prompt; pre-populate after auth
 
 ### Phase 1 Pages
 
@@ -175,12 +175,22 @@
 | CONT-03 | Phase 5 — Company + Contact | Complete |
 | ANLT-01 | Phase 6 — Analytics + CRM | Complete |
 | ANLT-02 | Phase 6 — Analytics + CRM | Complete |
+| PORT-01 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-02 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-03 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-04 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-05 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-06 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-07 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-08 | Phase 7 — Portal + Value Calculator | Complete |
 
 **Coverage:**
 - v1 requirements: 41 total
 - Mapped to phases: 41
 - Unmapped: 0
+- v2 Phase 7 requirements: 8 total (PORT-01 through PORT-08)
+- Phase 7 complete: 8/8 PORT requirements verified
 
 ---
 *Requirements defined: 2026-02-19*
-*Last updated: 2026-02-19 — traceability updated after roadmap creation (phases consolidated: PLAT+DSC into Phase 3, COMP+CONT into Phase 5, ANLT into Phase 6)*
+*Last updated: 2026-03-01 — Phase 7 (PORT-01 through PORT-08) added to traceability; all marked Complete after human verification (plan 07-05 approved)*
