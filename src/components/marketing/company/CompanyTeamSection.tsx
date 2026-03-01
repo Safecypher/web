@@ -35,7 +35,7 @@ const team: TeamMember[] = [
   {
     name: 'Missi Smith',
     title: 'Chief Customer Officer',
-    bio: 'Placeholder bio — one sentence about sales background.',
+    bio: 'Missi brings over 25 years of payments expertise from TSYS — now Global Payments — where she rose to Senior Vice President of Issuer Implementations, overseeing business delivery of new portfolio and product implementations across the industry. As Chief Customer Officer, she applies that deep operational knowledge to ensure every SafeCypher customer achieves a seamless deployment and lasting results.',
     photo: '/team/missi-smith.jpeg',
   },
   {
