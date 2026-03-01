@@ -167,6 +167,7 @@ All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-0
 - Write Missi Smith bio for company team section (`.planning/todos/pending/2026-03-01-write-missi-smith-bio-for-company-team-section.md`)
 - Write Ben Jordan bio for company team section (`.planning/todos/pending/2026-03-01-write-ben-jordan-bio-for-company-team-section.md`)
 - Write Mark Phillips bio for company team section (`.planning/todos/pending/2026-03-01-write-mark-phillips-bio-for-company-team-section.md`)
+- Write Jeff Slawsky bio for company team section (`.planning/todos/pending/2026-03-01-write-jeff-slawsky-bio-for-company-team-section.md`)
 
 ### Blockers/Concerns
 
