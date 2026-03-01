@@ -53,7 +53,7 @@
 - [x] **SV-06**: Quantified benefits section (ported from existing HTML)
 - [x] **SV-07**: Cross-link to Dynamic Security Codes (shared underlying technology)
 - [x] **SV-08**: Outbound flow diagram (SVG placeholder; production SVG to replace PDF in Phase 1)
-- [x] **SV-09**: CTAs: calculator link + demo request
+- [ ] **SV-09**: CTAs: calculator link + demo request
 
 ### Marketing — Company (Phase 0b)
 
@@ -82,7 +82,7 @@
 - [x] **PORT-01**: NextAuth.js v5 magic-link auth — user enters work email → receives link via Loops → authenticated session (JWT, 30-day sliding)
 - [x] **PORT-02**: Next.js middleware protects all `/portal/*` routes; unauthenticated users redirected with `callbackUrl` preserved
 - [x] **PORT-03**: Portal dashboard `/portal` — landing page after login
-- [x] **PORT-04**: Sales team Attio notification on new portal signup
+- [ ] **PORT-04**: Sales team Attio notification on new portal signup
 - [x] **PORT-05**: Value calculator `/portal/calculator` — sliders + numeric override inputs (portfolio size, fraud rate, volume, avg tx value); real-time outputs (annual loss, projected loss, annual saving, 3-year ROI); Attio `calculator_run` event on debounced change (500ms)
 - [x] **PORT-06**: Calculator CTA: "Talk to us about your results" → contact form with results pre-populated
 - [x] **PORT-07**: Agentic commerce demo `/portal/demo` — existing BoA HTML served in iframe; `mockup_viewed` Attio event on page load; context panel alongside mockup
@@ -165,7 +165,7 @@
 | SV-06 | Phase 4 — Safe Verify | Complete |
 | SV-07 | Phase 4 — Safe Verify | Complete |
 | SV-08 | Phase 4 — Safe Verify | Complete |
-| SV-09 | Phase 4 — Safe Verify | Complete |
+| SV-09 | Phase 8 — v1.0 Gap Closure | Pending |
 | COMP-01 | Phase 5 — Company + Contact | Complete |
 | COMP-02 | Phase 5 — Company + Contact | Complete |
 | COMP-03 | Phase 5 — Company + Contact | Complete |
@@ -178,7 +178,7 @@
 | PORT-01 | Phase 7 — Portal + Value Calculator | Complete |
 | PORT-02 | Phase 7 — Portal + Value Calculator | Complete |
 | PORT-03 | Phase 7 — Portal + Value Calculator | Complete |
-| PORT-04 | Phase 7 — Portal + Value Calculator | Complete |
+| PORT-04 | Phase 8 — v1.0 Gap Closure | Pending |
 | PORT-05 | Phase 7 — Portal + Value Calculator | Complete |
 | PORT-06 | Phase 7 — Portal + Value Calculator | Complete |
 | PORT-07 | Phase 7 — Portal + Value Calculator | Complete |
@@ -190,6 +190,7 @@
 - Unmapped: 0
 - v2 Phase 7 requirements: 8 total (PORT-01 through PORT-08)
 - Phase 7 complete: 8/8 PORT requirements verified
+- Phase 8 gap closure: 2 requirements reset to Pending (SV-09, PORT-04)
 
 ---
 *Requirements defined: 2026-02-19*

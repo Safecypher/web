@@ -133,11 +133,24 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete | 2026-02-19 |
-| 2. Homepage | 2/4 | In Progress|  |
-| 3. Platform + Dynamic Security Codes | 4/4 | Complete   | 2026-02-20 |
-| 4. Safe Verify | 2/4 | In Progress|  |
-| 5. Company + Contact | 2/2 | Complete   | 2026-02-21 |
-| 6. Analytics + CRM | 0/3 | Not started | - |
+| 2. Homepage | 4/4 | Complete | 2026-02-20 |
+| 3. Platform + Dynamic Security Codes | 4/4 | Complete | 2026-02-20 |
+| 4. Safe Verify | 4/4 | Complete | 2026-02-21 |
+| 5. Company + Contact | 2/2 | Complete | 2026-02-21 |
+| 6. Analytics + CRM | 3/3 | Complete | 2026-02-23 |
+| 7. Value Calculators | 5/5 | Complete | 2026-03-01 |
+| 8. v1.0 Gap Closure | 0/1 | Not started | - |
+
+### Phase 8: v1.0 Gap Closure
+**Goal:** Close the two gaps identified by the v1.0 milestone audit — restore the Safe Verify CTA to include both calculator and demo links, and fix the portal_login Attio event so it fires for all auth paths (not just manual portal dashboard navigation)
+**Depends on:** Phase 7
+**Requirements**: SV-09, PORT-04
+**Gap Closure:** Closes gaps from v1.0-MILESTONE-AUDIT.md
+
+Plans:
+- [ ] 08-01-PLAN.md — Restore SvCtaSection to PageCtaSection wrapper (SV-09) + move PortalLoginTracker to fire on every portal auth regardless of callbackUrl (PORT-04)
+
+---
 
 ### Phase 7: Add value calculators to the portal
 
