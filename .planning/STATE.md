@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: Gap Closure
-status: unknown
-last_updated: "2026-03-01T14:48:06.609Z"
+milestone_name: Website Rebuild
+status: complete
+last_updated: "2026-03-01"
 progress:
   total_phases: 8
   completed_phases: 8
@@ -15,17 +15,17 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-02-19)
+See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Every page must convert visitors into demo requests, deepen portal engagement, or give the sales team deal-readiness signal — nothing ships that doesn't serve one of those three outcomes.
-**Current focus:** Phase 7 (portal calculators)
+**Current focus:** Planning next milestone (v1.1)
 
 ## Current Position
 
-Phase: 7 of 7 (Add value calculators to the portal)
-Plan: 5 of 5 in current phase — ALL PLANS COMPLETE. Plan 01 (auth infrastructure), Plan 02 (calculator engine), Plan 03 (calculator UI), Plan 04 (portal funnel), Plan 05 (end-to-end verification)
-Status: Phase 07 COMPLETE — All 7 phases done. Project milestone v1.0 complete.
-Last activity: 2026-03-01 — Plan 07-05 complete (human verification approved; build fix --webpack flag + lightningcss arm64; all Phase 7 requirements PORT-02 through PORT-08 and HOME-07 confirmed passing)
+Milestone v1.0 COMPLETE — Archived 2026-03-01
+All 8 phases, 27 plans complete. Site shipped: marketing site + gated portal + ROI calculator + Attio CRM pipeline.
+
+Status: Ready for `/gsd:new-milestone` to define v1.1 scope.
 
 Progress: [█████] 100% — All phases complete
 
@@ -68,8 +68,7 @@ Progress: [█████] 100% — All phases complete
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
+All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-01).
 
 - [Pre-phase]: Next.js 14+ over Astro — portal requires auth middleware and server-side API routes
 - [Pre-phase]: DaisyUI + Tailwind CSS — component library without heavy UI framework overhead
@@ -164,22 +163,13 @@ Recent decisions affecting current work:
 
 - Wire real Calendly URL in production (`.planning/todos/pending/2026-02-23-wire-real-calendly-url-in-production.md`)
 - Add PostHog key to production env (`.planning/todos/pending/2026-02-23-add-posthog-key-to-production-env.md`)
-- Change portal nav link from lock icon to descriptive label (`.planning/todos/pending/2026-02-23-change-portal-nav-link-from-lock-icon-to-descriptive-label.md`)
-- Replace Irish Fintech Award placeholder with real badge image (`.planning/todos/pending/2026-02-23-replace-irish-fintech-award-placeholder-with-real-badge-image.md`)
-- Create privacy policy and terms and conditions pages (`.planning/todos/pending/2026-02-23-create-privacy-policy-and-terms-and-conditions-pages.md`)
-- Add resources page or remove footer link (`.planning/todos/pending/2026-02-23-add-resources-page-or-remove-footer-link.md`)
-
-### Roadmap Evolution
-
-- Phase 7 added: Add value calculators to the portal
 
 ### Blockers/Concerns
 
-- [Phase 3 - RESOLVED]: Architecture diagram (one API → seven products) delivered as CSS two-tier box diagram in Plan 03-01; production SVG can replace it later without page structure change
-- [Phase 4]: Production SVG for Safe Verify outbound flow diagram must replace the PDF in a future update (Phase 1 v2 milestone)
+- Confirm `src/proxy.ts` middleware wiring on Netlify production deploy (non-standard middleware name in Next.js 16)
 
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 08-01-PLAN.md — Human verification approved both gap-closure fixes: /safe-verify dual CTAs confirmed, PortalLoginTracker fires on /portal/calculator entry path confirmed. SV-09 and PORT-04 satisfied. Phase 08 COMPLETE. All 8 phases done — project milestone v1.0 fully closed.
+Stopped at: v1.0 milestone archived. All 8 phases, 27 plans complete. Ready for `/gsd:new-milestone` to define v1.1 scope.
 Resume file: None

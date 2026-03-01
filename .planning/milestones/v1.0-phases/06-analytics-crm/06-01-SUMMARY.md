@@ -80,7 +80,7 @@ Each task was committed atomically:
 1. **Task 1: Create /api/attio/event guarded Attio event route** - `b0d2da3` (feat)
 2. **Task 2: Create intermediate form-handler routes + netlify.toml env stubs** - `600c08c` (feat)
 
-**Plan metadata:** `(pending docs commit)` (docs: complete plan)
+**Plan metadata:** `27b2cfa` (docs: complete plan)
 
 ## Files Created/Modified
 - `src/app/api/attio/event/route.ts` - Server-side Attio event route: 403 guard, dev stub, production person upsert + note creation
@@ -122,3 +122,13 @@ In dev: no env vars needed — routes use stub mode automatically.
 ---
 *Phase: 06-analytics-crm*
 *Completed: 2026-02-23*
+
+## Self-Check: PASSED
+
+- FOUND: src/app/api/attio/event/route.ts
+- FOUND: src/app/api/submit/demo-request/route.ts
+- FOUND: src/app/api/submit/contact-request/route.ts
+- FOUND: .planning/phases/06-analytics-crm/06-01-SUMMARY.md
+- FOUND commit: b0d2da3 (feat: /api/attio/event guarded route)
+- FOUND commit: 600c08c (feat: intermediate form handlers + netlify.toml stubs)
+- FOUND commit: 27b2cfa (docs: complete plan)
