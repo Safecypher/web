@@ -5,6 +5,7 @@ import './globals.css'
 import { Providers } from '@/app/providers'
 import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { ConsentBanner } from '@/components/analytics/ConsentBanner'
+import { ChunkErrorHandler } from '@/components/ChunkErrorHandler'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en" data-theme="safecypher-dark" className={`${outfit.variable} ${playfair.variable}`}>
       <body className="antialiased">
         <Providers>
+          <ChunkErrorHandler />
           <Suspense fallback={null}>
             <PostHogPageView />
           </Suspense>
