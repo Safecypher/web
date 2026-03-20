@@ -91,6 +91,31 @@ export async function POST(request: NextRequest): Promise<Response> {
         // Silent prod failure — do not re-throw
       }
 
+      // Step 3 — Add to event list for event_interest submissions
+      if (body.event === 'event_interest') {
+        const listRes = await fetch(
+          'https://api.attio.com/v2/lists/6785d423-5356-4829-a392-e9efa2eb240e/entries',
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${attioApiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: {
+                record_id: personRecordId,
+              },
+            }),
+          }
+        )
+
+        if (!listRes.ok) {
+          const detail = await listRes.text()
+          console.error('[Attio] List entry failed', listRes.status, detail)
+          // Silent failure — person was upserted, list is best-effort
+        }
+      }
+
       return Response.json({ ok: true, personRecordId })
     } else if (body.email) {
       // Event with email but no name (e.g. calculator_run from a known session)
