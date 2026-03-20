@@ -61,7 +61,7 @@ export function SaveTheDateSection() {
           Save the Date
         </p>
         <h1 className="text-4xl lg:text-5xl font-bold text-base-content mb-6">
-          HG2 Payments Innovation Summit
+          The Fraud Forum - London 2026
         </h1>
         <p className="text-base-content/60 text-lg mb-10">
           Register your interest and be the first to receive event details, agenda and confirmed speakers.

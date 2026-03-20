@@ -27,7 +27,7 @@ const competitors = [
 
 export function CompetitiveSection() {
   return (
-    <section className="bg-neutral border-t border-base-300 py-24 lg:py-32">
+    <section className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
@@ -35,10 +35,10 @@ export function CompetitiveSection() {
           <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
             The Honest Comparison
           </p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-content">
+          <h2 className="text-3xl lg:text-4xl font-bold text-base-content">
             Existing tools reduce fraud. SafeCypher eliminates it.
           </h2>
-          <p className="text-neutral-content/60 mt-4 max-w-2xl mx-auto">
+          <p className="text-base-content/60 mt-4 max-w-2xl mx-auto">
             Tokenisation, 3DS, and behavioural analytics are all legitimate tools — and none of them make stolen credentials worthless. SafeCypher does.
           </p>
         </div>

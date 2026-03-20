@@ -21,24 +21,24 @@ export function ConsentBanner() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-base-200 border-t border-base-300">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="text-sm text-base-content/70 text-center sm:text-left">
-          We use analytics to understand how visitors use this site. No personal data is shared with third parties.{' '}
-          <Link href="/privacy" className="underline hover:text-base-content transition-colors">Privacy Policy</Link>.
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-base-200 border-t border-base-300 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
+        <p className="text-xs sm:text-sm text-base-content/70 text-center sm:text-left leading-snug">
+          We use analytics to understand how visitors use this site.{' '}
+          <Link href="/privacy" className="underline hover:text-base-content transition-colors">Privacy</Link>.
         </p>
-        <div className="flex gap-3 flex-shrink-0">
+        <div className="flex gap-2 sm:gap-3 flex-shrink-0">
           <button
             type="button"
             onClick={handleDecline}
-            className="btn btn-ghost btn-sm"
+            className="btn btn-ghost btn-xs sm:btn-sm"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={handleAccept}
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-xs sm:btn-sm"
           >
             Accept
           </button>

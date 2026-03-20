@@ -8,15 +8,15 @@ export function HeroSection() {
   const posthog = usePostHog()
 
   return (
-    <section className="bg-base-100 py-24 lg:py-32">
+    <section className="bg-base-100 py-12 sm:py-16 lg:py-24 xl:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left column — headline, sub-headline, CTAs */}
-          <div>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left column — headline, sub-headline, CTAs (first on mobile for readability) */}
+          <div className="order-1 lg:order-none">
             {/*<span className="badge badge-accent mb-6">
               Card-Not-Present Fraud Prevention
             </span>*/}
-            <h1 className="text-4xl lg:text-6xl font-bold text-base-content leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-base-content leading-tight">
             Eliminate card-not-present fraud.{' '}
             <br/>Not reduce. <br/><span className="font-serif italic">Eliminate.</span>
             </h1>
@@ -38,8 +38,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right column — animated CVV card */}
-          <div className="order-first lg:order-last overflow-visible py-8">
+          {/* Right column — animated CVV card (below headline on mobile, right on desktop) */}
+          <div className="order-2 lg:order-last overflow-visible py-4 sm:py-8 flex justify-center lg:justify-end">
             <HeroCvvCard />
           </div>
         </div>

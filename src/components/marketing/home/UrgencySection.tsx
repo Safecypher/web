@@ -7,7 +7,7 @@ export function UrgencySection() {
   const posthog = usePostHog()
 
   return (
-    <section className="bg-neutral border-t border-base-300">
+    <section className="bg-base-200 border-t border-base-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -16,29 +16,29 @@ export function UrgencySection() {
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">
               The Threat Is Growing
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-content leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold text-base-content leading-tight">
               Card-not-present fraud is accelerating. Agentic commerce is about
               to make it catastrophic.
             </h2>
-            <div className="mt-6 space-y-4 text-neutral-content/70 text-base leading-relaxed">
+            <div className="mt-6 space-y-4 text-base-content/70 text-base leading-relaxed">
               <p>
                 Card numbers, expiry dates, CVVs: the entire credential set is static.
                 Once stolen, it stays stolen. A compromised number means unlimited fraud
                 until the cardholder notices.{' '}
-                <span className="text-neutral-content font-semibold">This is the transaction problem.</span>
+                <span className="text-base-content font-semibold">This is the transaction problem.</span>
               </p>
               <p>
                 The same static credentials break identity verification: issuers verify
                 cardholders through Knowledge-Based Authentication (KBA) and one-time
                 passwords (OTPs) vulnerable to interception.{' '}
-                <span className="text-neutral-content font-semibold">This is the people problem.</span>
+                <span className="text-base-content font-semibold">This is the people problem.</span>
               </p>
               <p>
                 And now, AI agents initiate autonomous purchases where fraud tools cannot
                 distinguish agent from human.{' '}
-                <span className="text-neutral-content font-semibold">This is the agent problem.</span>
+                <span className="text-base-content font-semibold">This is the agent problem.</span>
               </p>
-              <p className="text-neutral-content font-semibold pt-2">
+              <p className="text-base-content font-semibold pt-2">
                 Three audiences. Three control failures. One root cause: static credentials
                 that anyone can copy and reuse.
               </p>

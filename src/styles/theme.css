@@ -1,108 +1,96 @@
 /* =============================================================================
    SafeCypher Brand Tokens
    CSS custom properties for the SafeCypher design system.
-   To rebrand: update values here. DaisyUI inherits these variables.
-   Primary colour: #3b82f6 (blue) — canonical token until rebrand.
+   Light theme with brand colours: Blue #382aff, Turquoise #00ede6,
+   Charcoal Black #37373a, Light Grey #c1c1c1
+   Fonts: Poppins (main), EB Garamond (accent)
 ============================================================================= */
 
 :root {
-  --brand-blue: #3b82f6;
-  --font-sans: 'Outfit', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --brand-blue: #382aff;
+  --brand-turquoise: #00ede6;
+  --brand-charcoal: #37373a;
+  --brand-light-grey: #c1c1c1;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
 }
 
-/* Dark theme (default) */
+/* Light theme (default) — clean white/light grey aesthetic */
 @plugin "daisyui/theme" {
-  name: "safecypher-dark";
+  name: "safecypher-light";
   default: true;
-  prefersdark: true;
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Primary — brand blue #3b82f6 */
-  --color-primary: oklch(62% 0.214 259.815);
-  --color-primary-content: oklch(98% 0.01 260);
+  /* Primary — brand blue #382aff */
+  --color-primary: #382aff;
+  --color-primary-content: #ffffff;
 
-  /* Secondary — subtle blue-grey */
-  --color-secondary: oklch(55% 0.15 260);
-  --color-secondary-content: oklch(98% 0.01 260);
+  /* Secondary — charcoal for contrast */
+  --color-secondary: #37373a;
+  --color-secondary-content: #ffffff;
 
-  /* Accent — teal for highlights */
-  --color-accent: oklch(70% 0.18 195);
-  --color-accent-content: oklch(10% 0.02 195);
+  /* Accent — turquoise #00ede6 */
+  --color-accent: #00ede6;
+  --color-accent-content: #37373a;
 
-  /* Neutral */
-  --color-neutral: oklch(25% 0.01 260);
-  --color-neutral-content: oklch(90% 0.01 260);
+  /* Neutral — charcoal black for text */
+  --color-neutral: #37373a;
+  --color-neutral-content: #ffffff;
 
-  /* Base — dark backgrounds */
-  --color-base-100: oklch(10% 0.005 260);
-  --color-base-200: oklch(14% 0.005 260);
-  --color-base-300: oklch(18% 0.005 260);
-  --color-base-content: oklch(95% 0.01 260);
+  /* Base — white and light grey backgrounds */
+  --color-base-100: #ffffff;
+  --color-base-200: #f5f5f5;
+  --color-base-300: #c1c1c1;
+  --color-base-content: #37373a;
 
   /* Semantic */
-  --color-info: oklch(70% 0.18 230);
-  --color-info-content: oklch(10% 0.02 230);
-  --color-success: oklch(70% 0.18 150);
-  --color-success-content: oklch(10% 0.02 150);
-  --color-warning: oklch(80% 0.2 80);
-  --color-warning-content: oklch(10% 0.02 80);
-  --color-error: oklch(65% 0.22 25);
-  --color-error-content: oklch(98% 0.01 25);
+  --color-info: #382aff;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
+  --color-warning-content: #ffffff;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
 
   /* Shape */
   --radius-selector: 0.5rem;
   --radius-field: 0.375rem;
   --radius-box: 0.75rem;
 
-  /* Remove border and 3D depth effect from buttons */
+  /* Clean flat buttons */
   --border: 0;
   --depth: 0;
 }
 
-/* Light theme */
+/* Dark theme (optional, for future use) */
 @plugin "daisyui/theme" {
-  name: "safecypher-light";
-  color-scheme: light;
+  name: "safecypher-dark";
+  color-scheme: dark;
 
-  /* Primary — brand blue #3b82f6 */
-  --color-primary: oklch(62% 0.214 259.815);
-  --color-primary-content: oklch(98% 0.01 260);
-
-  /* Secondary */
-  --color-secondary: oklch(55% 0.15 260);
-  --color-secondary-content: oklch(98% 0.01 260);
-
-  /* Accent — teal */
-  --color-accent: oklch(55% 0.18 195);
-  --color-accent-content: oklch(98% 0.01 195);
-
-  /* Neutral */
-  --color-neutral: oklch(85% 0.01 260);
-  --color-neutral-content: oklch(20% 0.01 260);
-
-  /* Base — light backgrounds */
-  --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(96% 0.005 260);
-  --color-base-300: oklch(92% 0.005 260);
-  --color-base-content: oklch(15% 0.01 260);
-
-  /* Semantic */
-  --color-info: oklch(55% 0.18 230);
-  --color-info-content: oklch(98% 0.01 230);
-  --color-success: oklch(55% 0.18 150);
-  --color-success-content: oklch(98% 0.01 150);
-  --color-warning: oklch(65% 0.2 80);
-  --color-warning-content: oklch(10% 0.02 80);
-  --color-error: oklch(55% 0.22 25);
-  --color-error-content: oklch(98% 0.01 25);
-
-  /* Shape */
+  --color-primary: #382aff;
+  --color-primary-content: #ffffff;
+  --color-secondary: #00ede6;
+  --color-secondary-content: #37373a;
+  --color-accent: #00ede6;
+  --color-accent-content: #37373a;
+  --color-neutral: #37373a;
+  --color-neutral-content: #ffffff;
+  --color-base-100: oklch(10% 0.005 260);
+  --color-base-200: oklch(14% 0.005 260);
+  --color-base-300: oklch(18% 0.005 260);
+  --color-base-content: oklch(95% 0.01 260);
+  --color-info: #382aff;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
+  --color-warning-content: #ffffff;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
   --radius-selector: 0.5rem;
   --radius-field: 0.375rem;
   --radius-box: 0.75rem;
-
-  /* Remove border and 3D depth effect from buttons */
   --border: 0;
   --depth: 0;
 }

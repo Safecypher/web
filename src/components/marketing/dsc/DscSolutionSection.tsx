@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function DscSolutionSection() {
   return (
-    <section className="bg-neutral border-t border-base-300 py-24 lg:py-32">
+    <section className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
         {/* Eyebrow */}
@@ -11,12 +11,12 @@ export function DscSolutionSection() {
         </p>
 
         {/* Headline */}
-        <h2 className="text-3xl lg:text-4xl font-bold text-neutral-content">
+        <h2 className="text-3xl lg:text-4xl font-bold text-base-content">
           A CVV that expires. Every time.
         </h2>
 
         {/* Body */}
-        <p className="text-neutral-content/70 leading-relaxed mt-4 text-lg max-w-3xl">
+        <p className="text-base-content/70 leading-relaxed mt-4 text-lg max-w-3xl">
           SafeCypher generates a fresh 3-digit Dynamic Security Code for every card-not-present
           transaction. The code appears in the cardholder&rsquo;s banking app — the one they already
           use every day. It is valid for a single use, and expires in minutes. Stolen credentials
@@ -121,7 +121,7 @@ export function DscSolutionSection() {
         </div>
 
         {/* Cross-link to platform */}
-        <p className="text-neutral-content/50 text-sm mt-10">
+        <p className="text-base-content/50 text-sm mt-10">
           Part of the SafeCypher platform —{' '}
           <Link href="/platform" className="text-accent hover:underline">
             see how one API unlocks seven products

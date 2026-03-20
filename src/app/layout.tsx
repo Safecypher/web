@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Outfit, Playfair_Display } from 'next/font/google'
+import { Poppins, EB_Garamond } from 'next/font/google'
 import { Suspense } from 'react'
 import './globals.css'
 import { Providers } from '@/app/providers'
@@ -7,13 +7,14 @@ import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { ConsentBanner } from '@/components/analytics/ConsentBanner'
 import { ChunkErrorHandler } from '@/components/ChunkErrorHandler'
 
-const outfit = Outfit({
+const poppins = Poppins({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({
+const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
@@ -30,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" data-theme="safecypher-dark" className={`${outfit.variable} ${playfair.variable}`}>
-      <body className="antialiased">
+    <html lang="en" data-theme="safecypher-light" className={`${poppins.variable} ${ebGaramond.variable}`}>
+      <body className="antialiased font-sans">
         <Providers>
           <ChunkErrorHandler />
           <Suspense fallback={null}>

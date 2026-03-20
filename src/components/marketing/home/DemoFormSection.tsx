@@ -60,7 +60,7 @@ export function DemoFormSection() {
 
   if (formState === 'success') {
     return (
-      <section id="demo" className="bg-neutral bg-base-100 border-t border-base-300 py-24 lg:py-32">
+      <section id="demo" className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-6">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-success">
@@ -83,7 +83,7 @@ export function DemoFormSection() {
   }
 
   return (
-    <section id="demo" className="bg-neutral bg-base-100 border-t border-base-300 py-24 lg:py-32">
+    <section id="demo" className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-base-content">Request a Demo</h2>

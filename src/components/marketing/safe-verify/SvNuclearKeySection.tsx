@@ -28,16 +28,16 @@ export function SvNuclearKeySection() {
   ]
 
   return (
-    <section className="bg-neutral border-t border-base-300 py-24 lg:py-32">
+    <section className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">
           {'// The Nuclear Key Approach'}
         </p>
-        <h2 className="text-3xl lg:text-4xl font-bold text-neutral-content">
+        <h2 className="text-3xl lg:text-4xl font-bold text-base-content">
           Three key exchanges.{' '}
           <span className="font-serif italic font-normal">One seamless moment.</span>
         </h2>
-        <div className="w-16 h-0.5 bg-neutral-content/20 mt-6 mb-14" />
+        <div className="w-16 h-0.5 bg-base-content/20 mt-6 mb-14" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card) => (
@@ -48,17 +48,17 @@ export function SvNuclearKeySection() {
               <div className="text-6xl font-extrabold text-primary/15 leading-none mb-6 tracking-tight">
                 {card.num}
               </div>
-              <h3 className="text-lg font-semibold text-neutral-content mb-3">
+              <h3 className="text-lg font-semibold text-base-content mb-3">
                 {card.title}{' '}
                 <span className="font-serif italic font-normal">{card.titleItalic}</span>
               </h3>
-              <p className="text-sm text-neutral-content/60 leading-relaxed mb-5">
+              <p className="text-sm text-base-content/60 leading-relaxed mb-5">
                 {card.desc}
               </p>
               {card.layers && (
                 <ul className="space-y-2">
                   {card.layers.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-neutral-content/70">
+                    <li key={item} className="flex items-center gap-3 text-sm text-base-content/70">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                       {item}
                     </li>

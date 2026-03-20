@@ -47,8 +47,14 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="text-xl font-bold text-base-content">
-              Safe<span className="text-primary">Cypher</span>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/SafeCypher-logo.svg"
+                alt="SafeCypher"
+                width={140}
+                height={54}
+                className="h-7 w-auto"
+              />
             </Link>
             <p className="mt-3 text-sm text-base-content/60">
               Eliminate card-not-present fraud. Not reduce. Eliminate.

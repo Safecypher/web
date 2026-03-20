@@ -47,10 +47,10 @@ src/
 
 ## Design System
 
-- **Theme:** `safecypher-dark` (DaisyUI), applied via `data-theme` on `<html>`
+- **Theme:** `safecypher-light` (DaisyUI), applied via `data-theme` on `<html>`
 - **Brand tokens:** `src/styles/theme.css` — edit here to rebrand
-- **Primary colour:** `#3b82f6` (blue)
-- **Fonts:** Outfit (sans, `--font-sans`) + Playfair Display (serif, `--font-serif`)
+- **Primary colour:** `#382aff` (blue); Turquoise `#00ede6`; Charcoal `#37373a`; Light grey `#c1c1c1`
+- **Fonts:** Poppins (sans, `--font-sans`) + EB Garamond (serif, `--font-serif`)
 - **UI primitives** live in `src/components/ui/` and are re-exported from `src/components/ui/index.ts`
 
 ## Environment Variables

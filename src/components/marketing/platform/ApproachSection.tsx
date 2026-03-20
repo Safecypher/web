@@ -2,15 +2,15 @@ import Link from 'next/link'
 
 export function ApproachSection() {
   return (
-    <section className="bg-neutral border-t border-base-300 py-24 lg:py-32">
+    <section className="bg-base-200 border-t border-base-300 py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">
           The SafeCypher Approach
         </p>
-        <h2 className="text-3xl lg:text-4xl font-bold text-neutral-content leading-tight mb-6">
+        <h2 className="text-3xl lg:text-4xl font-bold text-base-content leading-tight mb-6">
           A credential that expires before it can be used.
         </h2>
-        <p className="text-neutral-content/70 leading-relaxed mb-10">
+        <p className="text-base-content/70 leading-relaxed mb-10">
           SafeCypher issues a new, time-limited security code for each transaction — delivered
           through the cardholder&apos;s existing banking app. No new card. No new device. No
           friction for genuine customers. And no usable credential for an attacker who intercepts

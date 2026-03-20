@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: safecypher-dark --default, safecypher-light;
+  themes: safecypher-light --default, safecypher-dark;
   logs: false;
 }
 
@@ -9,6 +9,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Serif font renders smaller than sans at same size — scale up 30% to match */
+.font-serif {
+  font-size: 1.2em;
 }
 
 /* Hero credit card — original 3D styling */

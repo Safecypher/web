@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function PortalSidebar() {
   const pathname = usePathname()
@@ -79,8 +80,14 @@ export function PortalSidebar() {
     <aside className="w-64 bg-base-200 h-screen sticky top-0 flex flex-col">
       {/* Logo */}
       <div className="px-6 py-5 border-b border-base-300">
-        <Link href="/portal" className="font-bold text-lg tracking-tight text-base-content">
-          SafeCypher
+        <Link href="/portal" className="block">
+          <Image
+            src="/SafeCypher-logo.svg"
+            alt="SafeCypher"
+            width={120}
+            height={46}
+            className="h-6 w-auto"
+          />
         </Link>
       </div>
 

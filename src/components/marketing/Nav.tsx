@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui'
 
 export function Nav() {
@@ -7,9 +8,14 @@ export function Nav() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-base-content">
-            Safe<span className="text-primary">Cypher</span>
-          </span>
+          <Image
+            src="/SafeCypher-logo.svg"
+            alt="SafeCypher"
+            width={160}
+            height={62}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Centre nav links */}

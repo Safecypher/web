@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useState, useEffect, Suspense } from 'react'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/client'
 
 function LoginForm() {
@@ -83,12 +84,15 @@ function LoginForm() {
     <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
       <div className="card bg-base-200 shadow-xl w-full max-w-md">
         <div className="card-body gap-6">
-          {/* Logo / wordmark */}
+          {/* Logo */}
           <div className="text-center">
-            <span className="text-2xl font-bold tracking-tight font-sans">
-              <span className="text-primary">Safe</span>
-              <span className="text-base-content">Cypher</span>
-            </span>
+            <Image
+              src="/SafeCypher-logo.svg"
+              alt="SafeCypher"
+              width={140}
+              height={54}
+              className="h-8 w-auto mx-auto"
+            />
             <p className="text-base-content/60 text-sm mt-1">Portal</p>
           </div>
 
