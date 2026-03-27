@@ -8,11 +8,11 @@ export function HeroSection() {
   const posthog = usePostHog()
 
   return (
-    <section className="bg-base-100 py-12 sm:py-16 lg:py-24 xl:py-32">
+    <section className="bg-base-100 pt-12 sm:pt-16 lg:pt-24 xl:pt-32 pb-12 sm:pb-16 lg:pb-0">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 lg:items-stretch">
           {/* Left column — headline, sub-headline, CTAs (first on mobile for readability) */}
-          <div className="order-1 lg:order-none">
+          <div className="order-1 lg:order-none lg:pb-24 xl:pb-32">
             {/*<span className="badge badge-accent mb-6">
               Card-Not-Present Fraud Prevention
             </span>*/}
@@ -38,9 +38,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right column — animated CVV card (below headline on mobile, right on desktop) */}
-          <div className="order-2 lg:order-last overflow-visible py-4 sm:py-8 flex justify-center lg:justify-end">
-            <HeroCvvCard />
+          {/* Right column — phone grows to section bottom on lg (flush with next section border) */}
+          <div className="order-2 lg:order-last flex h-full min-h-0 justify-center overflow-visible py-4 sm:py-8 lg:justify-start lg:self-stretch lg:py-0 lg:pl-4">
+            <div className="flex h-full min-h-0 w-full max-w-[19rem] flex-1 flex-col sm:max-w-[24rem] lg:max-w-[30rem] lg:ml-auto">
+              <HeroCvvCard />
+            </div>
           </div>
         </div>
       </div>

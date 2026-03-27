@@ -16,15 +16,14 @@ html {
   font-size: 1.2em;
 }
 
-/* Hero credit card — original 3D styling */
-.hero-credit-card {
-  transform: perspective(1000px) rotateY(-12deg);
-  transition: transform 0.7s ease;
+/* Hero phone — no 3D tilt on the device shell (tilt made the bottom edge cross the horizontal rule).
+   Depth stays on the inner credit card only. */
+.hero-phone-device {
+  transition: transform 0.65s ease;
 }
-.hero-credit-card:hover {
-  transform: perspective(1000px) rotateY(0deg);
+.hero-phone-device:hover {
+  transform: translateY(-2px);
 }
-
 /* Safe Verify — phone mockup float */
 @keyframes sv-phone-float {
   0%, 100% { transform: translateY(0); }
