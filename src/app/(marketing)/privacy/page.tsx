@@ -25,10 +25,10 @@ export default function PrivacyPage() {
               Company registration number: 14233172. VAT registration: GB419939941.
             </p>
             <p className="mt-3 leading-relaxed">
-              Data controller: Mr Richard Pickard, Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
+              Data controller: Mr Nick Collings, Safecypher Ltd, 12 New Inn Hall Street, Oxford, OX1 2RP.
               Email:{' '}
-              <a href="mailto:richard.pickard@safecypher.com" className="text-primary hover:underline">
-                richard.pickard@safecypher.com
+              <a href="mailto:nick.collings@safecypher.com" className="text-primary hover:underline">
+                nick.collings@safecypher.com
               </a>.
             </p>
           </section>
@@ -85,10 +85,10 @@ export default function PrivacyPage() {
             <p className="mt-3 leading-relaxed">
               Under GDPR, you have the right to access, rectify, erase, or restrict processing of your
               personal data. To exercise any of these rights, contact us at{' '}
-              <a href="mailto:richard.pickard@safecypher.com" className="text-primary hover:underline">
-                richard.pickard@safecypher.com
+              <a href="mailto:nick.collings@safecypher.com" className="text-primary hover:underline">
+                nick.collings@safecypher.com
               </a>{' '}
-              or write to Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
+              or write to Safecypher Ltd, 12 New Inn Hall Street, Oxford, OX1 2RP.
             </p>
           </section>
 
@@ -112,11 +112,11 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">9. Contact</h2>
             <p className="mt-3 leading-relaxed">
-              Questions about this policy? Contact Mr Richard Pickard at{' '}
-              <a href="mailto:richard.pickard@safecypher.com" className="text-primary hover:underline">
-                richard.pickard@safecypher.com
+              Questions about this policy? Contact Mr Nick Collings at{' '}
+              <a href="mailto:nick.collings@safecypher.com" className="text-primary hover:underline">
+                nick.collings@safecypher.com
               </a>{' '}
-              or write to Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
+              or write to Safecypher Ltd, 12 New Inn Hall Street, Oxford, OX1 2RP.
             </p>
           </section>
 

@@ -31,7 +31,7 @@ export default function TermsPage() {
             </p>
             <p className="mt-3 leading-relaxed">
               Company registration number: 14233172. VAT registration: GB419939941.
-              Registered correspondence address: Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
+              Registered correspondence address: Safecypher Ltd, 12 New Inn Hall Street, Oxford, OX1 2RP.
             </p>
           </section>
 
@@ -106,11 +106,11 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-base-content">10. Contact</h2>
             <p className="mt-3 leading-relaxed">
-              Questions about these terms? Contact Mr Richard Pickard at{' '}
-              <a href="mailto:richard.pickard@safecypher.com" className="text-primary hover:underline">
-                richard.pickard@safecypher.com
+              Questions about these terms? Contact Mr Nick Collings at{' '}
+              <a href="mailto:nick.collings@safecypher.com" className="text-primary hover:underline">
+                nick.collings@safecypher.com
               </a>{' '}
-              or write to Safecypher Ltd, PO Box 353, Leeds, LS16 0HN.
+              or write to Safecypher Ltd, 12 New Inn Hall Street, Oxford, OX1 2RP.
             </p>
           </section>
 
