@@ -21,12 +21,6 @@ const team: TeamMember[] = [
     photo: '/team/andy-perry.png',
   },
   {
-    name: 'Ben Jordan',
-    title: 'Head of Product & Innovation',
-    bio: 'Ben brings extensive experience from senior leadership roles in payments services and fraud prevention, including work at the forefront of tackling card fraud with Europol. As Head of Product & Innovation, he channels that front-line expertise into the product strategy that makes card-not-present fraud a solved problem.',
-    photo: '/team/ben-jordan.png',
-  },
-  {
     name: 'Jeff Slawsky',
     title: 'MD - US Operations',
     bio: 'One of the bankcard industry\'s true pioneers, Jeff developed and launched the first-ever frequent flyer credit card and the first chip-based loyalty card, and has held senior leadership roles at HSBC, Bank One, and Bank of Boston. As MD of US Operations, he brings decades of strategic, operational, and regulatory expertise across the Americas, Europe, and Asia to drive SafeCypher\'s growth in the US market.',

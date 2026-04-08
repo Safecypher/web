@@ -16,7 +16,7 @@
     "jspdf": "^4.2.0",
     "next": "16.1.6",
     "nuqs": "^2.8.9",
-    "posthog-js": "^1.352.0",
+    "posthog-js": "^1.364.2",
     "react": "19.2.3",
     "react-calendly": "^4.4.0",
     "react-dom": "19.2.3",
