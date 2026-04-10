@@ -1,12 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Input, Button } from '@/components/ui'
 
+const EVENTS = [
+  { id: 'UK', label: 'London, UK', description: 'The Fraud Forum — London 2026' },
+  { id: 'CA', label: 'Toronto, Canada', description: 'The Fraud Forum — Canada 2026' },
+] as const
+
+type EventId = typeof EVENTS[number]['id']
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
 export function SaveTheDateSection() {
+  const searchParams = useSearchParams()
+  const eParam = searchParams.get('e')?.toUpperCase()
+
+  const [selectedEvent, setSelectedEvent] = useState<EventId>(
+    () => EVENTS.find(ev => ev.id === eParam)?.id ?? 'UK'
+  )
   const [formState, setFormState] = useState<FormState>('idle')
+  const [submittedEvent, setSubmittedEvent] = useState<EventId>('UK')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,6 +30,7 @@ export function SaveTheDateSection() {
     const payload = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
+      event: selectedEvent,
     }
 
     try {
@@ -26,6 +41,7 @@ export function SaveTheDateSection() {
       })
 
       if (res.ok) {
+        setSubmittedEvent(selectedEvent)
         setFormState('success')
       } else {
         setFormState('error')
@@ -46,6 +62,7 @@ export function SaveTheDateSection() {
           </div>
           <h2 className="text-3xl font-bold text-base-content mb-4">You&apos;re on the list.</h2>
           <p className="text-base-content/60 text-lg">
+            You&apos;re registered for the {EVENTS.find(ev => ev.id === submittedEvent)!.description}.
             We&apos;ll be in touch with event details as they&apos;re confirmed.
           </p>
         </div>
@@ -61,11 +78,26 @@ export function SaveTheDateSection() {
           Save the Date
         </p>
         <h1 className="text-4xl lg:text-5xl font-bold text-base-content mb-6">
-          The Fraud Forum - London 2026
+          {EVENTS.find(ev => ev.id === selectedEvent)!.description}
         </h1>
         <p className="text-base-content/60 text-lg mb-10">
           Register your interest and be the first to receive event details, agenda and confirmed speakers.
         </p>
+
+        {/* Event selector */}
+        <div className="flex gap-3 mb-8">
+          {EVENTS.map(ev => (
+            <button
+              key={ev.id}
+              type="button"
+              className={ev.id === selectedEvent ? 'btn btn-primary' : 'btn btn-outline'}
+              onClick={() => setSelectedEvent(ev.id)}
+            >
+              {ev.label}
+            </button>
+          ))}
+        </div>
+
         <div className="border-t border-base-300 mb-10" />
 
         {/* Form */}

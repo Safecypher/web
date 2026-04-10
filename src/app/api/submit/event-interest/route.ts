@@ -5,6 +5,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     const body = (await request.json()) as {
       name: string
       email: string
+      event?: string
     }
 
     // NEXT_PUBLIC_SITE_URL for prod, process.env.URL is Netlify's deploy URL (all contexts), fallback for local
@@ -15,6 +16,7 @@ export async function POST(request: NextRequest): Promise<Response> {
       'form-name': 'event-interest',
       name: body.name,
       email: body.email,
+      ...(body.event ? { event: body.event } : {}),
     })
 
     await fetch(`${siteUrl}/__forms.html`, {
@@ -34,6 +36,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         event: 'event_interest',
         email: body.email,
         name: body.name,
+        ...(body.event ? { eventId: body.event } : {}),
       }),
     })
 
