@@ -77,11 +77,10 @@ export async function POST(request: NextRequest): Promise<Response> {
         },
         body: JSON.stringify({
           data: {
-            format: 'plaintext',
             parent_object: 'people',
             parent_record_id: personRecordId,
             title: body.event,
-            content: `Event: ${body.event}\nName: ${body.name}\nCompany: ${body.company ?? ''}\nRole: ${body.role ?? ''}\nMessage: ${body.message ?? ''}`,
+            content_markdown: `**Event:** ${body.event}\n**Name:** ${body.name}\n**Company:** ${body.company ?? ''}\n**Role:** ${body.role ?? ''}\n**Message:** ${body.message ?? ''}`,
           },
         }),
       })
@@ -103,7 +102,7 @@ export async function POST(request: NextRequest): Promise<Response> {
             },
             body: JSON.stringify({
               data: {
-                record_id: personRecordId,
+                parent_record_id: personRecordId,
               },
             }),
           }
@@ -128,10 +127,9 @@ export async function POST(request: NextRequest): Promise<Response> {
         },
         body: JSON.stringify({
           data: {
-            format: 'plaintext',
             parent_object: 'people',
             title: body.event,
-            content: JSON.stringify(body, null, 2),
+            content_markdown: `\`\`\`\n${JSON.stringify(body, null, 2)}\n\`\`\``,
           },
         }),
       })
