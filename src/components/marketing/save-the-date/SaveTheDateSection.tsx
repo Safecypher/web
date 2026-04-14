@@ -5,8 +5,18 @@ import { useSearchParams } from 'next/navigation'
 import { Input, Button } from '@/components/ui'
 
 const EVENTS = [
-  { id: 'UK', label: 'London, UK', description: 'The Fraud Forum — London 2026' },
-  { id: 'CA', label: 'Toronto, Canada', description: 'The Fraud Forum — Canada 2026' },
+  {
+    id: 'UK',
+    label: 'London, UK',
+    description: 'The Fraud Forum — London 2026',
+    details: {
+      date: 'Thursday 23 April 2026',
+      time: '1:00 PM – 9:00 PM (lunch through dinner)',
+      venue: 'The Treehouse Hotel',
+      address: '14-15 Langham Pl, London W1B 2QS',
+    },
+  },
+  { id: 'CA', label: 'Toronto, Canada', description: 'The Fraud Forum — Canada 2026', details: null },
 ] as const
 
 type EventId = typeof EVENTS[number]['id']
@@ -98,6 +108,31 @@ export function SaveTheDateSection() {
           ))}
         </div>
 
+        {/* Event details */}
+        {EVENTS.find(ev => ev.id === selectedEvent)?.details && (() => {
+          const d = EVENTS.find(ev => ev.id === selectedEvent)!.details!
+          return (
+            <div className="bg-base-200 rounded-2xl px-6 py-5 mb-8 space-y-3">
+              <div className="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-0.5 shrink-0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span className="text-base-content font-medium">{d.date}</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span className="text-base-content">{d.time}</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <span className="text-base-content font-medium">{d.venue}</span>
+                  <br />
+                  <span className="text-base-content/60 text-sm">{d.address}</span>
+                </div>
+              </div>
+            </div>
+          )
+        })()}
+
         <div className="border-t border-base-300 mb-10" />
 
         {/* Form */}
@@ -121,7 +156,7 @@ export function SaveTheDateSection() {
 
           {formState === 'error' && (
             <div className="alert alert-error text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
                 <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
               Something went wrong. Please try again.
