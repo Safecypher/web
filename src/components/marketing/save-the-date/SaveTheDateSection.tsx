@@ -16,6 +16,17 @@ const EVENTS = [
       address: '14-15 Langham Pl, London W1B 2QS',
     },
   },
+  {
+    id: 'UK2',
+    label: 'London, UK (June)',
+    description: 'The Fraud Forum — London June 2026',
+    details: {
+      date: 'Tuesday 16 June 2026',
+      time: '1:00 PM – 9:00 PM (lunch through dinner)',
+      venue: 'The Treehouse Hotel',
+      address: '14-15 Langham Pl, London W1B 2QS',
+    },
+  },
   { id: 'CA', label: 'Toronto, Canada', description: 'The Fraud Forum — Canada 2026', details: null },
 ] as const
 
