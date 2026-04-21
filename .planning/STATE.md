@@ -179,10 +179,11 @@ All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-0
 |---|-------------|------|--------|-----------|
 | 260319-hg2 | Event save the date landing page form with Attio integration | 2026-03-19 | 041f1c6 | [260319-hg2-event-save-the-date-landing-page-form-wi](.planning/quick/260319-hg2-event-save-the-date-landing-page-form-wi/) |
 | 260410-ity | Multi-event save the date page with query param pre-selection | 2026-04-10 | 1a1ae3e | [260410-ity-multi-event-save-the-date-page-with-quer](.planning/quick/260410-ity-multi-event-save-the-date-page-with-quer/) |
+| 260421-pgg | Add UK2 June London event to save-the-date page | 2026-04-21 | d8db8a5 | [260421-pgg-i-need-to-update-the-save-the-date-landi](.planning/quick/260421-pgg-i-need-to-update-the-save-the-date-landi/) |
 
 ## Session Continuity
 
-Last activity: 2026-04-10 - Completed quick task 260410-ity: Multi-event save the date page with query param pre-selection
-Last session: 2026-03-01
+Last activity: 2026-04-21 - Completed quick task 260421-pgg: Add UK2 June London event to save-the-date page
+Last session: 2026-04-21
 Stopped at: v1.0 milestone archived. All 8 phases, 27 plans complete. Ready for `/gsd:new-milestone` to define v1.1 scope.
 Resume file: None
