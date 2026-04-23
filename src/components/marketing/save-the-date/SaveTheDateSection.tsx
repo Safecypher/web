@@ -101,9 +101,11 @@ export function SaveTheDateSection() {
         <h1 className="text-4xl lg:text-5xl font-bold text-base-content mb-6">
           {EVENTS.find(ev => ev.id === selectedEvent)!.description}
         </h1>
-        <p className="text-base-content/60 text-lg mb-10">
-          Register your interest and be the first to receive event details, agenda and confirmed speakers.
-        </p>
+        {selectedEvent !== 'UK' && (
+          <p className="text-base-content/60 text-lg mb-10">
+            Register your interest and be the first to receive event details, agenda and confirmed speakers.
+          </p>
+        )}
 
         {/* Event selector */}
         <div className="flex gap-3 mb-8">
@@ -146,44 +148,50 @@ export function SaveTheDateSection() {
 
         <div className="border-t border-base-300 mb-10" />
 
-        {/* Form */}
-        <form name="event-interest" onSubmit={handleSubmit} className="space-y-6">
-          <Input
-            label="Full Name *"
-            name="name"
-            type="text"
-            placeholder="Jane Smith"
-            required
-            fullWidth
-          />
-          <Input
-            label="Email Address *"
-            name="email"
-            type="email"
-            placeholder="you@company.com"
-            required
-            fullWidth
-          />
+        {selectedEvent === 'UK' ? (
+          <div className="bg-base-200 rounded-2xl px-6 py-6 text-center">
+            <p className="text-base-content font-semibold mb-1">This event has now taken place.</p>
+            <p className="text-base-content/60 text-sm">A recording of the session will be available here soon.</p>
+          </div>
+        ) : (
+          <form name="event-interest" onSubmit={handleSubmit} className="space-y-6">
+            <Input
+              label="Full Name *"
+              name="name"
+              type="text"
+              placeholder="Jane Smith"
+              required
+              fullWidth
+            />
+            <Input
+              label="Email Address *"
+              name="email"
+              type="email"
+              placeholder="you@company.com"
+              required
+              fullWidth
+            />
 
-          {formState === 'error' && (
-            <div className="alert alert-error text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
-                <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              Something went wrong. Please try again.
-            </div>
-          )}
+            {formState === 'error' && (
+              <div className="alert alert-error text-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
+                  <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                Something went wrong. Please try again.
+              </div>
+            )}
 
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            fullWidth
-            loading={formState === 'submitting'}
-          >
-            Register Interest
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              fullWidth
+              loading={formState === 'submitting'}
+            >
+              Register Interest
+            </Button>
+          </form>
+        )}
       </div>
     </section>
   )
