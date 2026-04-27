@@ -10,6 +10,12 @@ type AttioEventBody = {
   [key: string]: unknown
 }
 
+const EVENT_LISTS: Record<string, string> = {
+  UK: '6785d423-5356-4829-a392-e9efa2eb240e',
+  CA: 'ea24a36d-af4c-4e79-a421-bb7dbe656cd6',
+  // UK2 intentionally omitted — no list created yet
+}
+
 export async function POST(request: NextRequest): Promise<Response> {
   // 403 guard — reject direct browser calls
   const internalToken = request.headers.get('x-internal-token')
@@ -90,10 +96,11 @@ export async function POST(request: NextRequest): Promise<Response> {
         // Silent prod failure — do not re-throw
       }
 
-      // Step 3 — Add to event list for event_interest submissions
-      if (body.event === 'event_interest') {
+      // Step 3 — Add to event-specific list if eventId maps to a known list
+      const listId = typeof body.eventId === 'string' ? EVENT_LISTS[body.eventId] : undefined
+      if (listId) {
         const listRes = await fetch(
-          'https://api.attio.com/v2/lists/6785d423-5356-4829-a392-e9efa2eb240e/entries',
+          `https://api.attio.com/v2/lists/${listId}/entries`,
           {
             method: 'POST',
             headers: {
@@ -102,6 +109,7 @@ export async function POST(request: NextRequest): Promise<Response> {
             },
             body: JSON.stringify({
               data: {
+                parent_object: 'people',
                 parent_record_id: personRecordId,
               },
             }),
