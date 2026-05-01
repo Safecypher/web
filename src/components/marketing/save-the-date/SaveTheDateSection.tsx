@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { Input, Button } from '@/components/ui'
 
 const EVENTS = [
@@ -150,8 +151,11 @@ export function SaveTheDateSection() {
 
         {selectedEvent === 'UK' ? (
           <div className="bg-base-200 rounded-2xl px-6 py-6 text-center">
-            <p className="text-base-content font-semibold mb-1">This event has now taken place.</p>
-            <p className="text-base-content/60 text-sm">A recording of the session will be available here soon.</p>
+            <p className="text-base-content font-semibold mb-2">This event has now taken place.</p>
+            <p className="text-base-content/60 text-sm mb-4">The recording is now available to watch.</p>
+            <Link href="/fraud-forum" className="btn btn-primary btn-sm">
+              Watch the Recording
+            </Link>
           </div>
         ) : (
           <form name="event-interest" onSubmit={handleSubmit} className="space-y-6">
