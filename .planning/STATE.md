@@ -182,10 +182,11 @@ All v1.0 decisions archived to PROJECT.md Key Decisions table (updated 2026-03-0
 | 260421-pgg | Add UK2 June London event to save-the-date page | 2026-04-21 | d8db8a5 | [260421-pgg-i-need-to-update-the-save-the-date-landi](.planning/quick/260421-pgg-i-need-to-update-the-save-the-date-landi/) |
 | 260423-nb5 | Remove registration form for past UK April event, show recording note | 2026-04-23 | 700a924 | [260423-nb5-remove-the-registration-fields-from-the-](.planning/quick/260423-nb5-remove-the-registration-fields-from-the-/) |
 | 260427-mh1 | Fix Attio list entry routing and payload for save-the-date registrants | 2026-04-27 | 883bcc5 | [260427-mh1-fix-attio-list-entry-for-save-the-date-a](.planning/quick/260427-mh1-fix-attio-list-entry-for-save-the-date-a/) |
+| 260501-hgz | Create /fraud-forum events archive page with YouTube embed and link from save-the-date | 2026-05-01 | c2e0551 | [260501-hgz-create-fraud-forum-events-archive-page-w](.planning/quick/260501-hgz-create-fraud-forum-events-archive-page-w/) |
 
 ## Session Continuity
 
-Last activity: 2026-04-27 - Completed quick task 260427-mh1: Fix Attio list entry routing and payload for save-the-date registrants
-Last session: 2026-04-27
+Last activity: 2026-05-01 - Completed quick task 260501-hgz: Create /fraud-forum events archive page with YouTube embed and link from save-the-date
+Last session: 2026-05-01
 Stopped at: v1.0 milestone archived. All 8 phases, 27 plans complete. Ready for `/gsd:new-milestone` to define v1.1 scope.
 Resume file: None
