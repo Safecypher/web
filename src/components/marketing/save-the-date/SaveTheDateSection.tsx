@@ -28,7 +28,17 @@ const EVENTS = [
       address: '14-15 Langham Pl, London W1B 2QS',
     },
   },
-  { id: 'CA', label: 'Toronto, Canada', description: 'The Fraud Forum — Canada 2026', details: null },
+  {
+    id: 'CA',
+    label: 'Toronto, Canada',
+    description: 'The Fraud Forum — Canada 2026',
+    details: {
+      date: 'Thursday 14 May 2026',
+      time: '1:00 PM – 9:00 PM (lunch through dinner)',
+      venue: 'One King West Hotel',
+      address: '1 King St W, Toronto',
+    },
+  },
 ] as const
 
 type EventId = typeof EVENTS[number]['id']
